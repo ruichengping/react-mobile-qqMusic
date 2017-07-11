@@ -9,7 +9,7 @@ react+redux+react-router+webpack项目
   cnpm install
 ```
 ## 2.启动服务
-###开发者
+### 开发者
 ```
 npm run dev 
 ```
