@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const pxtorem = require('postcss-pxtorem');
 const amwWebpack = require('antd-mobile-web/webpack');
 const postcssOpts = {
@@ -20,7 +21,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js'
+        filename: '[name].[hash].js'
     },
     resolve: {
         modules: [path.resolve(__dirname, 'node_modules'), path.join(__dirname, 'src')],
@@ -65,7 +66,6 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: path.posix.resolve('static/', 'img/[name].[hash:7].[ext]')
                 }
             },
         ]
@@ -91,8 +91,17 @@ module.exports = {
         new OpenBrowserPlugin({
             url: 'http://localhost:8080'
         }),
+        new CleanWebpackPlugin(
+            ['dist/app.*.js', 'dist/manifest.*.js', 'dist/app.*.css'],　 //匹配删除的文件
+            {
+                root: __dirname,       　　　　　　　　　　//根目录
+                verbose: true,        　　　　　　　　　　//开启在控制台输出信息
+                dry: false        　　　　　　　　　　//启用删除文件
+            }
+        )
     ],
     devServer: {
+        contentBase: path.resolve(__dirname, 'dist'),
         historyApiFallback: true, //不跳转
         inline: true, //实时刷新
         hot: true  // 启用 webpack 的模块热替换特性
