@@ -1,3 +1,4 @@
 {
-  "presets": ["react", "es2015"]
+  "presets": ["react", "es2015","antd-mobile-web/babel"],
+  "plugins": [["import", { "libraryName": "antd-mobile" ,"style": true}]]
 }
