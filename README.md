@@ -1,4 +1,4 @@
-# swordArtOnline
+# react-mobile-qqMusic
 react+redux+react-router+webpack项目
 ## 1.安装依赖包
 ```
