@@ -1,6 +1,38 @@
-body,h4,p{
+*{
     margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
 }
 a{
     text-decoration: none;
 }
+.border-bottom{
+    position: relative;
+}
+.border-bottom:after {  
+    height: 1px;  
+    content: '';  
+    width: 100%;  
+    border-top: 1px solid #c7c7c7;  
+    position: absolute;  
+    bottom: -1px;  
+    right: 0;  
+    transform: scaleY(0.5);  
+    -webkit-transform: scaleY(0.5);   
+}  
+.border-top{
+    position: relative;
+}
+.border-top:after {  
+    height: 1px;  
+    content: '';  
+    width: 100%;  
+    border-top: 1px solid #c7c7c7;  
+    position: absolute;  
+    top: -1px;  
+    right: 0;  
+    transform: scaleY(0.5);  
+    -webkit-transform: scaleY(0.5);   
+}  

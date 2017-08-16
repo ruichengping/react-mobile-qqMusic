@@ -1,10 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
-import { Drawer } from 'antd-mobile';
 import './Header.scss';
-import menuItemMessage from '../../assets/imgs/icon-menuItem-message.png';
-import menuItemSkin from '../../assets/imgs/icon-menuItem-skin.png';
-import menuItemVip from '../../assets/imgs/icon-menuItem-vip.png';
 import Slider from '../Slider/Slider';
 class Header extends React.Component {
     constructor(props) {
