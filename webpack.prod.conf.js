@@ -75,7 +75,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: path.posix.resolve('static/', 'img/[name].[hash:7].[ext]')
+                    name: 'imgs/[name].[hash:7].[ext]'
                 }
             },
         ]
@@ -124,7 +124,7 @@ module.exports = {
         }),
         //删除dist中的文件
         new CleanWebpackPlugin(
-            ['dist/app.*.js', 'dist/manifest.*.js', 'dist/app.*.css'],　 //匹配删除的文件
+            ['dist/app.*.js', 'dist/manifest.*.js', 'dist/app.*.css','dist/vendor.*.js'],　 //匹配删除的文件
             {
                 root: __dirname,       　　　　　　　　　　//根目录
                 verbose: true,        　　　　　　　　　　//开启在控制台输出信息

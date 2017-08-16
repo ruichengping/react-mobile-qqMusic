@@ -1,0 +1,54 @@
+// 菜单浮层
+.qqMusic-menu-bg{
+    position: fixed;
+    left: 0;
+    top:0;
+    right: 0;
+    bottom: 0;
+    background-color:rgba(0, 0, 0, 0.7);
+    z-index: 2016;
+    display: none;
+    &.open{
+        display: block;	
+    }
+}
+
+.qqMusic-menu{
+    position: fixed;
+    left: 0;
+    top:0;
+    bottom: 0;
+    width: 6rem;
+    box-sizing: border-box;
+    padding: 0 0.2rem;
+    background-color: #fff;
+    transform:translateX(-100%);
+    transition: transform 0.3s ease-out;	
+    z-index: 2017; 
+    &.open{
+        transform:translateX(0);	
+    }
+    .qqMusic-menu-header{
+        display: flex;
+        border-bottom: 1px solid #c7c7c7;
+        padding-bottom: 0.4rem;
+        .qqMusic-menu-header-Item {
+            flex: 1;
+            text-align: center;
+             .qqMusic-menu-header-Item-img{
+                width: 0.7rem;
+                height: 0.7rem;
+            }
+            .qqMusic-menu-header-Item-title{
+                font-size: 0.28rem;
+                font-weight: 400;
+            }
+            .qqMusic-menu-header-Item-text{
+                font-size: 0.22rem;
+                font-weight: 300;  
+                margin: 0.1rem 0;
+                color: #c7c7c7;              
+            }
+        }
+    }
+}

@@ -1,3 +1,69 @@
-#qqMusic-header{
-    color: #fff;
+// 头部
+$headerFontColor:#dbf3e8;
+$headerMainBackgroundColor:#31c37c;
+$headerSearchBackgroundColor:#2AAA73;
+@mixin flexCenter () {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qqMusic-header {
+    background-color: $headerMainBackgroundColor;
+    .qqMusic-header-top {
+        position: relative;
+        @include flexCenter();
+        height: 0.8rem;
+        .qqMusic-tab {
+            font-size: 0.4rem;
+            color: $headerFontColor;
+            padding: 0 0.2rem;
+            font-weight: 300;
+        }
+        .qqMusic-tab-active {
+            font-weight: 700;
+        }
+        .qqMusic-header-icon-left {
+            position: absolute;
+            left: 0.24rem;
+            top: 0.06rem;
+            width: 0.56rem;
+            height: 0.7rem;
+            background: url('../../assets/imgs/icon-menu-list.png');
+            background-size: 0.56rem 0.7rem;
+        }
+        .qqMusic-header-icon-right {
+            position: absolute;
+            right: 0.24rem;
+            top: 0.11rem;
+            width: 0.56rem;
+            height: 0.56rem;
+            background: url('../../assets/imgs/icon-menu-add.png');
+            background-size: 0.56rem 0.56rem;
+        }
+    }
+    .qqMusic-header-bottom {
+        padding: 0.14rem 0.2rem;
+        .qqMusic-header-search {
+            @include flexCenter();            
+            height: 0.6rem;
+            width: 100%;
+            background-color: $headerSearchBackgroundColor;
+            border-radius: 0.1rem;
+        }
+        .qqMusic-search-text {
+            margin-left: 0.1rem;
+            font-size: 0.34rem;
+            font-style: normal;
+            color: $headerFontColor;
+            font-weight: 300;            
+        }
+        .qqMusic-search-icon {
+            display: inline-block;
+            background: url('../../assets/imgs/icon-search-default.png');
+            height: 0.36rem;
+            width: 0.36rem;
+            background-size: 0.36rem 0.36rem;
+        }
+    }
 }

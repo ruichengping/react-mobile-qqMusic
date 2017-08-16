@@ -9,19 +9,20 @@ const amwWebpack = require('antd-mobile-web/webpack');
 const postcssOpts = {
     ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
     plugins: () => [
-      autoprefixer({
-        browsers: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 8', 'iOS >= 8', 'Android >= 4'],
-      }),
-      pxtorem({ rootValue: 100, propWhiteList: [] })
+        autoprefixer({
+            browsers: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 8', 'iOS >= 8', 'Android >= 4'],
+        }),
+        pxtorem({ rootValue: 100, propWhiteList: [] })
     ],
-  };
+};
 module.exports = {
     entry: {
         app: './src/main.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[hash].js'
+        filename: '[name].[hash].js',
+        publicPath:'/'
     },
     resolve: {
         modules: [path.resolve(__dirname, 'node_modules'), path.join(__dirname, 'src')],
@@ -39,7 +40,7 @@ module.exports = {
                 use: [
                     'style-loader',
                     { loader: 'css-loader', options: { importLoaders: 1 } },
-                    { loader: 'postcss-loader', options: postcssOpts}
+                    { loader: 'postcss-loader', options: postcssOpts }
                 ]
             },
             {
@@ -47,7 +48,7 @@ module.exports = {
                 use: [
                     'style-loader',
                     { loader: 'css-loader', options: { importLoaders: 1 } },
-                    { loader: 'postcss-loader', options: postcssOpts},
+                    { loader: 'postcss-loader', options: postcssOpts },
                     'sass-loader',
                 ]
             },
@@ -56,16 +57,18 @@ module.exports = {
                 use: [
                     'style-loader',
                     { loader: 'css-loader', options: { importLoaders: 1 } },
-                    { loader: 'postcss-loader', options: postcssOpts},
-                     'less-loader'
+                    { loader: 'postcss-loader', options: postcssOpts },
+                    'less-loader'
                 ]
             },
             amwWebpack.createSvgRule(),
             {
-                test: /\.(png|jpe?g|gif)(\?.*)?$/,
-                loader: 'url-loader',
-                options: {
-                    limit: 10000,
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                use:{
+                    loader:'url-loader',
+                    options:{
+                        limit: 10000
+                    }
                 }
             },
         ]
@@ -89,7 +92,7 @@ module.exports = {
         }),
         //webpack启动后自动打开游览器
         new OpenBrowserPlugin({
-            url: 'http://localhost:8080'
+            url: 'http://localhost:3000'
         }),
         new CleanWebpackPlugin(
             ['dist/app.*.js', 'dist/manifest.*.js', 'dist/app.*.css'],　 //匹配删除的文件
@@ -102,6 +105,7 @@ module.exports = {
     ],
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
+        port:3000,
         historyApiFallback: true, //不跳转
         inline: true, //实时刷新
         hot: true  // 启用 webpack 的模块热替换特性
