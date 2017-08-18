@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=dev webpack-dev-server --config webpack.dev.conf --progress --colors",
-    "build": "NODE_ENV=production webpack --config webpack.prod.conf --progress --colors"
+    "dev": "cross-env NODE_ENV=dev webpack-dev-server --config webpack.dev.conf --progress --colors",
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean&&cross-env NODE_ENV=production webpack --config webpack.prod.conf --progress --colors"
   },
   "author": "wuming",
   "license": "ISC",
@@ -20,6 +21,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
+    "cross-env": "^5.0.5",
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",

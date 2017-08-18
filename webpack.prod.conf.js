@@ -70,12 +70,19 @@ module.exports = {
                 })
             },
             amwWebpack.createSvgRule(),
+            // {
+            //     test: /\.(png|jpe?g|gif)(\?.*)?$/,
+            //     loader: 'file-loader',
+            //     options: {
+            //         limit: 10000,
+            //         name: 'imgs/[name].[hash:7].[ext]'
+            //     }
+            // },
             {
                 test: /\.(png|jpe?g|gif)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: 'imgs/[name].[hash:7].[ext]'
                 }
             },
         ]
@@ -121,16 +128,7 @@ module.exports = {
             filename: 'index.html',
             template: 'index.html',
             inject: true
-        }),
-        //删除dist中的文件
-        new CleanWebpackPlugin(
-            ['dist/app.*.js', 'dist/manifest.*.js', 'dist/app.*.css','dist/vendor.*.js'],　 //匹配删除的文件
-            {
-                root: __dirname,       　　　　　　　　　　//根目录
-                verbose: true,        　　　　　　　　　　//开启在控制台输出信息
-                dry: false        　　　　　　　　　　//启用删除文件
-            }
-        )
+        })
     ]
 
 }

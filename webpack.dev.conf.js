@@ -22,7 +22,6 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[hash].js',
-        publicPath:'/'
     },
     resolve: {
         modules: [path.resolve(__dirname, 'node_modules'), path.join(__dirname, 'src')],
@@ -93,18 +92,9 @@ module.exports = {
         //webpack启动后自动打开游览器
         new OpenBrowserPlugin({
             url: 'http://localhost:3000'
-        }),
-        new CleanWebpackPlugin(
-            ['dist/app.*.js', 'dist/manifest.*.js', 'dist/app.*.css'],　 //匹配删除的文件
-            {
-                root: __dirname,       　　　　　　　　　　//根目录
-                verbose: true,        　　　　　　　　　　//开启在控制台输出信息
-                dry: false        　　　　　　　　　　//启用删除文件
-            }
-        )
+        })
     ],
     devServer: {
-        contentBase: path.resolve(__dirname, 'dist'),
         port:3000,
         historyApiFallback: true, //不跳转
         inline: true, //实时刷新
