@@ -6,7 +6,7 @@ class Discovery extends React.Component{
     }
     render(){
         return (
-            <h1>Disc</h1>
+            <div className="qqMusic-home-body">Disc</div>
         )
     }
 }

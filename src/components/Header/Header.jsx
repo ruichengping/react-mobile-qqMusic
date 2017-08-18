@@ -16,7 +16,7 @@ class Header extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className={this.props.className}>
                 <div className="qqMusic-header">
                     <div className="qqMusic-header-top">
                         <i className="qqMusic-header-icon-left" onTouchStart={this.openChange.bind(this)}></i>

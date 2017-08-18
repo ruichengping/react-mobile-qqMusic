@@ -6,7 +6,7 @@ class MusicClub extends React.Component{
     }
     render(){
         return (
-            <h1>Music</h1>
+            <div className="qqMusic-home-body">Music</div>
         )
     }
 }

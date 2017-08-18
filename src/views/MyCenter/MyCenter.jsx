@@ -8,7 +8,7 @@ class MyCenter extends React.Component{
     }    
     render(){
         return (
-            <h1>1234</h1>
+            <div className="qqMusic-home-body">1234</div>
         )
     }
 }
