@@ -1,0 +1,36 @@
+.qqMusic-myCenter-bottom {
+    text-align: center;
+    margin-top: 0.1rem;
+    background: #fff;
+    line-height: 0.8rem;
+    color: #8a8a8a;    
+    .qqMusic-myCenter-tabs{
+        position: relative;        
+        .qqMusic-myCenter-tab{
+            padding: 0 0.2rem;
+            &.active{
+                color: #000;
+            }
+        }
+        .addSongList{
+            position: absolute;
+            right: 0.8rem;
+            top:0.22rem;
+            display: inline-block;
+            height: 0.4rem;
+            width: 0.4rem;
+            background: url('../../assets/imgs/icon-songList-add.png');
+            background-size:0.4rem 0.4rem;; 
+        }
+        .songListManage{
+            position: absolute;
+            right: 0.2rem;
+            top:0.24rem;
+            display: inline-block;
+            height: 0.4rem;
+            width: 0.4rem;
+            background: url('../../assets/imgs/icon-song-list.png');
+            background-size:0.4rem 0.4rem;; 
+        }
+    }
+}

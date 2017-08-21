@@ -1,0 +1,110 @@
+.qqMusic-home-body {
+    .qqMusic-myCenter-top {
+        padding: 0.1rem 0 0.4rem;
+        background: #fff;
+        .qqMusic-myCenter-user {
+            .qqMusic-myCenter-user-module {
+                text-align: center;
+                padding-top: 0.1rem;
+                .qqMusic-myCenter-user-audition,
+                .qqMusic-myCenter-user-dredge {
+                    display: inline-block;
+                    border: 1px solid #8a8a8a;
+                    text-align: center;
+                    width: 1.6rem;
+                    height: 0.5rem;
+                    border-radius: 0.3rem;
+                    .text {
+                        padding-left: 0.08rem;
+                        font-size: 0.28rem;
+                        color: #cdcdcd;
+                    }
+                    .icon {
+                        width: 0.48rem;
+                        height: 0.48rem;
+                        vertical-align: -0.1rem;
+                    }
+                }
+                .qqMusic-myCenter-user-photo {
+                    width: 1.0rem;
+                    height: 1.0rem;
+                    border-radius: 50%;
+                    vertical-align: middle;
+                    margin: 0 0.3rem
+                }
+                .userName:before,
+                .userName:after {
+                    content: "";
+                    display: inline-block;
+                    height: 1px;
+                    width: 0.8rem;
+                    border-top: 1px solid #2c2c2c;
+                    vertical-align: middle;
+                }
+                .userName:before {
+                    margin-right: 0.1rem;
+                }
+                .userName::after {
+                    margin-left: 0.1rem;
+                }
+                .qqMusic-myCenter-user-rank {
+                    height: 0.38rem;
+                    width: 0.38rem;
+                }
+            }
+        }
+        .qqMusic-myCenter-grid-top,.qqMusic-myCenter-grid-bottom{
+            display: flex;           
+            .qqMusic-myCenter-grid-item{
+                flex: 1;
+                text-align: center;
+                .image{
+                    width: 0.7rem;
+                    height: 0.7rem;
+                }
+                .text{
+                    text-align: center;
+                    font-size: 0.3rem;
+                    padding-top: 0.1rem;
+                }
+            }
+        }
+        .qqMusic-myCenter-grid-top{
+            margin-top: 0.1rem;
+        }
+        .qqMusic-myCenter-grid-bottom{
+            margin-top: 0.3rem;            
+        }
+    }
+    .qqMusic-myCenter-middle {
+        margin-top: 0.1rem;
+        background: #fff;
+        .qqMusic-myCenter-station{
+            display: flex;
+            height: 1.1rem;
+            .qqMusic-myCenter-station-left{
+                flex: 0 0 1.3rem;
+                .station-image{
+                    width: 1.1rem;
+                    height: 1.1rem;
+                }
+            }
+            .qqMusic-myCenter-station-right{
+                flex:1;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                .station-title{
+                    font-size: 0.32rem;
+                    font-weight: 400;
+                }
+                .station-text{
+                    padding-top: 0.1rem;
+                    font-size: 0.26rem;
+                    color: #cacaca;
+                    font-weight: 300;                    
+                }
+            }
+        }
+    }
+}

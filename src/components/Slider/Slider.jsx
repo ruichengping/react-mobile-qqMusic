@@ -20,7 +20,7 @@ class Slider extends React.Component {
         let SwitchExample = (props) => {
             const { getFieldProps } = props.form;
             return (
-                <Switch className='qqMusic-slider-body-item-extra' type={props.type}
+                <Switch className='qqMusic-slider-body-item-extra' platform='ios' type={props.type}
                 {...getFieldProps('Switch',{
                   initialValue: false,
                   valuePropName: 'checked',
