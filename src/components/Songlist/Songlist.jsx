@@ -1,5 +1,6 @@
 import React from 'react';
 import './Songlist.scss';
+import addImg from '../../assets/imgs/icon-songList-add.png';
 class Songlist extends React.Component {
     constructor(props) {
         super(props)
@@ -19,14 +20,21 @@ class Songlist extends React.Component {
                     <span className={this.state.activeTab===1?'qqMusic-myCenter-tab active':'qqMusic-myCenter-tab'} onClick={this.tabChange.bind(this,1)} >自建歌单</span>
                     |
                     <span className={this.state.activeTab===2?'qqMusic-myCenter-tab active':'qqMusic-myCenter-tab'} onClick={this.tabChange.bind(this,2)}>收藏歌单</span>
-                    <i className="addSongList"/>
+                    <i style={this.state.activeTab===2?{display:'none'}:{}} className="addSongList"/>
                     <i className="songListManage"></i>
                 </div>
                 <div className="qqMusic-myCenter-tabContent-one" style={this.state.activeTab!==1?{display:'none'}:{}}>
-                    11231232132132
+                    <div className="add-songList-wrapper">
+                        <div className="add-songList-wrapper-left">
+                            <img className="add-songList-img" src={addImg}/>
+                        </div>
+                        <div className="add-songList-wrapper-right">
+                            <p className="add-songList-text border-bottom">新建歌单</p>
+                        </div>
+                    </div>
                 </div>
                 <div className="qqMusic-myCenter-tabContent-two" style={this.state.activeTab!==2?{display:'none'}:{}}>
-                    123123123213
+                    <p className="no-collected-songLst">没有收藏的歌单</p>
                 </div>
             </div>
         );

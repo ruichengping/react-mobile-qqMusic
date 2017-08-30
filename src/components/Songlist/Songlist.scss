@@ -20,7 +20,7 @@
             height: 0.4rem;
             width: 0.4rem;
             background: url('../../assets/imgs/icon-songList-add.png');
-            background-size:0.4rem 0.4rem;; 
+            background-size:0.4rem 0.4rem;
         }
         .songListManage{
             position: absolute;
@@ -30,7 +30,43 @@
             height: 0.4rem;
             width: 0.4rem;
             background: url('../../assets/imgs/icon-song-list.png');
-            background-size:0.4rem 0.4rem;; 
+            background-size:0.4rem 0.4rem;
+            .no-collected-songLst{
+                font-size: 0.3rem;
+                text-align: center;
+                color: #cdcdcd;
+            }
         }
+    }
+    .qqMusic-myCenter-tabContent-one{
+        background: #fff;    
+        min-height: 1.8rem;    
+        .add-songList-wrapper{
+            display: flex;
+            height: 1.2rem;
+            .add-songList-wrapper-left{
+                flex:0 0 1.2rem;
+                background: #e6e6e6;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .add-songList-img{
+                    width: 0.6rem;
+                    height: 0.6rem;
+                }
+            }
+            .add-songList-wrapper-right{
+                flex: 1;
+                .add-songList-text{
+                    line-height: 1.2rem;
+                    text-align: left;
+                    margin-left: 0.2rem;
+                }
+            }
+        }
+    }
+    .qqMusic-myCenter-tabContent-two{
+        background: #fff;
+        min-height: 1.2rem;
     }
 }
