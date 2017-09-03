@@ -12,10 +12,6 @@ import createBrowserHistory from 'history/createBrowserHistory';
 import configureStore from '../src/store/configureStore';
 const history = createBrowserHistory();
 const store = configureStore();
-store.subscribe((data)=>{
-    console.log(data);
-    console.log(store.getState());
-});
 render(
     <Provider store={store}>
         <Router history={history}>

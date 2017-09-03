@@ -5,12 +5,6 @@ import './MyCenter.scss';
 import auditionImg from '../../assets/imgs/icon-user-audition.png';
 import dredgeImg from '../../assets/imgs/icon-user-dredge.png';
 import rankImg from '../../assets/imgs/icon-user-rank.png';
-import gridMusic from '../../assets/imgs/icon-grid-music.png';
-import gridMv from '../../assets/imgs/icon-grid-mv.png';
-import gridDownload from '../../assets/imgs/icon-grid-download.png';
-import gridFavorite from '../../assets/imgs/icon-grid-favorite.png';
-import gridRecent from '../../assets/imgs/icon-grid-recent.png';
-import gridBuy from '../../assets/imgs/icon-grid-buy.png';
 import Songlist from '../../components/Songlist/Songlist';
 class MyCenter extends React.Component {
     constructor(props) {
@@ -20,27 +14,27 @@ class MyCenter extends React.Component {
         const girdList = [
             {
                 text: '本地歌曲',
-                imgSrc: gridMusic
+                imgSrc: require('../../assets/imgs/icon-grid-music.png')
             },
             {
                 text: '下载歌曲',
-                imgSrc: gridDownload
+                imgSrc: require('../../assets/imgs/icon-grid-download.png')
             },
             {
                 text: '最近播放',
-                imgSrc: gridRecent
+                imgSrc: require('../../assets/imgs/icon-grid-recent.png')
             },
             {
                 text: '我喜欢',
-                imgSrc: gridFavorite
+                imgSrc: require('../../assets/imgs/icon-grid-favorite.png')
             },
             {
                 text: '下载MV',
-                imgSrc: gridMv
+                imgSrc: require('../../assets/imgs/icon-grid-mv.png')
             },
             {
                 text: '已购音乐',
-                imgSrc: gridBuy
+                imgSrc: require('../../assets/imgs/icon-grid-buy.png')
             }
         ]
         return (

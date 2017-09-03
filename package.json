@@ -37,6 +37,7 @@
     "react-transition-group": "^2.2.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
+    "svg-sprite-loader": "^0.3.1",
     "url-loader": "^0.5.9",
     "webpack": "^3.1.0",
     "webpack-dev-server": "^2.5.1",

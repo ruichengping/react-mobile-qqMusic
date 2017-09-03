@@ -69,21 +69,23 @@ module.exports = {
                     fallback: 'style-loader'
                 })
             },
-            amwWebpack.createSvgRule(),
-            // {
-            //     test: /\.(png|jpe?g|gif)(\?.*)?$/,
-            //     loader: 'file-loader',
-            //     options: {
-            //         limit: 10000,
-            //         name: 'imgs/[name].[hash:7].[ext]'
-            //     }
-            // },
             {
-                test: /\.(png|jpe?g|gif)(\?.*)?$/,
+
+                test: /\.(svg)$/i,
+                loader: 'svg-sprite-loader',
+                include: [
+                    require.resolve('antd-mobile').replace(/warn\.js$/, '')
+                ],
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                }
+                },
+                exclude: [
+                    require.resolve('antd-mobile').replace(/warn\.js$/, '')
+                ],
             },
         ]
     },

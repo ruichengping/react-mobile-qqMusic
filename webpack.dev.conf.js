@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const pxtorem = require('postcss-pxtorem');
-const amwWebpack = require('antd-mobile-web/webpack');
 const postcssOpts = {
     ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
     plugins: () => [
@@ -60,16 +59,26 @@ module.exports = {
                     'less-loader'
                 ]
             },
-            amwWebpack.createSvgRule(),
+            {
+
+                test: /\.(svg)$/i,
+                loader: 'svg-sprite-loader',
+                include: [
+                    require.resolve('antd-mobile').replace(/warn\.js$/, '')
+                ],
+            },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                use:{
-                    loader:'url-loader',
-                    options:{
+                use: {
+                    loader: 'url-loader',
+                    options: {
                         limit: 10000
                     }
-                }
-            },
+                },
+                exclude: [
+                    require.resolve('antd-mobile').replace(/warn\.js$/, '')
+                ],
+            }
         ]
     },
     plugins: [
@@ -95,7 +104,7 @@ module.exports = {
         })
     ],
     devServer: {
-        port:3000,
+        port: 3000,
         historyApiFallback: true, //不跳转
         inline: true, //实时刷新
         hot: true  // 启用 webpack 的模块热替换特性
