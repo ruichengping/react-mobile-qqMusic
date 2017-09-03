@@ -1,0 +1,75 @@
+.qqMusic-search-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background: #f5f5f9;
+    transform: translateY(100%);
+    transition: transform 0.2s ease-out;
+    &.show {
+        transform: translateY(0);
+    }
+    .qqMusic-search-top {
+        position: relative;
+        background: #31c37c;
+        box-sizing: border-box;
+        padding: 0.2rem 1.0rem 0.2rem 0.8rem;
+        .icon-arrow-left {
+            position: absolute;
+            top: 0.2rem;
+            left: 0.2rem;
+            width: 0.4rem;
+            height: 0.4rem;
+        }
+        .input-text {
+            width: 100%;
+            background: #31c37c;
+            color: #dbf3e8;
+            font-size: 0.3rem;
+        }
+        .input-text::placeholder {
+            color: #dbf3e8;
+            opacity: 0.6;
+        }
+        .btn-search {
+            position: absolute;
+            right: 0.2rem;
+            top: 0.2rem;
+            color: #dbf3e8;
+        }
+    }
+    .qqMusic-search-bottom {
+        flex: 1;
+        overflow: scroll;
+        .qqMusic-searchList {
+            background: #fff;
+            .qqMusic-searchList-item {
+                padding: 0.1rem 0.3rem;
+                .qqMusic-searchList-item-title {
+                    font-size: 0.3rem;
+                    font-weight: 500;
+                }
+                .qqMusic-searchList-item-singer {
+                    font-size: 0.26rem;
+                    padding: 0.1rem 0;
+                    color: #707070;
+                }
+                .qqMusic-searchList-item-intro {
+                    font-size: 0.22rem;
+                    line-height: 0.28rem;
+                    color: #bfbfbf;
+                }
+            }
+            .hint {
+                text-align: center;
+                line-height: 0.62rem;
+                font-size: 0.3rem;
+                background-color: #f5f5f9;
+            }
+        }
+    }
+}

@@ -2,11 +2,13 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'
 import './Header.scss';
 import Slider from '../Slider/Slider';
+import Search from '../Search/Search';
 class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            docked: false
+            docked: false,
+            search:false
         }
     }
     openChange() {
@@ -14,18 +16,23 @@ class Header extends React.Component {
             docked: !this.state.docked
         });
     }
+    searchChange(){
+        this.setState({
+            search:!this.state.search
+        });
+    }
     render() {
         return (
             <div className={this.props.className}>
                 <div className="qqMusic-header">
                     <div className="qqMusic-header-top">
-                        <i className="qqMusic-header-icon-left" onTouchStart={this.openChange.bind(this)}></i>
+                        <i className="qqMusic-header-icon-left" onClick={this.openChange.bind(this)}></i>
                         <NavLink className="qqMusic-tab" activeClassName="qqMusic-tab-active" to="/myCenter" replace>我的</NavLink>
                         <NavLink className="qqMusic-tab" activeClassName="qqMusic-tab-active" to="/musicClub" replace>音乐馆</NavLink>
                         <NavLink className="qqMusic-tab" activeClassName="qqMusic-tab-active" to="/discovery" replace>发现</NavLink>
                         <i className="qqMusic-header-icon-right"></i>
                     </div>
-                    <div className="qqMusic-header-bottom">
+                    <div className="qqMusic-header-bottom" onClick={this.searchChange.bind(this)}>
                         <div className="qqMusic-header-search">
                             <i className="qqMusic-search-icon"></i>
                             <span className="qqMusic-search-text">搜索</span>
@@ -33,6 +40,7 @@ class Header extends React.Component {
                     </div>
                 </div>
                 <Slider docked={this.state.docked} openChange={this.openChange.bind(this)}></Slider>
+                <Search search={this.state.search} searchChange={this.searchChange.bind(this)}></Search>
             </div>
         );
     }

@@ -11,6 +11,10 @@ li{
 a{
     text-decoration: none;
 }
+input{
+    border: none;
+    outline:none;        
+}
 #app{
     height: 100%;
 }
