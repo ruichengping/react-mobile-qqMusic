@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Switch } from 'antd-mobile';
+import { List, Switch, Grid } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './MyCenter.scss';
 import auditionImg from '../../assets/imgs/icon-user-audition.png';
@@ -59,56 +59,44 @@ class MyCenter extends React.Component {
                             <img className="qqMusic-myCenter-user-rank" src={rankImg} />
                         </div>
                     </div>
-                    <div className="qqMusic-myCenter-grid">
-                        <div className="qqMusic-myCenter-grid-top">
-                            {
-                                girdList.map(function (item, index) {
-                                    if (index < 3) {
-                                        return (<div className="qqMusic-myCenter-grid-item" key={index}>
-                                            <img className="image" src={item.imgSrc} />
-                                            <p className="text">{item.text}</p>
-                                        </div>)
-                                    }
-                                })
-                            }
+                    <Grid
+                        className="qqMusic-myCenter-grid"
+                        data={girdList}
+                        columnNum={3}
+                        hasLine={false}
+                        renderItem={
+                            item => (
+                                <div className="qqMusic-myCenter-grid-item">
+                                    <img className="image" src={item.imgSrc} />
+                                    <p className="text">{item.text}</p>
+                                </div>
+                            )
+                        }
+                    />
+                    <div className="qqMusic-myCenter-middle">
+                        <div className="qqMusic-myCenter-station">
+                            <div className="qqMusic-myCenter-station-left">
+                                <img className="station-image" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503314271645&di=6f742ae5ff0ba1e8c1669abbb21f2be6&imgtype=0&src=http%3A%2F%2Fsc.jb51.net%2Fuploads%2Fallimg%2F150408%2F14-15040Q100280-L.jpg" />
+                            </div>
+                            <div className="qqMusic-myCenter-station-right">
+                                <h4 className="station-title">个性电台</h4>
+                                <p className="station-text">偶遇身边好音乐</p>
+                            </div>
                         </div>
-                        <div className="qqMusic-myCenter-grid-bottom">
-                            {
-                                girdList.map(function (item, index) {
-                                    if (index > 2) {
-                                        return (<div className="qqMusic-myCenter-grid-item" key={index}>
-                                            <img className="image" src={item.imgSrc} />
-                                            <p className="text">{item.text}</p>
-                                        </div>)
-                                    }
-                                })
-                            }
+                        <div className="qqMusic-myCenter-station">
+                            <div className="qqMusic-myCenter-station-left">
+                                <img className="station-image" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503314324399&di=611a4de0973b30af16f77bc1b4367ec2&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F1506%2F03%2Fc38%2F7898935_1433313764312_1024x1024.jpg" />
+                            </div>
+                            <div className="qqMusic-myCenter-station-right border-top">
+                                <h4 className="station-title">跑步电台</h4>
+                                <p className="station-text">QQ音乐 x Nike，让运动乐在其中</p>
+                            </div>
                         </div>
                     </div>
+                    <Songlist />
                 </div>
-                <div className="qqMusic-myCenter-middle">
-                    <div className="qqMusic-myCenter-station">
-                        <div className="qqMusic-myCenter-station-left">
-                            <img className="station-image"  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503314271645&di=6f742ae5ff0ba1e8c1669abbb21f2be6&imgtype=0&src=http%3A%2F%2Fsc.jb51.net%2Fuploads%2Fallimg%2F150408%2F14-15040Q100280-L.jpg"/>
-                        </div>
-                        <div className="qqMusic-myCenter-station-right">
-                            <h4 className="station-title">个性电台</h4>
-                            <p className="station-text">偶遇身边好音乐</p>
-                        </div>
-                    </div>
-                    <div className="qqMusic-myCenter-station">
-                        <div className="qqMusic-myCenter-station-left">
-                            <img className="station-image"  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503314324399&di=611a4de0973b30af16f77bc1b4367ec2&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F1506%2F03%2Fc38%2F7898935_1433313764312_1024x1024.jpg"/>
-                        </div>
-                        <div className="qqMusic-myCenter-station-right border-top">
-                            <h4 className="station-title">跑步电台</h4>
-                            <p className="station-text">QQ音乐 x Nike，让运动乐在其中</p>
-                        </div>
-                    </div>
-                </div>
-                <Songlist/>
             </div>
         )
     }
 }
-export default MyCenter
+export default MyCenter;

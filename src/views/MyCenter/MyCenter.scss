@@ -1,8 +1,10 @@
 .qqMusic-home-body {
     .qqMusic-myCenter-top {
         padding: 0.1rem 0 0.4rem;
-        background: #fff;
+        background: #f5f5f9;
         .qqMusic-myCenter-user {
+            background: #fff;
+            padding-bottom: 0.1rem;
             .qqMusic-myCenter-user-module {
                 text-align: center;
                 padding-top: 0.1rem;
@@ -53,56 +55,50 @@
                 }
             }
         }
-        .qqMusic-myCenter-grid-top,.qqMusic-myCenter-grid-bottom{
-            display: flex;           
-            .qqMusic-myCenter-grid-item{
-                flex: 1;
-                text-align: center;
-                .image{
-                    width: 0.7rem;
-                    height: 0.7rem;
-                }
-                .text{
-                    text-align: center;
-                    font-size: 0.3rem;
-                    padding-top: 0.1rem;
+        .qqMusic-myCenter-grid {
+            .am-flexbox {
+                height: 1.5rem !important;
+                .qqMusic-myCenter-grid-item {
+                    .image {
+                        width: 0.7rem;
+                        height: 0.7rem;
+                    }
+                    .text {
+                        text-align: center;
+                        font-size: 0.3rem;
+                        padding-top: 0.1rem;
+                    }
                 }
             }
-        }
-        .qqMusic-myCenter-grid-top{
-            margin-top: 0.1rem;
-        }
-        .qqMusic-myCenter-grid-bottom{
-            margin-top: 0.3rem;            
         }
     }
     .qqMusic-myCenter-middle {
         margin-top: 0.1rem;
         background: #fff;
-        .qqMusic-myCenter-station{
+        .qqMusic-myCenter-station {
             display: flex;
             height: 1.1rem;
-            .qqMusic-myCenter-station-left{
+            .qqMusic-myCenter-station-left {
                 flex: 0 0 1.3rem;
-                .station-image{
+                .station-image {
                     width: 1.1rem;
                     height: 1.1rem;
                 }
             }
-            .qqMusic-myCenter-station-right{
-                flex:1;
+            .qqMusic-myCenter-station-right {
+                flex: 1;
                 display: flex;
                 justify-content: center;
                 flex-direction: column;
-                .station-title{
+                .station-title {
                     font-size: 0.32rem;
                     font-weight: 400;
                 }
-                .station-text{
+                .station-text {
                     padding-top: 0.1rem;
                     font-size: 0.26rem;
                     color: #cacaca;
-                    font-weight: 300;                    
+                    font-weight: 300;
                 }
             }
         }

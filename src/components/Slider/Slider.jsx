@@ -1,7 +1,4 @@
 import React from 'react';
-import sliderMessage from '../../assets/imgs/icon-slider-message.png';
-import sliderSkin from '../../assets/imgs/icon-slider-skin.png';
-import sliderVip from '../../assets/imgs/icon-slider-vip.png';
 import {List,Switch } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './Slider.scss';
@@ -32,17 +29,17 @@ class Slider extends React.Component {
         SwitchExample = createForm()(SwitchExample);
         const headerSliderList = [
             {
-                imgSrc: sliderVip,
+                imgSrc: require('../../assets/imgs/icon-slider-message.png'),
                 title: '升级为VIP',
                 text: '畅享音乐特权'
             },
             {
-                imgSrc: sliderSkin,
+                imgSrc: require('../../assets/imgs/icon-slider-skin.png'),
                 title: '个性化中心',
                 text: '默认主题'
             },
             {
-                imgSrc: sliderMessage,
+                imgSrc: require('../../assets/imgs/icon-slider-vip.png'),
                 title: '消息中心',
                 text: ''
             }
