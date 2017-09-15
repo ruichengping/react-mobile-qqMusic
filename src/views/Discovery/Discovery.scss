@@ -1,0 +1,92 @@
+.qqMusic-discovery-item {
+    display: flex;
+    padding: 0.3rem 0 0 0.3rem;
+    .qqMusic-discovery-item-left {
+        flex: 1;
+        padding-right: 0.2rem;
+        overflow: hidden;
+        .text {
+            margin-top: 0.3rem;
+            font-size: 0.38rem;
+        }
+        .music {
+            margin-top: 0.2rem;
+            font-size: 0.26rem;
+            white-space:nowrap;
+            overflow:hidden; 
+            text-overflow:ellipsis;
+            .music-image {
+                width: 0.42rem;
+                height: 0.42rem;
+                margin-right: 0.1rem;
+                vertical-align: -0.1rem;
+            }
+        }
+        .extra {
+            font-size: 0.26rem;
+            margin-top: 0.2rem;
+            color: #6F6F6F;
+        }
+    }
+    .qqMusic-discovery-item-right {
+        flex: 0 0 2.2rem;
+        height: 2.2rem;
+        overflow: hidden;
+        .image {
+            width: 2.2rem;
+        }
+    }
+}
+.qqMusic-discovery-carousel{
+    margin-top: 0.3rem;
+    .top{
+        .tag{
+            font-size: 0.22rem;
+            background: #000;
+            color: #fff;
+            padding: 0.02rem 0.04rem;
+            margin-left: 0.3rem;
+        }
+    }
+    .bottom{
+        margin-top: 0.2rem;
+        height: 1.98rem;
+        overflow-y: hidden;
+        .list{
+            padding-left: 0.24rem;
+            white-space:nowrap;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            .item{
+                display: inline-block;
+                position: relative;
+                margin-left: 0.06rem;
+                .image{
+                    width: 3.25rem;
+                    height: 2.0rem;
+                }
+                .mask{
+                    position: absolute;
+                    top:0;
+                    left:0;
+                    width: 3.25rem;
+                    height: 2.0rem;
+                    background: rgba(0,0,0,0.4);
+                    .title{
+                        margin-top: 0.8rem;
+                        color: #fff;
+                        text-align: center;
+                        font-size: 0.42rem;
+                    }
+                    .text{
+                        margin-top: 0.1rem;
+                        color: #ccc;
+                        text-align: center;
+                        font-size: 0.28rem;
+                    }
+                }
+            }
+        }
+    }
+    
+}
