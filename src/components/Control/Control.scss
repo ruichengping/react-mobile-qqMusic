@@ -1,0 +1,90 @@
+.qqMusic-control{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+    transition: transform 0.1s ease-out;
+    background-color: #fff;
+    &.show{
+        transform: translateY(0);
+        z-index: 1;
+        .qqMusic-control-content{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 3;
+            .qqMusic-control-top{
+                position: relative;
+                .icon-control-down{
+                    position: absolute;
+                    left:0.3rem;
+                    top:0.2rem;
+                    width: 0.5rem;
+                }
+                .music-name{
+                    text-align: center;
+                    font-size: 0.4rem;
+                    color: #fff;
+                    padding-top: 0.3rem;
+                }
+            }
+            .qqMusic-control-middle{
+                text-align: center;
+                .music-signer{
+                    text-align: center;
+                    font-size: 0.32rem;
+                    color: #fff;
+                    padding-top: 0.3rem;
+                }
+                .music-signer:before{
+                    content: '';
+                    display: inline-block;
+                    width: 0.4rem;
+                    border-top:2px solid #fff;
+                    vertical-align: 0.12rem;
+                    margin-right: 0.2rem;
+                }
+                .music-signer:after{
+                    content: '';
+                    display: inline-block;
+                    width: 0.4rem;
+                    border-top:2px solid #fff;
+                    vertical-align: 0.12rem;
+                    margin-left: 0.2rem;
+                }
+                .music-cover{
+                    width: 3.8rem;
+                    height: 3.8rem;
+                    border-radius: 50%;
+                    margin-top: 1.2rem;
+                }
+            }
+        }
+        .qqMusic-control-bg{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-size: cover;
+            background-position: bottom center;
+            z-index: 1;
+            -webkit-filter: blur(15px);
+            -webkit-transform: scale(1.15);
+        }
+        .qqMusic-control-bg-mask{
+            position: absolute;
+            top:0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:#000;
+            z-index: 2;
+            opacity: 0.6;
+        }
+    }
+}

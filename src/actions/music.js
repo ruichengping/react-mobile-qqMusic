@@ -6,18 +6,23 @@ export function addMusic(data) {
         data
     }
 }
-//播放音乐
-export function playMusic(data) {
+//播放或暂停音乐
+export function changePlayStatus(data) {
     return {
-        type: actionTypes.PLAY_MUSIC,
+        type: actionTypes.CHANGE_MUSIC_STATUS,
         data
     }
 }
-
-//暂停音乐
-export function pauseMusic(data) {
+//更改音乐
+export function changeMusic(data){
     return {
-        type: actionTypes.PAUSE_MUSIC,
+        type: actionTypes.CHANGE_CURRENT_MUSIC,
+        data
+    }
+}
+export function addAndChangeMusic(data){
+    return {
+        type:actionTypes.ADD_AND_CHANGE_MUSIC,
         data
     }
 }

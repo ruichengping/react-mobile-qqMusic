@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import "./Bandstand.scss";
+import Control from '../Control/Control';
+import * as musicActions from '../../actions/music.js';
 import { connect } from 'react-redux';
 import playImg from '../../assets/imgs/icon-music-play.png';
 import pauseImg from '../../assets/imgs/icon-music-pause.png';
@@ -9,18 +11,15 @@ class Bandstand extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            isPlay: false,
-            currentMusic:this.props.currentMusic,
+            isControlShow:false,
             currentMusicUrl:''
         }
     }
     //改变播放状态
     changePlayState() {
-        var isPlayOld=this.state.isPlay;
-        this.setState({
-            isPlay: !isPlayOld
-        });
-        if(!isPlayOld){
+        const isPlayOld=this.props.isPlay;
+        this.props.dispatch(musicActions.changePlayStatus(!this.props.isPlay));        
+        if(!this.props.isPlay){
             this.refs.qqMusicAudio.play();
         }else{
             this.refs.qqMusicAudio.pause();        
@@ -30,56 +29,55 @@ class Bandstand extends React.Component {
     getSongInfo(nextProps){
         const _this=this;
         if(nextProps){
-            _this.setState({
-               currentMusic:nextProps.currentMusic,
-               isPlay:true
-            });
-            _this.getMusicUrlById(_this,nextProps.currentMusic.id,()=>{
-                _this.refs.qqMusicAudio.play();                
-            });
-        }else{
-            axios.get(`https://api.imjad.cn/cloudmusic/?type=search&s=邓紫棋`).then((response) => {
+            _this.getMusicUrlById(nextProps.currentMusic.id,(url)=>{
                 _this.setState({
-                    currentMusic:response.data.result.songs[2]
+                    currentMusicUrl:url
                 });
-                _this.getMusicUrlById(_this,26113988);
+                 _this.props.dispatch(musicActions.changePlayStatus(true)); 
+                 _this.refs.qqMusicAudio.play();       
             });
-
         }
     }
     //根据歌曲id获取音乐url
-    getMusicUrlById(_this,id,callback){
+    getMusicUrlById(id,callback){
         axios.get(`https://api.imjad.cn/cloudmusic/?type=song&id=${id}`).then((response) => {
-            _this.setState({
-                currentMusicUrl:response.data.data[0].url
-            });
             if(typeof callback ==='function'){
-                callback();
+                callback(response.data.data[0].url);
             }
        });
     }
+    consoleSwitch(){
+        this.setState({
+            isControlShow:!this.state.isControlShow
+        });
+    }
     componentWillMount(){
-        this.getSongInfo();
+        const _this=this;
+        this.getMusicUrlById(this.props.currentMusic.id,(url)=>{
+            _this.setState({
+                currentMusicUrl:url
+            });
+        });
     }
     componentWillReceiveProps(nextProps){
-        console.log(nextProps);
         this.getSongInfo(nextProps);
     }
     render() {
         return (
             <div className="qqMusic-home-footer border-top">
                 <div className="qqMusic-home-footer-left">
-                    <img className={this.state.isPlay?'qqMusic-home-footer-avatar active':'qqMusic-home-footer-avatar'} src={this.state.currentMusic?this.state.currentMusic.al.picUrl:''} />
+                    <img className={this.props.isPlay?'qqMusic-home-footer-avatar active':'qqMusic-home-footer-avatar'} src={this.props.currentMusic?this.props.currentMusic.al.picUrl:''} onClick={this.consoleSwitch.bind(this)} />
                 </div>
                 <div className="qqMusic-home-footer-middle">
-                    <h4 className="qqMusic-home-footer-song">{this.state.currentMusic?this.state.currentMusic.name:''}</h4>
-                    <p className="qqMusic-home-footer-singer">{this.state.currentMusic?this.state.currentMusic.ar[0].name:''}</p>
+                    <h4 className="qqMusic-home-footer-song">{this.props.currentMusic?this.props.currentMusic.name:''}</h4>
+                    <p className="qqMusic-home-footer-singer">{this.props.currentMusic?this.props.currentMusic.ar[0].name:''}</p>
                 </div>
                 <div className="qqMusic-home-footer-right">
                     <audio ref="qqMusicAudio" src={this.state.currentMusicUrl} ></audio>
-                    <img className="qqMusic-play-switch" src={this.state.isPlay ? pauseImg : playImg} onClick={this.changePlayState.bind(this)} />
+                    <img className="qqMusic-play-switch" src={this.props.isPlay ? pauseImg : playImg} onClick={this.changePlayState.bind(this)} />
                     <img className="qqMusic-play-list" src={playListImg} />
                 </div>
+               <Control isControlShow={this.state.isControlShow} consoleSwitch={this.consoleSwitch.bind(this)}></Control>
             </div>
         )
     }
@@ -87,7 +85,9 @@ class Bandstand extends React.Component {
 export default connect(
     (state)=>{
         return {
-            currentMusic:state.music.musicList.length>0?state.music.musicList[0]:null
+            musicList:state.music.musicList,
+            currentMusic:state.music.currentMusic,
+            isPlay:state.music.isPlay
         }   
     }
 )(Bandstand);
