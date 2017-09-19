@@ -14,6 +14,7 @@ const initialState = {
         ]
     },
     isPlay:false,
+    isCurrentMusicChange:false,
     musicList: []
 };
 function isMusicExist(musicData) {
@@ -35,11 +36,13 @@ export default function music(state = initialState, action) {
             }
         case actionTypes.CHANGE_CURRENT_MUSIC:
             return Object.assign({},state,{
-                currentMusic:action.data
+                currentMusic:action.data,
+                isCurrentMusicChange:true
             });
         case actionTypes.CHANGE_MUSIC_STATUS:
             return Object.assign({},state,{
-                isPlay:action.data
+                isPlay:action.data,
+                isCurrentMusicChange:false
             }); 
         case actionTypes.ADD_AND_CHANGE_MUSIC:
             let musicList=initialState.musicList;
@@ -48,7 +51,9 @@ export default function music(state = initialState, action) {
             } 
             return Object.assign({},state,{
                 musicList:musicList,
-                currentMusic:action.data
+                currentMusic:action.data,
+                isCurrentMusicChange:true,
+                isPlay:true
             });
         default:
             return state;

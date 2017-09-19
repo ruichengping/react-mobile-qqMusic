@@ -33,8 +33,9 @@ class Bandstand extends React.Component {
                 _this.setState({
                     currentMusicUrl:url
                 });
-                 _this.props.dispatch(musicActions.changePlayStatus(true)); 
-                 _this.refs.qqMusicAudio.play();       
+                if(_this.props.isPlay){
+                     _this.refs.qqMusicAudio.play();       
+                }
             });
         }
     }
@@ -60,7 +61,9 @@ class Bandstand extends React.Component {
         });
     }
     componentWillReceiveProps(nextProps){
-        this.getSongInfo(nextProps);
+        if(nextProps.isCurrentMusicChange){
+            this.getSongInfo(nextProps);
+        }
     }
     render() {
         return (
@@ -87,7 +90,8 @@ export default connect(
         return {
             musicList:state.music.musicList,
             currentMusic:state.music.currentMusic,
-            isPlay:state.music.isPlay
+            isPlay:state.music.isPlay,
+            isCurrentMusicChange:state.music.isCurrentMusicChange
         }   
     }
 )(Bandstand);
