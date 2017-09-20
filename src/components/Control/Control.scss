@@ -63,6 +63,23 @@
                     margin-top: 1.2rem;
                 }
             }
+            .qqMusic-control-bottom{
+                .qqMusic-control-btns{
+                    display: flex;
+                    height: 1.8rem;
+                    align-items: center;
+                    justify-content: center;
+                    .status{
+                        width: 1.4rem;
+                        height:1.4rem;
+                        margin: 0 0.3rem;
+                    }
+                    .prev,.next{
+                        width: 0.8rem;
+                        height:0.8rem;
+                    }
+                }
+            }
         }
         .qqMusic-control-bg{
             position: absolute;

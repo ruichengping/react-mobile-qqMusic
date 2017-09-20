@@ -26,3 +26,20 @@ export function addAndChangeMusic(data){
         data
     }
 }
+export function playMusicByIndex(data){
+    return {
+        type:actionTypes.PLAY_MUSIC_BY_INDEX,
+        data
+    }
+}
+export function clearMusicList(){
+    return {
+        type:actionTypes.CLEAR_MUSIC_LIST,
+    }
+}
+export function removeMusicFromList(data){
+    return {
+        type:actionTypes.REMOVE_MUSIC_FROM_LIST,
+        data:data
+    }
+}

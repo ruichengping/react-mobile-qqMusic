@@ -1,4 +1,5 @@
 .qqMusic-home-footer {
+    position: relative;
     display: flex;
     align-items: center;
     height: 1.3rem;
@@ -16,15 +17,35 @@
     }
     .qqMusic-home-footer-middle {
         padding-left: 0.3rem;
+        max-width: 4.0rem;
         .qqMusic-home-footer-song {
             font-size: 0.34rem;
             color: #000;
             font-weight: 400;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
         .qqMusic-home-footer-singer {
             font-size: 0.26rem;
             color: #6F6F6F;
             margin-top: 0.1rem;
+        }
+    }
+    .no-music{
+        display: none;
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 2.0rem;
+        bottom: 0;
+        padding-left: 0.3rem;
+        line-height: 1.3rem;
+        font-size: 0.3rem;
+        background-color: #fff;
+        color: #373737;
+        &.show{
+            display: block;
         }
     }
     .qqMusic-home-footer-right {
