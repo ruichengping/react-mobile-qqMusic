@@ -15,7 +15,9 @@ class Bandstand extends React.Component {
         this.state = {
             isMusicListShow: false,
             isControlShow: false,
-            currentMusicUrl: ''
+            currentMusicUrl: '',
+            currentSeconds:0,
+            totalSeconds:0
         }
     }
     //改变播放状态
@@ -59,6 +61,12 @@ class Bandstand extends React.Component {
             isControlShow: !this.state.isControlShow
         });
     }
+    changeCurrentTime(seconds){
+        this.setState({
+            currentSeconds:seconds
+        });
+        this.refs.qqMusicAudio.currentTime=seconds;
+    }
     musicListSwitch() {
         if (this.props.musicList.length > 0||this.state.isMusicListShow) {
             this.setState({
@@ -74,6 +82,30 @@ class Bandstand extends React.Component {
             _this.setState({
                 currentMusicUrl: url
             });
+        });
+    }
+    componentDidMount(){
+        const _this=this;
+        this.refs.qqMusicAudio.addEventListener("canplay",()=>{
+            _this.setState({
+                totalSeconds:_this.refs.qqMusicAudio.duration
+            });
+        });
+        this.refs.qqMusicAudio.addEventListener("timeupdate",()=>{
+            this.setState({
+                currentSeconds:_this.refs.qqMusicAudio.currentTime
+            });
+        });
+        this.refs.qqMusicAudio.addEventListener("ended",()=>{
+            if (this.props.musicList.length ===  1) {
+                this.props.dispatch(musicActions.changePlayStatus(false));
+            } else  {
+                if(this.props.currentIndex<this.props.musicList.length-1){
+                    this.props.dispatch(musicActions.playMusicByIndex(this.props.currentIndex + 1));
+                }else{
+                    this.props.dispatch(musicActions.playMusicByIndex(0));                    
+                }
+            }
         });
     }
     componentWillReceiveProps(nextProps) {
@@ -103,7 +135,7 @@ class Bandstand extends React.Component {
                     <img className="qqMusic-play-switch" src={this.props.isPlay ? pauseImg : playImg} onClick={this.changePlayState.bind(this)} />
                     <img className="qqMusic-play-list" src={playListImg} onClick={this.musicListSwitch.bind(this)} />
                 </div>
-                <Control isControlShow={this.state.isControlShow} changePlayState={this.changePlayState.bind(this)} consoleSwitch={this.consoleSwitch.bind(this)}></Control>
+                <Control changeCurrentTime={this.changeCurrentTime.bind(this)} currentSeconds={this.state.currentSeconds} totalSeconds={this.state.totalSeconds} isControlShow={this.state.isControlShow} changePlayState={this.changePlayState.bind(this)} consoleSwitch={this.consoleSwitch.bind(this)}></Control>
                 <MusicList isMusicListShow={this.state.isMusicListShow} musicListSwitch={this.musicListSwitch.bind(this)}></MusicList>
             </div>
         )
@@ -114,6 +146,7 @@ export default connect(
         return {
             musicList: state.music.musicList,
             currentMusic: state.music.currentMusic,
+            currentIndex:state.music.currentIndex,
             isPlay: state.music.isPlay,
             isCurrentMusicChange: state.music.isCurrentMusicChange
         }
