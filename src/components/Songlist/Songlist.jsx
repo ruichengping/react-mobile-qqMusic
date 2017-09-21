@@ -3,17 +3,24 @@ import './Songlist.scss';
 import { connect } from 'react-redux';
 import addImg from '../../assets/imgs/icon-songList-add.png';
 import NewSongList from '../../components/NewSongList/NewSongList';
+import SongListMangement from  '../SongListMangement/SongListMangement';
 class Songlist extends React.Component {
     constructor(props) {
         super(props)
         this.state={
             isNewSongListShow:false,
+            isSongListMangementShow:false,
             activeTab:1
         }
     }
     newSongListShowSwitch(){
         this.setState({
             isNewSongListShow:!this.state.isNewSongListShow
+        });
+    }
+    songListMangementShowSwitch(){
+        this.setState({
+            isSongListMangementShow:!this.state.isSongListMangementShow
         });
     }
     tabChange(tabIndex){
@@ -29,7 +36,7 @@ class Songlist extends React.Component {
                     |
                     <span className={this.state.activeTab===2?'qqMusic-myCenter-tab active':'qqMusic-myCenter-tab'} onClick={this.tabChange.bind(this,2)}>收藏歌单</span>
                     <i style={this.state.activeTab===2?{display:'none'}:{}} className="addSongList" onClick={this.newSongListShowSwitch.bind(this)}/>
-                    <i className="songListManage"></i>
+                    <i  className="songListManage" onClick={this.songListMangementShowSwitch.bind(this)}></i>
                 </div>
                 <div className="qqMusic-myCenter-tabContent-one" style={this.state.activeTab!==1?{display:'none'}:{}}>
                     <ul className="songListArray" style={this.props.songListArray.length>0?{display:'block'}:{display:'none'}}>
@@ -63,6 +70,7 @@ class Songlist extends React.Component {
                     <p className="no-collected-songLst">没有收藏的歌单</p>
                 </div>
                 <NewSongList isNewSongListShow={this.state.isNewSongListShow} newSongListShowSwitch={this.newSongListShowSwitch.bind(this)} ></NewSongList>
+                <SongListMangement isSongListMangementShow={this.state.isSongListMangementShow} songListMangementShowSwitch={this.songListMangementShowSwitch.bind(this)}></SongListMangement>
             </div>
         );
     }

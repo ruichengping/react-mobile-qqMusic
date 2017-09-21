@@ -119,6 +119,13 @@ export default function music(state = initialState, action) {
             }else{
                 return state;
             }
+        case actionTypes.REMOVE_SONG_LIST:
+            let newSongListArray=state.songListArray.filter((item)=>{
+                return !isSongListExist(item,action.data);
+            });
+            return Object.assign({},state,{
+                songListArray:newSongListArray
+            });
         default:
             return state;
     }

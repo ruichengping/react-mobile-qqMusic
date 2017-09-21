@@ -49,3 +49,9 @@ export function addSongList(data){
         data
     }
 }
+export function removeSongList(data){
+    return {
+        type:actionTypes.REMOVE_SONG_LIST,
+        data
+    }
+}

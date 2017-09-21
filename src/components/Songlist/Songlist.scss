@@ -3,97 +3,100 @@
     margin-top: 0.1rem;
     background: #fff;
     line-height: 0.8rem;
-    color: #8a8a8a;    
-    .qqMusic-myCenter-tabs{
-        position: relative;        
-        .qqMusic-myCenter-tab{
+    color: #8a8a8a;
+    .qqMusic-myCenter-tabs {
+        position: relative;
+        .qqMusic-myCenter-tab {
             padding: 0 0.2rem;
-            &.active{
+            &.active {
                 color: #000;
             }
         }
-        .addSongList{
+        .addSongList {
             position: absolute;
             right: 0.8rem;
-            top:0.22rem;
+            top: 0.22rem;
             display: inline-block;
             height: 0.4rem;
             width: 0.4rem;
             background: url('../../assets/imgs/icon-songList-add.png');
-            background-size:0.4rem 0.4rem;
+            background-size: 0.4rem 0.4rem;
         }
-        .songListManage{
+        .songListManage {
             position: absolute;
             right: 0.2rem;
-            top:0.24rem;
+            top: 0.24rem;
             display: inline-block;
             height: 0.4rem;
             width: 0.4rem;
             background: url('../../assets/imgs/icon-song-list.png');
-            background-size:0.4rem 0.4rem;
-            .no-collected-songLst{
+            background-size: 0.4rem 0.4rem;
+            .no-collected-songLst {
                 font-size: 0.3rem;
                 text-align: center;
                 color: #cdcdcd;
             }
         }
     }
-    .qqMusic-myCenter-tabContent-one{
-        background: #fff;    
-        min-height: 1.8rem; 
-        .songListItem{
-            display: flex;
-            height: 1.2rem; 
-            margin-top: 1px;           
-            .left{
-                flex:0 0 1.2rem;
-                background: #e6e6e6;
+    .qqMusic-myCenter-tabContent-one {
+        background: #fff;
+        min-height: 1.8rem;
+        .songListArray {
+            .songListItem {
                 display: flex;
-                align-items: center;
-                justify-content: center;
-                .logo{
-                    width: 0.5rem;
-                    height:0.5rem;
+                height: 1.2rem;
+                margin-top: 1px;
+                .left {
+                    flex: 0 0 1.2rem;
+                    background: #e6e6e6;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    .logo {
+                        width: 0.5rem;
+                        height: 0.5rem;
+                    }
                 }
-            } 
-            .right{
-                position: relative;
-                flex: 1;
-                padding-left: 0.2rem;
-                .name,.num{
-                    font-size: 0.3rem;
-                    line-height: 0.6rem;
-                    text-align: left;
-                    padding-left: 0.3rem;
+                .right {
+                    position: relative;
+                    flex: 1;
+                    padding-left: 0.2rem;
+                    .name,
+                    .num {
+                        font-size: 0.3rem;
+                        line-height: 0.6rem;
+                        text-align: left;
+                        padding-left: 0.3rem;
+                    }
+                    .icon-right {
+                        position: absolute;
+                        top: 0.44rem;
+                        right: 0.3rem;
+                        background: url("../../assets/imgs/icon-easy-right.png");
+                        background-size: cover;
+                        height: 0.34rem;
+                        width: 0.34rem;
+                    }
                 }
-                .icon-right{
-                    position: absolute;
-                    top:0.44rem;
-                    right: 0.3rem;
-                    background: url("../../assets/imgs/icon-easy-right.png");
-                    background-size:cover; 
-                    height: 0.34rem;
-                    width: 0.34rem;
-                }
-            }           
-        }   
-        .add-songList-wrapper{
+            }
+        }
+        .add-songList-wrapper {
             display: flex;
             height: 1.2rem;
-            .add-songList-wrapper-left{
-                flex:0 0 1.2rem;
+            .add-songList-wrapper-left {
+                flex: 0 0 1.2rem;
                 background: #e6e6e6;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                .add-songList-img{
+                .add-songList-img {
                     width: 0.6rem;
                     height: 0.6rem;
                 }
             }
-            .add-songList-wrapper-right{
+            .add-songList-wrapper-right {
                 flex: 1;
-                .add-songList-text{
+                .add-songList-text {
                     line-height: 1.2rem;
                     text-align: left;
                     margin-left: 0.2rem;
@@ -101,7 +104,7 @@
             }
         }
     }
-    .qqMusic-myCenter-tabContent-two{
+    .qqMusic-myCenter-tabContent-two {
         background: #fff;
         min-height: 1.2rem;
     }
