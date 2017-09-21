@@ -29,17 +29,24 @@ const initialState = {
                 }
             ]
         }
-    ]
+    ],
+    songListArray:[]
 };
-function isMusicExist(musicData) {
-   return initialState.musicList.some(function (item) {
+function isMusicExist(musicData,array) {
+   return array.some((item)=>{
         return item.id === musicData.id;
     });
 }
+function isSongListExist(name,array){
+    return array.some((item)=>{
+        return item===name;
+    });
+}
+
 export default function music(state = initialState, action) {
     switch (action.type) {
         case actionTypes.ADD_MUSIC:
-            if (!isMusicExist(action.data)) {
+            if (!isMusicExist(action.data,state.musicList)) {
                 let musicList = state.musicList;
                 musicList.unshift(action.data)
                 return Object.assign({}, state, {
@@ -60,7 +67,7 @@ export default function music(state = initialState, action) {
             });
         case actionTypes.ADD_AND_CHANGE_MUSIC:
             let musicList = state.musicList;
-            if (!isMusicExist(action.data)) {
+            if (!isMusicExist(action.data,state.musicList)) {
                 musicList.unshift(action.data)
             }
             return Object.assign({}, state, {
@@ -101,7 +108,17 @@ export default function music(state = initialState, action) {
                         currentMusic:newMusicList.length>0?newMusicList[action.data]:{},
                         musicList:newMusicList
                     });
-            }  
+            } 
+        case actionTypes.ADD_SONG_LIST:
+            if(!isSongListExist(action.data,state.songListArray)){
+                let newSongListArray= state.songListArray;
+                newSongListArray.unshift(action.data);
+                return Object.assign({},state,{
+                    songListArray:newSongListArray
+                });
+            }else{
+                return state;
+            }
         default:
             return state;
     }

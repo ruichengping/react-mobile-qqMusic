@@ -40,6 +40,12 @@ export function clearMusicList(){
 export function removeMusicFromList(data){
     return {
         type:actionTypes.REMOVE_MUSIC_FROM_LIST,
-        data:data
+        data
+    }
+}
+export function addSongList(data){
+    return {
+        type:actionTypes.ADD_SONG_LIST,
+        data
     }
 }

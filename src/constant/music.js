@@ -12,3 +12,5 @@ export const PLAY_MUSIC_BY_INDEX="PLAY_MUSIC_BY_INDEX";
 export const CLEAR_MUSIC_LIST="CLEAR_MUSIC_LIST";
 //移除指定的音乐
 export const REMOVE_MUSIC_FROM_LIST="REMOVE_MUSIC_FROM_LIST";
+//添加歌单
+export const ADD_SONG_LIST="ADD_SONG_LIST";

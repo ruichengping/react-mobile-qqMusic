@@ -1,5 +1,4 @@
 import React from 'react';
-import arrowLeft from '../../assets/imgs/icon-arrow-left.png';
 import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import * as musicActions from '../../actions/music.js';
@@ -160,7 +159,7 @@ class Search extends React.Component {
         return (
             <div className={this.props.search ? 'qqMusic-search-wrapper show' : 'qqMusic-search-wrapper'} >
                 <div className="qqMusic-search-top">
-                    <img ref='inputText' className="icon-arrow-left" src={arrowLeft} onClick={this.comeback.bind(this)} />
+                    <img ref='inputText' className="icon-arrow-left" src={require("../../assets/imgs/icon-arrow-left.png")} onClick={this.comeback.bind(this)} />
                     <input className="input-text" type="text" placeholder="支持音乐搜索" onKeyUp={this.keyboardListener.bind(this)} />
                     <span className="icon-input-clear" onClick={this.clearInput.bind(this)}></span>
                     <button className="btn-search" onClick={this.getSearhListAjax.bind(this)}>搜索</button>
