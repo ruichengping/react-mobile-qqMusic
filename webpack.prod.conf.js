@@ -81,7 +81,7 @@ module.exports = {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
-                    limit: 10000,
+                    limit: 20000,
                 },
                 exclude: [
                     require.resolve('antd-mobile').replace(/warn\.js$/, '')
