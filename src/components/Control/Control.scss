@@ -65,6 +65,26 @@
                         margin-top: 1.2rem;
                     }
                 }
+                .carousel-two{
+                    position: relative;
+                    padding-top: 0.6rem;                 
+                    .lyricList{
+                        overflow: auto;
+                        height: 6.3rem;
+                        box-sizing: border-box;
+                        padding-top: 2.6rem;
+                        .lyric{
+                            color: #8a8a8a;
+                            font-size: 0.26rem;
+                            text-align: center;
+                            line-height: 0.8rem;
+                            &.active{
+                                color:#31c37c; 
+                            }
+                        }
+                    }
+                   
+                }
                 &.active{
                     .music-cover{
                         animation:animationRotate 10s linear infinite;                   

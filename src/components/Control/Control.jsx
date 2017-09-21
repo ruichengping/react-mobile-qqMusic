@@ -8,11 +8,20 @@ import './Control.scss';
 class Control extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            oldSongId: this.props.currentMusic.id,
+            lyricArray: [],
+            oldCurrentSeconds:0,
+            activeIndex:0
+        }
     }
     getLyricAjax(id) {
         axios.get(`https://bird.ioliu.cn/v1/?url=http://music.163.com/api/song/lyric?id=${id}&os=pc&lv=-1&kv=-1&tv=-1
         `).then((response) => {
-                console.log(response);
+                let lyric = response.data.lrc.lyric;
+                this.setState({
+                    lyricArray: util.parseLyric(lyric)
+                });
             }).catch(function (error) {
                 console.log(error);
             });
@@ -36,24 +45,37 @@ class Control extends React.Component {
     componentWillMount() {
         this.getLyricAjax(this.props.currentMusic.id);
     }
-    changePlayProgress(event){
-        let left = event.changedTouches[0].clientX-this.refs.progressParent.offsetLeft-event.target.offsetWidth/2;
-        let maxLeft=this.refs.progressParent.offsetWidth;
-        let minLeft=0;
-        if(left<minLeft){
-            left=minLeft;
+    changePlayProgress(event) {
+        let left = event.changedTouches[0].clientX - this.refs.progressParent.offsetLeft - event.target.offsetWidth / 2;
+        let maxLeft = this.refs.progressParent.offsetWidth;
+        let minLeft = 0;
+        if (left < minLeft) {
+            left = minLeft;
         }
-        if(left>maxLeft){
-            left=maxLeft;
+        if (left > maxLeft) {
+            left = maxLeft;
         }
-        this.props.changeCurrentTime(left/maxLeft*this.props.totalSeconds);
+        this.props.changeCurrentTime(left / maxLeft * this.props.totalSeconds);
     }
-    // componentWillReceiveProps() {
-    //     this.setState({
-    //         currentSeconds: this.props.currentSeconds,
-    //         totalSeconds: this.props.totalSeconds
-    //     });
-    // }
+    componentWillReceiveProps() {
+        const _this=this;
+        if (this.props.currentMusic.id !== this.state.oldSongId) {
+            this.getLyricAjax(this.props.currentMusic.id);
+            this.setState({
+                oldIndex: this.props.currentIndex
+            })
+        }
+        if(this.props.currentSeconds>this.state.oldCurrentSeconds){
+            this.state.lyricArray.forEach((item,index)=>{
+                if(Math.abs(item.seconds-_this.props.currentSeconds)<0.5){
+                    _this.setState({
+                        activeIndex:index
+                    });
+                    _this.refs.lyricList.scrollTop=(index-1)*0.8*parseFloat(document.getElementsByTagName("html")[0].style.fontSize);
+                }
+            });
+        }
+    }
     render() {
         return (
             <div className={this.props.isControlShow ? 'qqMusic-control show' : 'qqMusic-control'}>
@@ -74,7 +96,18 @@ class Control extends React.Component {
 
                                     ),
                                     (
-                                        <div key="2" className="carousel-two">12323</div>
+                                        <div key="2" className="carousel-two">
+                                            <ul ref="lyricList"  className="lyricList">
+                                                {
+                                                    this.state.lyricArray.map((item, index) => {
+                                                        return (
+                                                            <li className={this.state.activeIndex===index?"lyric active":"lyric"} key={index}>{item.text}</li>
+                                                        )
+                                                    })
+                                                }
+                                            </ul>
+
+                                        </div>
                                     )
                                 ]
                             }
@@ -85,8 +118,8 @@ class Control extends React.Component {
                         <div className="qqMusic-control-progress">
                             <span className="currentPlayTime">{util.formatSeconds(this.props.currentSeconds)}</span>
                             <div ref="progressParent" className="progress-wrapper">
-                                <div className="progress-inner" style={{width:this.props.currentSeconds/this.props.totalSeconds*4+"rem"}}></div>
-                                <span className="progress-btn" onTouchMove={this.changePlayProgress.bind(this)}  style={{transform:`translateX(${this.props.currentSeconds/this.props.totalSeconds*4-0.15}rem)`}}></span>
+                                <div className="progress-inner" style={{ width: this.props.currentSeconds / this.props.totalSeconds * 4 + "rem" }}></div>
+                                <span className="progress-btn" onTouchMove={this.changePlayProgress.bind(this)} style={{ transform: `translateX(${this.props.currentSeconds / this.props.totalSeconds * 4 - 0.15}rem)` }}></span>
                             </div>
                             <span className="totalPlayTime">{util.formatSeconds(this.props.totalSeconds)}</span>
                         </div>

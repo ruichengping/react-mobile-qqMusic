@@ -125,7 +125,7 @@ class Bandstand extends React.Component {
                 <div className="qqMusic-home-footer-left">
                     <img className={this.props.isPlay ? 'qqMusic-home-footer-avatar active' : 'qqMusic-home-footer-avatar'} src={this.props.currentMusic.al ? this.props.currentMusic.al.picUrl : ''} onClick={this.consoleSwitch.bind(this)} />
                 </div>
-                <div className="qqMusic-home-footer-middle">
+                <div className="qqMusic-home-footer-middle" onClick={this.consoleSwitch.bind(this)}>
                     <h4 className="qqMusic-home-footer-song">{this.props.currentMusic ? this.props.currentMusic.name : ''}</h4>
                     <p className="qqMusic-home-footer-singer">{this.props.currentMusic.ar ? this.props.currentMusic.ar[0].name : ''}</p>
                 </div>
