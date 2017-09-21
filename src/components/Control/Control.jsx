@@ -62,7 +62,7 @@ class Control extends React.Component {
         if (this.props.currentMusic.id !== this.state.oldSongId) {
             this.getLyricAjax(this.props.currentMusic.id);
             this.setState({
-                oldIndex: this.props.currentIndex
+                oldSongId: this.props.currentMusic.id
             })
         }
         if(this.props.currentSeconds>this.state.oldCurrentSeconds){
