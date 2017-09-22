@@ -21,6 +21,7 @@
             z-index: 3;
             .qqMusic-control-top {
                 position: relative;
+                flex: 0 0 1.0rem;
                 .icon-control-down {
                     position: absolute;
                     left: 0.3rem;
@@ -36,15 +37,11 @@
             }
             .qqMusic-control-middle {
                 text-align: center;
-                flex:1;
-                .am-carousel{
-                    height: 100% !important;
-                    .slider-frame ,.slider-list{
-                        height: 100% !important;
-                    }
+                flex: 1;
+                .slider-list{
+                    min-height: 7rem !important;
                 }
                 .carousel-one {
-                    height: 100%;
                     .music-signer {
                         text-align: center;
                         font-size: 0.32rem;
@@ -74,71 +71,73 @@
                         margin-top: 1.2rem;
                     }
                 }
-                .carousel-two{
+                .carousel-two {
                     position: relative;
                     height: 100%;
                     box-sizing: border-box;
-                    padding-top: 0.6rem;                 
-                    .lyricList{
+                    padding-top: 0.2rem;
+                    .lyricList {
                         overflow: auto;
                         height: 6.3rem;
                         box-sizing: border-box;
                         padding-top: 2.6rem;
-                        .lyric{
+                        .lyric {
                             color: #8a8a8a;
                             font-size: 0.26rem;
                             text-align: center;
                             line-height: 0.8rem;
-                            &.active{
-                                color:#31c37c; 
+                            &.active {
+                                color: #31c37c;
                             }
                         }
                     }
-                   
                 }
-                &.active{
-                    .music-cover{
-                        animation:animationRotate 10s linear infinite;                   
+                &.active {
+                    .music-cover {
+                        animation: animationRotate 10s linear infinite;
                     }
                 }
             }
             .qqMusic-control-bottom {
+                flex: 0 0 4.0rem;
+                box-sizing: border-box;
                 padding-bottom: 0.4rem;
-                .qqMusic-control-progress{
+                .qqMusic-control-progress {
                     position: relative;
                     margin-top: 0.3rem;
-                    text-align: center;                    
-                    .currentPlayTime,.totalPlayTime{
+                    text-align: center;
+                    .currentPlayTime,
+                    .totalPlayTime {
                         position: absolute;
                         color: #8a8a8a;
                         font-size: 0.24rem;
                     }
-                    .currentPlayTime{
+                    .currentPlayTime {
                         left: 0.5rem;
-                        top:0.14rem;
+                        top: 0.14rem;
                     }
-                    .totalPlayTime{
-                        right:0.5rem;
-                        top:0.14rem;
+                    .totalPlayTime {
+                        right: 0.5rem;
+                        top: 0.14rem;
                     }
-                    .progress-wrapper{
+                    .progress-wrapper {
                         position: relative;
-                        display: inline-block;                        
-                        width: 4.0rem;    
-                        height: 0.02rem;     
-                        background-color: #e6e6e6;                      
-                        .progress-inner{
+                        display: inline-block;
+                        width: 4.0rem;
+                        height: 0.02rem;
+                        background-color: #e6e6e6;
+                        .progress-inner {
                             height: 0.02rem;
-                            background-color: #31c37c; 
-                        }                      
-                        .progress-btn{
+                            background-color: #31c37c;
+                        }
+                        .progress-btn {
                             position: absolute;
-                            top:-0.16rem;
-                            left:0;
+                            top: -0.16rem;
+                            left: 0;
                             width: 0.3rem;
                             height: 0.3rem;
                             border-radius: 50%;
-                            background-color: #31c37c;                        
+                            background-color: #31c37c;
                         }
                     }
                 }
@@ -185,6 +184,7 @@
         }
     }
 }
+
 //  动画
 @keyframes animationRotate {
     from {
