@@ -162,7 +162,7 @@ class Search extends React.Component {
                     <img ref='inputText' className="icon-arrow-left" src={require("../../assets/imgs/icon-arrow-left.png")} onClick={this.comeback.bind(this)} />
                     <input className="input-text" type="text" placeholder="支持音乐搜索" onKeyUp={this.keyboardListener.bind(this)} />
                     <span className="icon-input-clear" onClick={this.clearInput.bind(this)}></span>
-                    <button className="btn-search" onClick={this.getSearhListAjax.bind(this)}>搜索</button>
+                    <span className="btn-search" onClick={this.getSearhListAjax.bind(this)}>搜索</span>
                 </div>
                 <div className="qqMusic-search-bottom" onScroll={this.getMoreSearchList.bind(this)}>
                     <div className="remindMask" style={{display:this.state.isRemindDivShow?'block':'none'}}>
