@@ -10,9 +10,10 @@ class Home extends React.Component {
     render() {
         return (
             <div className="qqMusic-home">
-                <Header className="qqMusic-home-header" />
-                <Switch>                                   
-                    <Route path="/myCenter"  component={MyCenter} />>
+                <Header className="qqMusic-home-header" />                                                             
+                <Switch >      
+                    <Redirect exact from="/" to="/myCenter"/>                    
+                    <Route path="/myCenter"  component={MyCenter} />
                     <Route path="/musicClub" component={MusicClub} />
                     <Route path="/discovery" component={Discovery} />
                 </Switch>
