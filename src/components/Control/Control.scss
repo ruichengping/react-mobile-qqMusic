@@ -19,6 +19,7 @@
             left: 0;
             right: 0;
             z-index: 3;
+            overflow: auto;
             .qqMusic-control-top {
                 position: relative;
                 flex: 0 0 1.0rem;
@@ -39,7 +40,7 @@
                 text-align: center;
                 flex: 1;
                 .slider-list{
-                    min-height: 7rem !important;
+                    min-height: 7.4rem !important;
                 }
                 .carousel-one {
                     .music-signer {
