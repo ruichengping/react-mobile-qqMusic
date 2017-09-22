@@ -11,6 +11,8 @@
         transform: translateY(0);
         z-index: 1;
         .qqMusic-control-content {
+            display: flex;
+            flex-direction: column;
             position: absolute;
             top: 0;
             bottom: 0;
@@ -34,8 +36,15 @@
             }
             .qqMusic-control-middle {
                 text-align: center;
+                flex:1;
+                .am-carousel{
+                    height: 100% !important;
+                    .slider-frame ,.slider-list{
+                        height: 100% !important;
+                    }
+                }
                 .carousel-one {
-                    height: 8rem;
+                    height: 100%;
                     .music-signer {
                         text-align: center;
                         font-size: 0.32rem;
@@ -67,6 +76,8 @@
                 }
                 .carousel-two{
                     position: relative;
+                    height: 100%;
+                    box-sizing: border-box;
                     padding-top: 0.6rem;                 
                     .lyricList{
                         overflow: auto;
@@ -92,6 +103,7 @@
                 }
             }
             .qqMusic-control-bottom {
+                padding-bottom: 0.4rem;
                 .qqMusic-control-progress{
                     position: relative;
                     margin-top: 0.3rem;

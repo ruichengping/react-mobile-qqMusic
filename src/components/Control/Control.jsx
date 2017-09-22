@@ -16,8 +16,7 @@ class Control extends React.Component {
         }
     }
     getLyricAjax(id) {
-        axios.get(`https://bird.ioliu.cn/v1/?url=http://music.163.com/api/song/lyric?id=${id}&os=pc&lv=-1&kv=-1&tv=-1
-        `).then((response) => {
+        axios.get(`https://api.imjad.cn/cloudmusic/?type=lyric&id=${id}&br=128000`).then((response) => {
                 let lyric = response.data.lrc.lyric;
                 this.setState({
                     lyricArray: util.parseLyric(lyric)

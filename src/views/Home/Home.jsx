@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router';
+import { Switch, Route ,Redirect} from 'react-router';
 import Header from '../../components/Header/Header';
 import Bandstand from '../../components/Bandstand/Bandstand';
 import MyCenter from '../MyCenter/MyCenter';
@@ -11,7 +11,7 @@ class Home extends React.Component {
         return (
             <div className="qqMusic-home">
                 <Header className="qqMusic-home-header" />
-                <Switch>
+                <Switch>                                   
                     <Route path="/myCenter"  component={MyCenter} />>
                     <Route path="/musicClub" component={MusicClub} />
                     <Route path="/discovery" component={Discovery} />
