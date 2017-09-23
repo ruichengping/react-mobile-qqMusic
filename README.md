@@ -58,14 +58,4 @@ npm run build
 
 > 最后强调一下：React和Vue都是非常棒的前端框架，建议大家都去学习一下。采用React或者是Vue还是要结合业务场景和现实情况做选择的。单纯说React还是Vue好，我个人觉得都是耍流氓。
 
-  [1]: /img/bVVCk9
-  [2]: /img/bVVClw
-  [3]: /img/bVVClz
-  [4]: /img/bVVClH
-  [5]: /img/bVVCmT
-  [6]: /img/bVVClM
-  [7]: /img/bVVCl4
-  [8]: /img/bVVCl7
-  [9]: /img/bVVCmi
-  [10]: /img/bVVCmA
-  [11]: /img/bVVCmM
+ 
