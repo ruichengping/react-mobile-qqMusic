@@ -1,26 +1,17 @@
 /**
  * Created by wuming on 2017/7/11.
  */
-import './utils/antm-viewport.min';
-import './assets/css/reset.css';
+import '@/utils/antm-viewport.min';
+import '@/scss/reset.scss';
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, Redirect } from 'react-router';
-import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import Home from './views/Home/Home';
-// import createBrowserHistory from 'history/createBrowserHistory';
-import configureStore from '../src/store/configureStore';
-// const history = createBrowserHistory();
+import App from './App';
+import configureStore from '@/store';
 const store = configureStore();
 render(
     <Provider store={store}>
-         {/* <Router history={history}>
-            <Route path="/" component={Home}></Route>
-        </Router> */}
-        <HashRouter>
-            <Route path="/" component={Home}></Route>
-        </HashRouter>
+        <App/>
     </Provider>,
     document.getElementById("app")
 );
