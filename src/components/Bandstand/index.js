@@ -1,14 +1,20 @@
 import React from 'react';
 import axios from 'axios';
-import "./style.scss";
+import {bindActionCreators} from 'redux';
 import Control from '@/components/Control';
 import MusicList from '@/components/MusicList';
-import * as musicActions from '../../actions/music.js';
+import * as actions from '@/store/actions';
 import { connect } from 'react-redux';
 import { Toast } from 'antd-mobile';
 import playImg from '../../assets/imgs/icon-music-play.png';
 import pauseImg from '../../assets/imgs/icon-music-pause.png';
 import playListImg from '../../assets/imgs/icon-play-list.png';
+import "./style.scss";
+
+@connect(
+    (state)=>state.global,
+    (dispatch)=>bindActionCreators(actions,dispatch)
+)
 class Bandstand extends React.Component {
     constructor(props) {
         super(props)
@@ -22,13 +28,13 @@ class Bandstand extends React.Component {
     }
     //改变播放状态
     changePlayState() {
-        if (this.props.musicList.length > 0) {
-            const isPlayOld = this.props.isPlay;
-            this.props.dispatch(musicActions.changePlayStatus(!this.props.isPlay));
-            if (!this.props.isPlay) {
-                this.refs.qqMusicAudio.play();
+        const {changePlayStatus,isPlay,musicList} = this.props;
+        if (musicList.length > 0) {
+            changePlayStatus(!isPlay);
+            if (!isPlay) {
+                this.qqMusicAudio.play();
             } else {
-                this.refs.qqMusicAudio.pause();
+                this.qqMusicAudio.pause();
             }
         } else {
             Toast.info('暂无可播放的音乐', 1);
@@ -36,14 +42,14 @@ class Bandstand extends React.Component {
     }
     //获取歌曲信息
     getSongInfo(nextProps) {
-        const _this = this;
+        const {isPlay} = this;
         if (nextProps.currentMusic.id) {
-            _this.getMusicUrlById(nextProps.currentMusic.id, (url) => {
-                _this.setState({
+            this.getMusicUrlById(nextProps.currentMusic.id, (url) => {
+                this.setState({
                     currentMusicUrl: url
                 });
-                if (_this.props.isPlay) {
-                    _this.refs.qqMusicAudio.play();
+                if (isPlay) {
+                    this.qqMusicAudio.play();
                 }
             });
         }
@@ -65,7 +71,7 @@ class Bandstand extends React.Component {
         this.setState({
             currentSeconds:seconds
         });
-        this.refs.qqMusicAudio.currentTime=seconds;
+        this.qqMusicAudio.currentTime=seconds;
     }
     musicListSwitch() {
         if (this.props.musicList.length > 0||this.state.isMusicListShow) {
@@ -85,25 +91,25 @@ class Bandstand extends React.Component {
         });
     }
     componentDidMount(){
-        const _this=this;
-        this.refs.qqMusicAudio.addEventListener("canplay",()=>{
-            _this.setState({
-                totalSeconds:_this.refs.qqMusicAudio.duration
-            });
-        });
-        this.refs.qqMusicAudio.addEventListener("timeupdate",()=>{
+        const {musicList,currentIndex,changePlayStatus,playMusicByIndex} = this.props;
+        this.qqMusicAudio.addEventListener("canplay",()=>{
             this.setState({
-                currentSeconds:_this.refs.qqMusicAudio.currentTime
+                totalSeconds:this.qqMusicAudio.duration
             });
         });
-        this.refs.qqMusicAudio.addEventListener("ended",()=>{
-            if (this.props.musicList.length ===  1) {
-                this.props.dispatch(musicActions.changePlayStatus(false));
+        this.qqMusicAudio.addEventListener("timeupdate",()=>{
+            this.setState({
+                currentSeconds:this.qqMusicAudio.currentTime
+            });
+        });
+        this.qqMusicAudio.addEventListener("ended",()=>{
+            if (musicList.length ===  1) {
+                changePlayStatus(false)
             } else  {
-                if(this.props.currentIndex<this.props.musicList.length-1){
-                    this.props.dispatch(musicActions.playMusicByIndex(this.props.currentIndex + 1));
+                if(this.props.currentIndex<musicList.length-1){
+                    playMusicByIndex(currentIndex+1);
                 }else{
-                    this.props.dispatch(musicActions.playMusicByIndex(0));                    
+                    playMusicByIndex(0);                
                 }
             }
         });
@@ -113,9 +119,9 @@ class Bandstand extends React.Component {
             this.getSongInfo(nextProps);
         }else{
             if(nextProps.isPlay){
-                this.refs.qqMusicAudio.play();
+                this.qqMusicAudio.play();
             }else{
-                this.refs.qqMusicAudio.pause();                
+                this.qqMusicAudio.pause();                
             }
         }
     }
@@ -131,7 +137,7 @@ class Bandstand extends React.Component {
                 </div>
                 <p className={this.props.musicList.length === 0 ? 'no-music show' : 'no-music'}>QQ音乐 听我想听的歌</p>
                 <div className="qqMusic-home-footer-right">
-                    <audio ref="qqMusicAudio" src={this.state.currentMusicUrl} ></audio>
+                    <audio ref={(audio)=>this.qqMusicAudio=audio} src={this.state.currentMusicUrl} ></audio>
                     <img className="qqMusic-play-switch" src={this.props.isPlay ? pauseImg : playImg} onClick={this.changePlayState.bind(this)} />
                     <img className="qqMusic-play-list" src={playListImg} onClick={this.musicListSwitch.bind(this)} />
                 </div>
@@ -141,14 +147,4 @@ class Bandstand extends React.Component {
         )
     }
 }
-export default connect(
-    (state) => {
-        return {
-            musicList: state.music.musicList,
-            currentMusic: state.music.currentMusic,
-            currentIndex:state.music.currentIndex,
-            isPlay: state.music.isPlay,
-            isCurrentMusicChange: state.music.isCurrentMusicChange
-        }
-    }
-)(Bandstand);
+export default Bandstand;

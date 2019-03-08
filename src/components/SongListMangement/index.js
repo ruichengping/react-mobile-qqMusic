@@ -1,9 +1,14 @@
-import { connect } from 'react-redux';
 import React from 'react';
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
 import {Checkbox} from 'antd-mobile';
-import * as musicActions from '../../actions/music.js';
+import * as actions from '@/store/actions';
 import './style.scss';
 const CheckboxItem = Checkbox.CheckboxItem;
+@connect(
+    (state)=>state.global,
+    (dispatch)=>bindActionCreators(actions,dispatch)
+)
 class SongListMangement extends React.Component{
     constructor(props){
         super(props);
@@ -31,7 +36,9 @@ class SongListMangement extends React.Component{
             });
     }
     removeSongList(){
-        this.props.dispatch(musicActions.removeSongList(this.state.selectedList));
+        const {selectedList} = this.state;
+        const {removeSongList} = this.props;
+        removeSongList(selectedList);
     }
     render(){
         return (
@@ -74,10 +81,4 @@ class SongListMangement extends React.Component{
         )
     }
 }
-export default connect(
-    (state) => {
-        return {
-            songListArray:state.music.songListArray
-        }
-    }
-)(SongListMangement);
+export default SongListMangement;

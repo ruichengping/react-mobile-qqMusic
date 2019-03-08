@@ -9,11 +9,7 @@
 # 关于项目 
 ## 1.安装依赖包
 ```
-  npm install
-```
-装了cnpm的小伙伴们可以用cnpm命令
-```
-  cnpm install
+  yarn
 ```
 ## 2.启动服务
 ### 开发者

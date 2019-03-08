@@ -1,10 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
 import axios from 'axios';
 import { Carousel } from 'antd-mobile';
-import * as musicActions from '../../actions/music.js';
+import * as actions from '@/store/actions';
 import util from '@/utils';
 import './style.scss';
+
+@connect(
+    (state)=>state.global,
+    (dispatch)=>bindActionCreators(actions,dispatch)
+)
 class Control extends React.Component {
     constructor(props) {
         super(props);
@@ -27,18 +33,20 @@ class Control extends React.Component {
     }
     //播放上一首
     prevMusic() {
-        if (this.props.currentIndex === 0) {
-            this.props.dispatch(musicActions.playMusicByIndex(this.props.musicList.length - 1));
+        const {currentIndex,musicList,playMusicByIndex} = this.props;
+        if (currentIndex === 0) {
+            playMusicByIndex(musicList.length - 1);
         } else {
-            this.props.dispatch(musicActions.playMusicByIndex(this.props.currentIndex - 1));
+            playMusicByIndex(currentIndex - 1);
         }
     }
     //播放下一首
     nextMusic() {
-        if (this.props.currentIndex === this.props.musicList.length - 1) {
-            this.props.dispatch(musicActions.playMusicByIndex(0));
+        const {currentIndex,musicList,playMusicByIndex} = this.props;
+        if (currentIndex === musicList.length - 1) {
+            playMusicByIndex(0);
         } else {
-            this.props.dispatch(musicActions.playMusicByIndex(this.props.currentIndex + 1));
+            playMusicByIndex(currentIndex + 1)
         }
     }
     componentWillMount() {
@@ -57,7 +65,6 @@ class Control extends React.Component {
         this.props.changeCurrentTime(left / maxLeft * this.props.totalSeconds);
     }
     componentWillReceiveProps() {
-        const _this=this;
         if (this.props.currentMusic.id !== this.state.oldSongId) {
             this.getLyricAjax(this.props.currentMusic.id);
             this.setState({
@@ -66,11 +73,11 @@ class Control extends React.Component {
         }
         if(this.props.currentSeconds>this.state.oldCurrentSeconds){
             this.state.lyricArray.forEach((item,index)=>{
-                if(Math.abs(item.seconds-_this.props.currentSeconds)<0.5){
-                    _this.setState({
+                if(Math.abs(item.seconds-this.props.currentSeconds)<0.5){
+                    this.setState({
                         activeIndex:index
                     });
-                    _this.refs.lyricList.scrollTop=(index-1)*0.8*parseFloat(document.getElementsByTagName("html")[0].style.fontSize);
+                    this.refs.lyricList.scrollTop=(index-1)*0.8*parseFloat(document.getElementsByTagName("html")[0].style.fontSize);
                 }
             });
         }
@@ -135,13 +142,4 @@ class Control extends React.Component {
         )
     }
 }
-export default connect(
-    (state) => {
-        return {
-            currentMusic: state.music.currentMusic,
-            currentIndex: state.music.currentIndex,
-            musicList: state.music.musicList,
-            isPlay: state.music.isPlay
-        }
-    }
-)(Control);
+export default Control;

@@ -1,15 +1,16 @@
 import { createStore,combineReducers, applyMiddleware, compose } from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import music from './reducer';
+import thunk from 'redux-thunk';
+import {API} from '@/api';
+import global from './reducer';
 const rootReducer = combineReducers({
-  music
+  global
 })
 export default function configureStore(initialState) {
     const store = createStore(
         rootReducer,
         initialState,
         compose(
-            applyMiddleware(thunkMiddleware),
+            applyMiddleware(thunk.withExtraArgument({API})),
             window.devToolsExtension ? window.devToolsExtension() : f => f
         )
     );

@@ -1,20 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as musicActions from '../../actions/music.js';
+import {bindActionCreators} from 'redux';
+import * as actions from '@/store/actions';
 import './style.scss';
+@connect(
+    (state)=>state.global,
+    (dispatch)=>bindActionCreators(actions,dispatch)
+)
 class MusicList extends React.Component{
     constructor(props){
         super(props);
     }
     playMusicByIndex(index){
-        debugger
-        this.props.dispatch(musicActions.playMusicByIndex(index));                            
+        const {playMusicByIndex} = this.props
+        playMusicByIndex(index);                         
     }
     clearMusicList(){
-        this.props.dispatch(musicActions.clearMusicList()); 
+        const {clearMusicList} = this.props;
+        clearMusicList();
     }
     removeMusicFromList(index){
-        this.props.dispatch(musicActions.removeMusicFromList(index));                                  
+        const {removeMusicFromList} = this.props
+        removeMusicFromList(index);                                
     }
     componentWillReceiveProps(nextProps) {
         if(nextProps.musicList.length===0){
@@ -51,13 +58,4 @@ class MusicList extends React.Component{
         )
     }
 }
-export default connect(
-    (state) => {
-        return {
-            currentMusic: state.music.currentMusic,
-            currentIndex:state.music.currentIndex,
-            musicList:state.music.musicList,
-            isPlay: state.music.isPlay
-        }
-    }
-)(MusicList);
+export default MusicList;

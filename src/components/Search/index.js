@@ -1,7 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import * as musicActions from '../../actions/music.js';
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as actions from '@/store/actions';
+
+
 import './style.scss';
+@connect(
+    (state)=>state.global,
+    (dispatch)=>bindActionCreators(actions,dispatch)
+)
 class Search extends React.Component {
     constructor(props) {
         super(props)
@@ -140,7 +148,8 @@ class Search extends React.Component {
     }
     //往播放列表中添加音乐
     addMusic(musicItem) {
-        this.props.dispatch(musicActions.addAndChangeMusic(musicItem));
+        const {addAndChangeMusic} = this.props;
+        addAndChangeMusic(musicItem);
         this.comeback();
     }
     componentWillMount() {

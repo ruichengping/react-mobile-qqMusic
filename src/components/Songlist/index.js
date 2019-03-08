@@ -1,9 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
 import addImg from '../../assets/imgs/icon-songList-add.png';
 import NewSongList from '@/components/NewSongList';
 import SongListMangement from  '@/components/SongListMangement';
+import * as actions from '@/store/actions';
 import './style.scss';
+@connect(
+    (state)=>state.global,
+    (dispatch)=>bindActionCreators(actions,dispatch)
+)
 class Songlist extends React.Component {
     constructor(props) {
         super(props)
@@ -75,10 +81,4 @@ class Songlist extends React.Component {
         );
     }
 }
-export default connect(
-    (state) => {
-        return {
-            songListArray:state.music.songListArray
-        }
-    }
-)(Songlist);
+export default Songlist;

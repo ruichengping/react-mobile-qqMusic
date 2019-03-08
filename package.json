@@ -62,6 +62,7 @@
   "dependencies": {
     "antd-mobile": "^2.2.9",
     "axios": "^0.16.2",
+    "lodash": "^4.17.11",
     "rc-form": "^2.4.3",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",

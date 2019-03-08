@@ -1,8 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as musicActions from '../../actions/music.js';
+import {bindActionCreators} from 'redux';
+import * as actions from '@/store/actions';
 import {NoticeBar,Toast} from 'antd-mobile';
 import './style.scss';
+@connect(
+    (state)=>state.global,
+    (dispatch)=>bindActionCreators(actions,dispatch)
+)
 class NewSongList extends React.Component{
     constructor(props){
         super(props)
@@ -15,16 +20,16 @@ class NewSongList extends React.Component{
         this.setState({
             totalCount:0
         });
-        this.refs.inputText.value="";
+        this.inputText.value="";
         this.props.newSongListShowSwitch();
     }
     changeStrLength(){
-        if(this.refs.inputText.value.length<=20){
+        if(this.inputText.value.length<=20){
             this.setState({
-                totalCount:this.refs.inputText.value.length
+                totalCount:this.inputText.value.length
             });
         }else{
-            this.refs.inputText.value=this.refs.inputText.value.substring(0,20);
+            this.inputText.value=this.inputText.value.substring(0,20);
             this.setState({
                 isErrorShow:true
             });
@@ -36,11 +41,12 @@ class NewSongList extends React.Component{
         }
     }
     saveSongList(){
-        const isCanAdd=!this.props.songListArray.some((item)=>{
-            return item===this.refs.inputText.value
+        const {addSongList,songListArray} = this.props;
+        const isCanAdd=!songListArray.some((item)=>{
+            return item===this.inputText.value
         });
         if(isCanAdd){
-            this.props.dispatch(musicActions.addSongList(this.refs.inputText.value));
+            addSongList(this.inputText.value)
             this.comeback();
         }else{
             Toast.fail('该歌单已存在', 1);
@@ -55,7 +61,7 @@ class NewSongList extends React.Component{
                     <span className="save" onClick={this.saveSongList.bind(this)}>保存</span>
                 </div>
                 <div className="newSongList-body">
-                    <input ref="inputText" className="input-text" type="text" placeholder="请输入内容" onInput={this.changeStrLength.bind(this)}/>
+                    <input ref={(input)=>this.inputText=input} className="input-text" type="text" placeholder="请输入内容" onInput={this.changeStrLength.bind(this)}/>
                     <p className="totalCount">{20-this.state.totalCount}</p>
                     <NoticeBar className={this.state.isErrorShow?'error-notice show':'error-notice'} mode="closable" icon={null}>！最多输入20个字</NoticeBar>
                 </div>                
@@ -63,10 +69,4 @@ class NewSongList extends React.Component{
         );
     }
 }
-export default connect(
-    (state) => {
-        return {
-            songListArray:state.music.songListArray
-        }
-    }
-)(NewSongList);
+export default NewSongList;
