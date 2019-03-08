@@ -83,9 +83,8 @@ class Bandstand extends React.Component {
         }
     }
     componentWillMount() {
-        const _this = this;
         this.getMusicUrlById(this.props.currentMusic.id, (url) => {
-            _this.setState({
+            this.setState({
                 currentMusicUrl: url
             });
         });

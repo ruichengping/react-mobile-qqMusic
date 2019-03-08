@@ -45,7 +45,6 @@ class Search extends React.Component {
     }
     //搜索数据
     getSearhListAjax(event) {
-        let _this = this;
         this.setState({
             isRemindDivShow:false
         });
@@ -54,24 +53,24 @@ class Search extends React.Component {
         let isSearch = this.state.isSearch;
         let offset = (this.state.pageNo - 1) * 20;
         if (this.state.isCanGet) {
-            _this.setState({
+            this.setState({
                 isCanGet: false,
             });
             if (this.state.isSearch) {
-                _this.setState({
+                this.setState({
                     songList: []
                 });
             }
             axios.get(`https://api.imjad.cn/cloudmusic/?type=search&offset=${offset}&s=${searchText}`).then((response) => {
-                _this.setState({
+                this.setState({
                     isCanGet: true,
                     totalCount: response.data.result.songCount,
-                    songList: isSearch ? response.data.result.songs : _this.state.songList.concat(response.data.result.songs),
+                    songList: isSearch ? response.data.result.songs : this.state.songList.concat(response.data.result.songs),
                     isSearch: true
                 });
 
             }).catch(function (error) {
-                _this.setState({
+                this.setState({
                     isCanGet: true,
                 });
                 console.log(error);
@@ -161,7 +160,6 @@ class Search extends React.Component {
 
     }
     render() {
-        const _this = this;
         const searchTextList=["邓紫棋","全孝盛","张靓颖","周杰伦","薛之谦","林俊杰"]
         return (
             <div className={this.props.search ? 'qqMusic-search-wrapper show' : 'qqMusic-search-wrapper'} >
@@ -204,7 +202,7 @@ class Search extends React.Component {
                         {
                             this.state.songList.map((item, index) => {
                                 return (
-                                    <li className="qqMusic-searchList-item border-bottom" key={index} onClick={_this.addMusic.bind(_this, item)}>
+                                    <li className="qqMusic-searchList-item border-bottom" key={index} onClick={this.addMusic.bind(this, item)}>
                                         <h4 className="qqMusic-searchList-item-title">{item.name}</h4>
                                         <p className="qqMusic-searchList-item-singer">{item.ar[0].name}</p>
                                         <p className="qqMusic-searchList-item-intro">{item.alia}</p>
