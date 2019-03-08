@@ -1,11 +1,11 @@
 import React from 'react';
-import axios from 'axios';
 import {bindActionCreators} from 'redux';
 import Control from '@/components/Control';
 import MusicList from '@/components/MusicList';
 import * as actions from '@/store/actions';
 import { connect } from 'react-redux';
 import { Toast } from 'antd-mobile';
+import {API} from '@/api';
 import playImg from '../../assets/imgs/icon-music-play.png';
 import pauseImg from '../../assets/imgs/icon-music-pause.png';
 import playListImg from '../../assets/imgs/icon-play-list.png';
@@ -56,11 +56,15 @@ class Bandstand extends React.Component {
     }
     //根据歌曲id获取音乐url
     getMusicUrlById(id, callback) {
-        axios.get(`https://api.imjad.cn/cloudmusic/?type=song&id=${id}`).then((response) => {
+        API.getMusicUrl({
+            type:'song',
+            id
+        }).then((response)=>{
+            const {data} = response;
             if (typeof callback === 'function') {
-                callback(response.data.data[0].url);
+                callback(data[0].url);
             }
-        });
+        })
     }
     consoleSwitch() {
         this.setState({

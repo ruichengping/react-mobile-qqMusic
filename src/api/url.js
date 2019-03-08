@@ -1,14 +1,17 @@
 export default {
-  fetchUserInfo:{
+  //获取音乐播放链接
+  getMusicUrl:{
     method:'get',
-    url:'/api/user'
+    url:'https://api.imjad.cn/cloudmusic'
   },
-  fetchAuthorInfo:{
+  //获取音乐歌词
+  getMusicLyric:{
     method:'get',
-    url:'/api/author'
+    url:'https://api.imjad.cn/cloudmusic'
   },
-  fetchUserList:{
+  //查询音乐
+  queryMusic:{
     method:'get',
-    url:'/api/userList'
+    url:'https://api.imjad.cn/cloudmusic'
   }
 }

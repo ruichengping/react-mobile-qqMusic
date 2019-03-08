@@ -1,8 +1,10 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
+import { Toast } from 'antd-mobile';
 import * as actions from '@/store/actions';
+import { API } from '@/api';
+
 
 
 import './style.scss';
@@ -61,22 +63,25 @@ class Search extends React.Component {
                     songList: []
                 });
             }
-            axios.get(`https://api.imjad.cn/cloudmusic/?type=search&offset=${offset}&s=${searchText}`).then((response) => {
-                this.setState({
-                    isCanGet: true,
-                    totalCount: response.data.result.songCount,
-                    songList: isSearch ? response.data.result.songs : this.state.songList.concat(response.data.result.songs),
-                    isSearch: true
-                });
-
-            }).catch(function (error) {
-                this.setState({
-                    isCanGet: true,
-                });
-                console.log(error);
-            });
+            API.queryMusic({
+                type:'search',
+                offset,
+                s:searchText
+            }).then((response)=>{
+                const {code,result} = response;
+                if(code){
+                    this.setState({
+                        isCanGet: true,
+                        totalCount: result.songCount,
+                        songList: isSearch ? result.songs : this.state.songList.concat(result.songs),
+                        isSearch: true
+                    }); 
+                }else{
+                    Toast.fail('查询失败');
+                }
+               
+            })
         }
-
     }
     //下拉加载
     getMoreSearchList(event) {

@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import axios from 'axios';
 import { Carousel } from 'antd-mobile';
 import * as actions from '@/store/actions';
 import util from '@/utils';
 import './style.scss';
+import { API } from '@/api';
 
 @connect(
     (state)=>state.global,
@@ -22,14 +22,16 @@ class Control extends React.Component {
         }
     }
     getLyricAjax(id) {
-        axios.get(`https://api.imjad.cn/cloudmusic/?type=lyric&id=${id}&br=128000`).then((response) => {
-                let lyric = response.data.lrc.lyric;
-                this.setState({
-                    lyricArray: util.parseLyric(lyric)
-                });
-            }).catch(function (error) {
-                console.log(error);
+        API.getMusicLyric({
+            type:'lyric',
+            br:128000
+        }).then((response)=>{
+            const {data} = response;
+            const lyric = data.lrc.lyric;
+            this.setState({
+                lyricArray: util.parseLyric(lyric)
             });
+        });
     }
     //播放上一首
     prevMusic() {
