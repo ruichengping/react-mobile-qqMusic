@@ -41,14 +41,14 @@ export default function music(state = initialState, action) {
               isCurrentMusicChange: false
           });
       case actionTypes.ADD_AND_CHANGE_MUSIC:
-          if (!isMusicExist(payload,state.musicList)) {
-              musicList.unshift(payload)
+          if (!isMusicExist(payload.data,musicList)) {
+              musicList.unshift(payload.data)
           }
           return Object.assign({}, state, {
               musicList,
-              currentMusic: payload,
+              currentMusic: payload.data,
               isCurrentMusicChange: true,
-              isPlay: true
+              isPlay: payload.isPlay
           });
       case actionTypes.PLAY_SPECIFIC_MUSIC_BY_MID:
           return Object.assign({}, state, {

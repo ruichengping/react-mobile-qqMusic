@@ -152,10 +152,10 @@ class Search extends React.Component {
     //往播放列表中添加音乐
     addMusic(musicItem) {
         const {addAndChangeMusic} = this.props;
-        addAndChangeMusic(musicItem);
+        addAndChangeMusic(musicItem,true);
         this.comeback();
     }
-    componentWillMount() {
+    componentDidMount() {
         if (localStorage["yqq_search_history"]) {
             this.setState({
                 recordList: localStorage["yqq_search_history"].split(",")

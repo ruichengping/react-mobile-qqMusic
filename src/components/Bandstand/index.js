@@ -75,7 +75,7 @@ class Bandstand extends React.Component {
     componentDidMount(){
         const {musicList,currentMusic,changePlayStatus,playSpecificMusicByMid,addAndChangeMusic} = this.props;
         this.getMusicById('000cwwze4FkFj4',(data)=>{
-            addAndChangeMusic(data);
+            addAndChangeMusic(data,false);
         });
         this.qqMusicAudio.oncanplay=()=>{
             this.qqMusicAudio&&this.setState({

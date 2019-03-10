@@ -7,14 +7,14 @@ class MusicClub extends React.Component {
     }
     render() {
         const imgList = [
-            "https://y.gtimg.cn/music/common/upload/t_focus_info_iphone/136996.jpg",
-            "https://y.gtimg.cn/music/common/upload/t_focus_info_iphone/137001.jpg",
-            "https://y.gtimg.cn/music/common/upload/t_focus_info_iphone/136837.jpg",
-            "https://y.gtimg.cn/music/common/upload/t_focus_info_iphone/136785.jpg",
-            "https://y.gtimg.cn/music/common/upload/t_focus_info_iphone/136105.jpg",
-            "https://y.gtimg.cn/music/common/upload/t_focus_info_iphone/136190.jpg",
-            "https://y.gtimg.cn/music/common/upload/t_focus_info_iphone/136903.jpg",
-            "https://y.gtimg.cn/music/common/upload/t_focus_info_iphone/118122.jpg"
+            "/static/images/carousel-cover-one.jpg",
+            "/static/images/carousel-cover-two.jpg",
+            "/static/images/carousel-cover-three.jpg",
+            "/static/images/carousel-cover-four.jpg",
+            "/static/images/carousel-cover-five.jpg",
+            "/static/images/carousel-cover-six.jpg",
+            "/static/images/carousel-cover-seven.jpg",
+            "/static/images/carousel-cover-eight.jpg"
         ];
         const menuList = [
             {
@@ -45,32 +45,32 @@ class MusicClub extends React.Component {
 
         const songMenuArray = [
             {
-                image: 'https://p.qpic.cn/music_cover/yGMcxIOCOW5CtiaFibCDFHDKIYlA0Thy65BR0icuxmN5KicDhsXYZuRMTw/300?n=1',
+                image: '/static/images/song-menu-one.jpeg',
                 text: '浮游时光 | 品一杯慢情调的韩系布鲁斯',
                 amount: '15.7万'
             },
             {
-                image: 'https://p.qpic.cn/music_cover/ESQkDB4ohgibFpRT23xHVFf1NSibRu5MgFQVeviaYLfp6Q8SVY8dZ7q7g/300?n=1',
+                image: '/static/images/song-menu-two.jpeg',
                 text: '达人周末 | 那些能激起中二病的动漫燃曲',
                 amount: '65.7万'
             },
             {
-                image: 'https://p.qpic.cn/music_cover/qH8rLHHhL8O8Iibm56uPzJ9vpPJ9icaI58TuHk6jZia3oAPLqqXJ2zsLA/300?n=1',
+                image: '/static/images/song-menu-three.jpeg',
                 text: '99位唱见歌手 ：一人一首代表曲',
                 amount: '272.2万'
             },
             {
-                image: 'https://p.qpic.cn/music_cover/ibntviciboJuwCoCNK8ibZkjethpQNPJ9G0FJ7CySCPIHpibSuicJ0T2dcaw/300?n=1',
+                image: '/static/images/song-menu-four.jpeg',
                 text: '独立民谣 | 从大不列颠群岛吹来怡然清风',
                 amount: '39.5万'
             },
             {
-                image: 'https://p.qpic.cn/music_cover/tHzMbKzYyUqgJIqHZCoy9c9FBSaFxEgaX54iaDicSxG57C6veeibxSnAA/300?n=1',
+                image: '/static/images/song-menu-five.jpeg',
                 text: '《王者荣耀》风骚走位必备BGM',
                 amount: '1319.1万'
             },
             {
-                image: 'https://p.qpic.cn/music_cover/0XaJ7WwKJXDzVrtkNbdjrVSDgibZWAAVXJ8KrqMqvKa7gfsrDgTXIsA/300?n=1',
+                image: '/static/images/song-menu-six.jpeg',
                 text: '你一定听过却死活叫不上歌名的灵魂级配乐',
                 amount: '162.5万'
             }

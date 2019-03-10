@@ -22,10 +22,13 @@ export const changeCurrentMusic=(data)=> async (dispatch,getState,{API})=>{
   });
 }
 //添加并更改当前音乐
-export const addAndChangeMusic=(data)=> async (dispatch,getState,{API})=>{
+export const addAndChangeMusic=(data,isPlay)=> async (dispatch,getState,{API})=>{
   dispatch({
     type: actionTypes.ADD_AND_CHANGE_MUSIC,
-    payload:data
+    payload:{
+      data,
+      isPlay
+    }
   });
 }
 //播放指定音乐
