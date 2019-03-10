@@ -45,7 +45,7 @@ class SongMenuMangement extends React.Component{
         return (
             <div className={isSongMenuMangementShow?"qqMusic-songMenu-mangement show":"qqMusic-songMenu-mangement"}>
                 <div className="songMenuMangement-header">
-                    <img className="icon-arrow-left" src={require("@/assets/imgs/icon-arrow-left.png")} onClick={this.comeback.bind(this)} />
+                    <img className="icon-arrow-left" src={require("@/assets/icon-arrow-left.png")} onClick={this.comeback.bind(this)} />
                     <p className="title">管理自建歌单</p>
                 </div>
                 <div className="songMenuMangement-body">
@@ -58,7 +58,7 @@ class SongMenuMangement extends React.Component{
                                         <CheckboxItem className="checkBox"  onChange={this.changeSelectedList.bind(this,item)}></CheckboxItem>
                                         </div>
                                         <div className="middle border-bottom">
-                                            <img className="logo" src={require("@/assets/imgs/icon-qqMusic-logo.png")}/>
+                                            <img className="logo" src={require("@/assets/icon-qqMusic-logo.png")}/>
                                         </div>
                                         <div className="right border-bottom">
                                             <p className="name">{item}</p>
@@ -72,7 +72,7 @@ class SongMenuMangement extends React.Component{
                 </div>
                 <div className="songMenuMangement-footer">
                     <div className="delete-wrapper">
-                        <img className="delete" onClick={this.removeSongMenu} src={require("@/assets/imgs/icon-song-menu-delete.png")}/>                                          
+                        <img className="delete" onClick={this.removeSongMenu} src={require("@/assets/icon-song-menu-delete.png")}/>                                          
                     </div>
                     <p className="text-wrapper">
                         <span className="text" onClick={this.removeSongMenu}>删除</span>

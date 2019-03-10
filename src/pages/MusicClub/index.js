@@ -18,27 +18,27 @@ class MusicClub extends React.Component {
         ];
         const menuList = [
             {
-                icon: require('../../assets/imgs/icon-grid-singer.png'),
+                icon: require('@/assets/icon-grid-singer.png'),
                 text: '歌手'
             },
             {
-                icon: require('../../assets/imgs/icon-grid-rank.png'),
+                icon: require('@/assets/icon-grid-rank.png'),
                 text: '排行'
             },
             {
-                icon: require('../../assets/imgs/icon-grid-radio.png'),
+                icon: require('@/assets/icon-grid-radio.png'),
                 text: '电台'
             },
             {
-                icon: require('../../assets/imgs/icon-grid-categories.png'),
+                icon: require('@/assets/icon-grid-categories.png'),
                 text: '分类歌单'
             },
             {
-                icon: require('../../assets/imgs/icon-grid-video.png'),
+                icon: require('@/assets/icon-grid-video.png'),
                 text: '视频MV'
             },
             {
-                icon: require('../../assets/imgs/icon-grid-album.png'),
+                icon: require('@/assets/icon-grid-album.png'),
                 text: '数字专辑'
             },
         ];
@@ -120,7 +120,7 @@ class MusicClub extends React.Component {
                                         <div className="qqMusic-recommend-item-image-wrapper">
                                             <img className="image" src={dataItem.image} />
                                             <span className="amount">{dataItem.amount}</span>
-                                            <img className="link-to-musicList-detail" src={require('../../assets/imgs/icon-music-link.png')}/>
+                                            <img className="link-to-musicList-detail" src={require('@/assets/icon-music-link.png')}/>
                                         </div>
                                         <p className="text" >{dataItem.text}</p>
                                     </div>

@@ -83,7 +83,7 @@ class Discovery extends React.Component {
                                 <li className="qqMusic-discovery-item" key={index}>
                                     <div className="qqMusic-discovery-item-left">
                                         <p className="text">{item.text}</p>
-                                        <p className="music"><img className="music-image" src={require('../../assets/imgs/icon-music-black.png')} />{item.music}</p>
+                                        <p className="music"><img className="music-image" src={require('@/assets/icon-music-black.png')} />{item.music}</p>
                                         <p className="extra">{item.author} 阅读 {item.read}</p>
                                     </div>
                                     <div className="qqMusic-discovery-item-right">
@@ -121,7 +121,7 @@ class Discovery extends React.Component {
                                 <li className="qqMusic-discovery-item" key={index}>
                                     <div className="qqMusic-discovery-item-left">
                                         <p className="text">{item.text}</p>
-                                        <p className="music"><img className="music-image" src={require('../../assets/imgs/icon-music-black.png')} />{item.music}</p>
+                                        <p className="music"><img className="music-image" src={require('@/assets/icon-music-black.png')} />{item.music}</p>
                                         <p className="extra">{item.author} 阅读 {item.read}</p>
                                     </div>
                                     <div className="qqMusic-discovery-item-right">

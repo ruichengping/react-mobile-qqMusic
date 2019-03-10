@@ -58,7 +58,7 @@ class NewSongMenu extends React.Component{
         return(
             <div className={isNewSongMenuShow?"qqMusic-newSongMenu show":"qqMusic-newSongMenu"}>
                 <div className="newSongMenu-header">
-                    <img className="icon-arrow-left" src={require("@/assets/imgs/icon-arrow-left.png")} onClick={this.comeback} />
+                    <img className="icon-arrow-left" src={require("@/assets/icon-arrow-left.png")} onClick={this.comeback} />
                     <p className="title">新建歌单</p>
                     <span className="save" onClick={this.saveSongMenu}>保存</span>
                 </div>

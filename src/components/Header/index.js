@@ -52,8 +52,8 @@ class Header extends React.Component {
                         <Popover mask style={{left:0,right:0}}
                             visible={this.state.popover}
                             overlay={[
-                                (<Item key="1" value="scan"><img className="popoverItem-img" src={require('../../assets/imgs/icon-popover-discriminate.png')}/><font className="popoverItem-text">听歌识曲</font></Item>),
-                                (<Item key="2" value="sweep"><img className="popoverItem-img" src={require('../../assets/imgs/icon-popover-sweep.png')}/><font className="popoverItem-text">扫一扫</font></Item>),
+                                (<Item key="1" value="scan"><img className="popoverItem-img" src={require('@/assets/icon-popover-discriminate.png')}/><font className="popoverItem-text">听歌识曲</font></Item>),
+                                (<Item key="2" value="sweep"><img className="popoverItem-img" src={require('@/assets/icon-popover-sweep.png')}/><font className="popoverItem-text">扫一扫</font></Item>),
                             ]}
                             onVisibleChange={this.popoverChange.bind(this)}
                             onSelect={this.popoverSelect.bind(this)}

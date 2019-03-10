@@ -98,7 +98,7 @@ class Control extends React.Component {
             <div className={this.props.isControlShow ? 'qqMusic-control show' : 'qqMusic-control'}>
                 <div className="qqMusic-control-content">
                     <div className="qqMusic-control-top">
-                        <img className="icon-control-down" src={require("@/assets/imgs/icon-control-down.png")} onClick={this.props.consoleSwitch} />
+                        <img className="icon-control-down" src={require("@/assets/icon-control-down.png")} onClick={this.props.consoleSwitch} />
                         <p className="music-name">{title}</p>
                     </div>
                     <div className={isPlay ? "qqMusic-control-middle active" : "qqMusic-control-middle"}>
@@ -141,9 +141,9 @@ class Control extends React.Component {
                             <span className="totalPlayTime">{utils.formatSeconds(totalSeconds)}</span>
                         </div>
                         <div className="qqMusic-control-btns">
-                            <img className="prev" src={require("@/assets/imgs/icon-music-prev.png")} onClick={this.prevMusic} />
-                            <img className="status" src={isPlay ? require("@/assets/imgs/icon-control-pause.png") : require("@/assets/imgs/icon-control-play.png")} onClick={changePlayState} />
-                            <img className="next" src={require("@/assets/imgs/icon-music-next.png")} onClick={this.nextMusic} />
+                            <img className="prev" src={require("@/assets/icon-music-prev.png")} onClick={this.prevMusic} />
+                            <img className="status" src={isPlay ? require("@/assets/icon-control-pause.png") : require("@/assets/icon-control-play.png")} onClick={changePlayState} />
+                            <img className="next" src={require("@/assets/icon-music-next.png")} onClick={this.nextMusic} />
                         </div>
                     </div>
                 </div>

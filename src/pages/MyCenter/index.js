@@ -1,9 +1,9 @@
 import React from 'react';
 import { Grid } from 'antd-mobile';
 import './style.scss';
-import auditionImg from '@/assets/imgs/icon-user-audition.png';
-import dredgeImg from '@/assets/imgs/icon-user-dredge.png';
-import rankImg from '@/assets/imgs/icon-user-rank.png';
+import auditionImg from '@/assets/icon-user-audition.png';
+import dredgeImg from '@/assets/icon-user-dredge.png';
+import rankImg from '@/assets/icon-user-rank.png';
 import SongMenu from '@/components/SongMenu';
 class MyCenter extends React.Component {
     constructor(props) {
@@ -13,27 +13,27 @@ class MyCenter extends React.Component {
         const girdList = [
             {
                 text: '本地歌曲',
-                imgSrc: require('../../assets/imgs/icon-grid-music.png')
+                imgSrc: require('@/assets/icon-grid-music.png')
             },
             {
                 text: '下载歌曲',
-                imgSrc: require('../../assets/imgs/icon-grid-download.png')
+                imgSrc: require('@/assets/icon-grid-download.png')
             },
             {
                 text: '最近播放',
-                imgSrc: require('../../assets/imgs/icon-grid-recent.png')
+                imgSrc: require('@/assets/icon-grid-recent.png')
             },
             {
                 text: '我喜欢',
-                imgSrc: require('../../assets/imgs/icon-grid-favorite.png')
+                imgSrc: require('@/assets/icon-grid-favorite.png')
             },
             {
                 text: '下载MV',
-                imgSrc: require('../../assets/imgs/icon-grid-mv.png')
+                imgSrc: require('@/assets/icon-grid-mv.png')
             },
             {
                 text: '已购音乐',
-                imgSrc: require('../../assets/imgs/icon-grid-buy.png')
+                imgSrc: require('@/assets/icon-grid-buy.png')
             }
         ]
         return (

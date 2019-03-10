@@ -6,9 +6,9 @@ import * as actions from '@/store/actions';
 import { connect } from 'react-redux';
 import { Toast } from 'antd-mobile';
 import {API} from '@/api';
-import playImg from '@/assets/imgs/icon-music-play.png';
-import pauseImg from '@/assets/imgs/icon-music-pause.png';
-import playListImg from '@/assets/imgs/icon-play-list.png';
+import playImg from '@/assets/icon-music-play.png';
+import pauseImg from '@/assets/icon-music-pause.png';
+import playListImg from '@/assets/icon-play-list.png';
 import "./style.scss";
 
 @connect(

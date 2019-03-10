@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import addImg from '../../assets/imgs/icon-song-menu-add.png';
+import addImg from '@/assets/icon-song-menu-add.png';
 import NewSongMenu from '@/components/NewSongMenu';
 import SongMenuMangement from  '@/components/SongMenuMangement';
 import * as actions from '@/store/actions';
@@ -53,7 +53,7 @@ class SongMenu extends React.Component {
                                 return (
                                     <li className="songMenuItem" key={index}>
                                         <div className="left">
-                                            <img className="logo" src={require("../../assets/imgs/icon-qqMusic-logo.png")}/>
+                                            <img className="logo" src={require("@/assets/icon-qqMusic-logo.png")}/>
                                         </div>
                                         <div className="right">
                                             <p className="name">{item}</p>

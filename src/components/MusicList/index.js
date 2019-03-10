@@ -37,7 +37,7 @@ class MusicList extends React.Component{
                 <div className="qqMusic-musicList-content">
                    <div className="qqMusic-musicList-top border-bottom">
                        <h4 className="title">播放列表</h4>
-                       <img className="clearList" src={require("../../assets/imgs/icon-list-clear.png")} onClick={this.clearMusicList.bind(this)}/>
+                       <img className="clearList" src={require("@/assets/icon-list-clear.png")} onClick={this.clearMusicList.bind(this)}/>
                    </div>
                    <div className="qqMusic-musicList-middle">
                        <ul className="musicList">
@@ -46,8 +46,8 @@ class MusicList extends React.Component{
                                 return (
                                     <li className="musicItem border-bottom" style={{color:item.mid===currentMusic.mid?"#31c37c":"#fff"}} key={item.mid}>
                                         <span onClick={this.playSpecificMusic.bind(this,item)}>{item.title} - {item.author}</span>
-                                        <img className="tag" style={{display:item.mid===mid?'inline-block':'none'}} src={require('@/assets/imgs/icon-music-playing.png')}/>
-                                        <img className="delete" src={require("@/assets/imgs/icon-record-close.png")} onClick={this.removeMusicFromList.bind(this,item)}/>
+                                        <img className="tag" style={{display:item.mid===mid?'inline-block':'none'}} src={require('@/assets/icon-music-playing.png')}/>
+                                        <img className="delete" src={require("@/assets/icon-record-close.png")} onClick={this.removeMusicFromList.bind(this,item)}/>
                                     </li>
                                 );
                              })
