@@ -15,13 +15,13 @@
     }
     .songListMangement-header{
         background: #31c37c;
-        height:0 0 0.8rem;
+        height:0 0 40px;
         position: relative;
         .icon-arrow-left{
             position: absolute;
-            left: 0.3rem;
-            top:0.2rem;
-            height: 0.4rem;
+            left: 15px;
+            top:10px;
+            height: 20px;
         }    
         .title{
             color: #fff;
@@ -33,11 +33,11 @@
         .songListArray{
             .songListItem{
                 display: flex;
-                height: 1.2rem; 
-                margin-top: 1px;  
+                height: 60px; 
+                margin-top: 50px;  
                 background-color: #fff;
                 .left{
-                    flex: 0 0 1.0rem;
+                    flex: 0 0 50px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -53,46 +53,46 @@
                     }
                 }         
                 .middle{
-                    flex:0 0 1.2rem;
+                    flex:0 0 60px;
                     background: #e6e6e6;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     .logo{
-                        width: 0.5rem;
-                        height:0.5rem;
+                        width: 25px;
+                        height:25px;
                     }
                 } 
                 .right{
                     position: relative;
                     flex: 1;
                     .name,.num{
-                        padding-left: 0.2rem;
-                        font-size: 0.3rem;
-                        line-height: 0.6rem;
+                        padding-left: 10px;
+                        font-size: 15px;
+                        line-height: 30px;
                         text-align: left;
-                        padding-left: 0.3rem;
+                        padding-left: 15px;
                     }
                 }           
             }   
         }
     }
     .songListMangement-footer{
-        flex: 0 0 1.5rem;
+        flex: 0 0 75px;
         background: #fff;
         text-align: center;
-        line-height: 0.5rem;
+        line-height: 25px;
         box-sizing: border-box;
-        padding-top: 0.2rem;
+        padding-top: 10px;
         .delete-wrapper{
             .delete{
-                width: 0.5rem;
+                width: 25px;
             }
         }
         .text-wrapper{
             text-align: center;
             .text{
-                font-size: 0.28rem;
+                font-size: 14px;
             }
         }
     }

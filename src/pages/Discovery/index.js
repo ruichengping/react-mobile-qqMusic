@@ -33,43 +33,43 @@ class Discovery extends React.Component {
             {
                 text: 'S.H.E：十年女团，十年回忆',
                 music: 'S.H.E | 十年女团，十年回忆-微音',
-                image: 'https://ss3.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/c75c10385343fbf2440dfe26b07eca8065388f96.jpg',
+                image: '/static/images/discovery-she.jpg',
                 author: '微音',
                 read: 3555
             },
             {
                 text: '张韶涵：好久不见，回来就好',
                 music: '复仇时刻-张韶涵/我是赞助商派来的',
-                image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505506617222&di=091d88d53716c19f0ab8b79af9723803&imgtype=0&src=http%3A%2F%2Fa.hiphotos.baidu.com%2Fbaike%2Fpic%2Fitem%2F08f790529822720e24cbda5971cb0a46f21fab0f.jpg',
+                image: '/static/images/discovery-zhangshaohan.jpeg',
                 author: '淘漉音乐',
                 read: 4223
             },
             {
                 text: 'LOL背景音乐集锦：电子盛宴，自带BUFF',
                 music: 'Time Leaper-Hinkik',
-                image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505506773563&di=c1ba4670aacd88be973055d8dfdff892&imgtype=0&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fzhidao%2Fwh%253D450%252C600%2Fsign%3Dd2fb8191a5cc7cd9fa783cdd0c310d09%2F09fa513d269759ee4339fab7b4fb43166d22df65.jpg',
+                image: '/static/images/discovery-ali.jpeg',
                 author: '醉心琳琅',
                 read: 9405
             }
         ];
         const topicList = [
             {
-                image: 'http://www.jgospel.net/media/106634/.120307.bt.jpg',
+                image: '/static/images/topic-lizongsheng.jpeg',
                 title: '#又见·李宗盛',
                 text: '戳到了心坎的一句歌词'
             },
             {
-                image: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3075202773,769084754&fm=27&gp=0.jpg',
+                image: '/static/images/topic-linyoujia.jpg',
                 title: '#又见·林宥嘉',
                 text: '曾在哪首歌里泪流不止？'
             },
             {
-                image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505504724966&di=31d18b131aca416f6ab252542a3fe2b8&imgtype=0&src=http%3A%2F%2Fimgbdb3.bendibao.com%2Fweixinbdb%2F20178%2F9%2F20178912834105.jpg',
+                image: '/static/images/topic-chenyixun.jpeg',
                 title: '#又见·陈奕迅',
                 text: '循环播放最多次的一首歌'
             },
             {
-                image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505504804968&di=d9b9fbccb04be3bd0051c944e2841a86&imgtype=0&src=http%3A%2F%2Fecho-mx.b0.upaiyun.com%2F1770756431.jpg',
+                image: '/static/images/topic-tianfuzhen.jpeg',
                 title: '#又见·田馥甄',
                 text: '因为哪首歌爱上她的？'
             }

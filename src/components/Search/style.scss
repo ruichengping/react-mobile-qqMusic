@@ -18,19 +18,19 @@
         position: relative;
         background: #31c37c;
         box-sizing: border-box;
-        padding: 0.2rem 1.6rem 0.2rem 0.8rem;
+        padding: 10px 80px 10px 40px;
         .icon-arrow-left {
             position: absolute;
-            top: 0.2rem;
-            left: 0.2rem;
-            width: 0.4rem;
-            height: 0.4rem;
+            top: 10px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
         }
         .input-text {
             width: 100%;
             background: #31c37c;
             color: #dbf3e8;
-            font-size: 0.3rem;
+            font-size: 15px;
         }
         .input-text::placeholder {
             color: #dbf3e8;
@@ -38,18 +38,18 @@
         }
         .icon-input-clear {
             position: absolute;
-            right: 1.0rem;
-            top: 0.14rem;
+            right: 50px;
+            top: 7px;
             background: url("../../assets/imgs/icon-input-clear.png");
             background-size: cover;
-            width: 0.5rem;
-            height: 0.5rem;
+            width: 25px;
+            height: 25px;
         }
         .btn-search {
             position: absolute;
             display: inline-block;
-            right: 0.2rem;
-            top: 0.2rem;
+            right: 10px;
+            top: 10px;
             color: #dbf3e8;
         }
     }
@@ -59,69 +59,69 @@
         .qqMusic-searchList {
             background: #fff;
             .qqMusic-searchList-item {
-                padding: 0.1rem 0.3rem;
+                padding: 5px 15px;
                 .qqMusic-searchList-item-title {
-                    font-size: 0.3rem;
+                    font-size: 15px;
                     font-weight: 500;
                 }
                 .qqMusic-searchList-item-singer {
-                    font-size: 0.26rem;
-                    padding: 0.1rem 0;
+                    font-size: 13px;
+                    padding: 5px 0;
                     color: #707070;
                 }
                 .qqMusic-searchList-item-intro {
-                    font-size: 0.22rem;
-                    line-height: 0.28rem;
+                    font-size: 11px;
+                    line-height: 14px;
                     color: #bfbfbf;
                 }
             }
             .hint {
                 text-align: center;
-                line-height: 0.62rem;
-                font-size: 0.3rem;
+                line-height: 31px;
+                font-size: 15px;
                 background-color: #f5f5f9;
             }
         }
     }
     .remindMask {
         position: absolute;
-        top:0.8rem;
+        top:40px;
         right:0;
         bottom: 0;
         left: 0;
         .search-text-list-wrapper{
-            padding: 0.3rem;
+            padding: 15px;
             background: #fff;
             .title-hot-search{
                 color: #8a8a8a;
-                padding: 0.3rem 0;
+                padding: 15px 0;
                 font-weight: 400;
-                font-size: 0.3rem;
+                font-size: 15px;
             }
             .search-text-list{
                 .search-text-item{
                     display: inline-block;
-                    border-radius: 0.8rem;
+                    border-radius: 40px;
                     border: 1px solid #515151;
                     color: #373737;
-                    height: 0.6rem;
-                    line-height: 0.6rem;
-                    padding: 0 0.2rem;
-                    margin: 0.1rem;
+                    height: 30px;
+                    line-height: 30px;
+                    padding: 0 10px;
+                    margin: 5px;
                 }
             }
         }
         .title-search-history{
             position: relative;
             color: #8a8a8a;
-            padding: 0.3rem 0 0.3rem 0.3rem;
+            padding: 15px 0 15px 15px;
             font-weight: 400;
-            font-size: 0.3rem;
+            font-size: 15px;
             background-color: #fff;
             .cleanRecord{
                 position: absolute;
-                right:0.3rem;
-                top:0.3rem;
+                right: 15px;
+                top: 15px;
                 color: #31c37c;
             }
         }
@@ -129,26 +129,26 @@
             .recordItem {
                 position: relative;
                 background: #fff;
-                height: 0.9rem;
-                line-height: 0.9rem;
-                padding-left: 1.2rem;
+                height: 45px;
+                line-height: 45px;
+                padding-left: 60px;
                 .icon-recent {
                     position: absolute;
-                    left: 0.3rem;
-                    top: 0.14rem;
+                    left: 15px;
+                    top: 7px;
                     background: url("../../assets/imgs/icon-record-recent.png") no-repeat;
                     background-size: cover;
-                    width: 0.52rem;
-                    height: 0.52rem;
+                    width: 26px;
+                    height: 26px;
                 }
                 .icon-close {
                     position: absolute;
-                    right: 0.3rem;
-                    top: 0.24rem;
+                    right: 15px;
+                    top: 12px;
                     background: url("../../assets/imgs/icon-record-close.png") no-repeat;
                     background-size: cover;
-                    width: 0.42rem;
-                    height: 0.42rem;
+                    width: 21px;
+                    height: 21px;
                 }
             }
         }

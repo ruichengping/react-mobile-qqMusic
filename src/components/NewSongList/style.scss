@@ -13,20 +13,20 @@
     }
     .newSongList-header{
         background: #31c37c;
-        height: 0.8rem;
+        height: 40px;
         position: relative;
         .icon-arrow-left{
             position: absolute;
-            left: 0.3rem;
-            top:0.2rem;
-            height: 0.4rem;
+            left: 15px;
+            top: 10px;
+            height: 20px;
         }    
         .title{
             color: #fff;
         }
         .save{
             position: absolute;
-            right: 0.3rem;
+            right: 15px;
             top:0;
             color: #fff;            
         }
@@ -34,9 +34,9 @@
     .newSongList-body{
         .input-text{
             width: 100%;
-            height: 0.6rem;
-            padding-left: 0.2rem;
-            font-size: 0.28rem;
+            height: 30px;
+            padding-left: 10px;
+            font-size: 14px;
             background-color: #fff;
             vertical-align: top;  
             color: #31c37c;
@@ -45,9 +45,9 @@
         }
         .totalCount{
             text-align: right;
-            padding-right: 0.2rem;
-            font-size: 0.28rem;
-            line-height: 0.32rem;
+            padding-right: 10px;
+            font-size: 14px;
+            line-height: 16px;
             color: #00a1d6;
         }
         .error-notice{

@@ -1,88 +1,88 @@
 .qqMusic-home-body {
     .qqMusic-myCenter-top {
-        padding: 0.1rem 0 0.4rem;
+        padding: 5px 0 20px;
         background: #f5f5f9;
         .qqMusic-myCenter-user {
             background: #fff;
-            padding-bottom: 0.1rem;
+            padding-bottom: 5px;
             .qqMusic-myCenter-user-module {
                 text-align: center;
-                padding-top: 0.1rem;
+                padding-top: 5px;
                 .qqMusic-myCenter-user-audition,
                 .qqMusic-myCenter-user-dredge {
                     display: inline-block;
                     border: 1px solid #8a8a8a;
                     text-align: center;
-                    width: 1.6rem;
-                    height: 0.5rem;
-                    border-radius: 0.3rem;
+                    width: 80px;
+                    height: 25px;
+                    border-radius: 15px;
                     .text {
-                        padding-left: 0.08rem;
-                        font-size: 0.28rem;
+                        padding-left: 4px;
+                        font-size: 14px;
                         color: #cdcdcd;
                     }
                     .icon {
-                        width: 0.48rem;
-                        height: 0.48rem;
-                        vertical-align: -0.1rem;
+                        width: 24px;
+                        height: 24px;
+                        vertical-align: -5px;
                     }
                 }
                 .qqMusic-myCenter-user-photo {
-                    width: 1.0rem;
-                    height: 1.0rem;
+                    width: 50px;
+                    height: 50px;
                     border-radius: 50%;
                     vertical-align: middle;
-                    margin: 0 0.3rem
+                    margin: 0 15px;
                 }
                 .userName:before,
                 .userName:after {
                     content: "";
                     display: inline-block;
                     height: 1px;
-                    width: 0.8rem;
+                    width: 40px;
                     border-top: 1px solid #2c2c2c;
                     vertical-align: middle;
                 }
                 .userName:before {
-                    margin-right: 0.1rem;
+                    margin-right: 5px;
                 }
                 .userName::after {
-                    margin-left: 0.1rem;
+                    margin-left: 5px;
                 }
                 .qqMusic-myCenter-user-rank {
-                    height: 0.38rem;
-                    width: 0.38rem;
+                    height: 19px;
+                    width: 19px;
                 }
             }
         }
         .qqMusic-myCenter-grid {
             .am-flexbox {
-                height: 1.5rem !important;
+                height: 75px !important;
                 .qqMusic-myCenter-grid-item {
                     .image {
-                        width: 0.7rem;
-                        height: 0.7rem;
+                        width: 35px;
+                        height: 35px;
                     }
                     .text {
                         text-align: center;
-                        font-size: 0.3rem;
-                        padding-top: 0.1rem;
+                        font-size: 15px;
+                        padding-top: 5px;
                     }
                 }
             }
         }
     }
     .qqMusic-myCenter-middle {
-        margin-top: 0.1rem;
+        margin-top: 5px;
         background: #fff;
         .qqMusic-myCenter-station {
             display: flex;
-            height: 1.1rem;
+            height: 55px;
             .qqMusic-myCenter-station-left {
-                flex: 0 0 1.3rem;
+                flex: 0 0 65px;
                 .station-image {
-                    width: 1.1rem;
-                    height: 1.1rem;
+                    width: 55px;
+                    height: 55px;
                 }
             }
             .qqMusic-myCenter-station-right {
@@ -91,12 +91,12 @@
                 justify-content: center;
                 flex-direction: column;
                 .station-title {
-                    font-size: 0.32rem;
+                    font-size: 16px;
                     font-weight: 400;
                 }
                 .station-text {
-                    padding-top: 0.1rem;
-                    font-size: 0.26rem;
+                    padding-top: 5px;
+                    font-size: 13px;
                     color: #cacaca;
                     font-weight: 300;
                 }

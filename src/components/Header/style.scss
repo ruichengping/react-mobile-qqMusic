@@ -13,11 +13,11 @@ $headerSearchBackgroundColor:#2AAA73;
     .qqMusic-header-top {
         position: relative;
         @include flexCenter();
-        height: 0.8rem;
+        height: 40px;
         .qqMusic-tab {
-            font-size: 0.4rem;
+            font-size: 20px;
             color: $headerFontColor;
-            padding: 0 0.2rem;
+            padding: 0 10px;
             font-weight: 300;
         }
         .qqMusic-tab-active {
@@ -25,35 +25,35 @@ $headerSearchBackgroundColor:#2AAA73;
         }
         .qqMusic-header-icon-left {
             position: absolute;
-            left: 0.24rem;
-            top: 0.06rem;
-            width: 0.56rem;
-            height: 0.7rem;
+            left: 12px;
+            top: 3px;
+            width: 28px;
+            height: 35px;
             background: url('../../assets/imgs/icon-menu-list.png');
-            background-size: 0.56rem 0.7rem;
+            background-size: 28px 35px;
         }
         .qqMusic-header-icon-right {
             position: absolute;
-            right: 0.24rem;
-            top: 0.11rem;
-            width: 0.56rem;
-            height: 0.56rem;
+            right: 12px;
+            top: 6px;
+            width: 28px;
+            height: 28px;
             background: url('../../assets/imgs/icon-menu-add.png');
-            background-size: 0.56rem 0.56rem;
+            background-size: 28px 28px;
         }
     }
     .qqMusic-header-bottom {
-        padding: 0.14rem 0.2rem;
+        padding: 7px 10px;
         .qqMusic-header-search {
             @include flexCenter();            
-            height: 0.6rem;
+            height: 30px;
             width: 100%;
             background-color: $headerSearchBackgroundColor;
-            border-radius: 0.1rem;
+            border-radius: 5px;
         }
         .qqMusic-search-text {
-            margin-left: 0.1rem;
-            font-size: 0.34rem;
+            margin-left: 5px;
+            font-size: 17px;
             font-style: normal;
             color: $headerFontColor;
             font-weight: 300;            
@@ -61,18 +61,18 @@ $headerSearchBackgroundColor:#2AAA73;
         .qqMusic-search-icon {
             display: inline-block;
             background: url('../../assets/imgs/icon-search-default.png');
-            height: 0.36rem;
-            width: 0.36rem;
-            background-size: 0.36rem 0.36rem;
+            height: 18px;
+            width: 18px;
+            background-size: 18px 18px;
         }
     }
 }
 .popoverItem-img{
-    width: 0.4rem;
-    height: 0.4rem;
+    width: 20px;
+    height: 20px;
 }
 .popoverItem-text{
-    padding-left: 0.2rem;
-    font-size: 0.34rem;
-    vertical-align: 0.05rem;
+    padding-left: 10px;
+    font-size: 17px;
+    vertical-align: 4px;
 }
