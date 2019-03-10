@@ -61,7 +61,7 @@ class Control extends React.Component {
     componentDidMount(){
         timer=setInterval(()=>{
             this.lyricDom.scrollTop=currentLyricIndex*40;
-        },300);
+        },100);
     }
     componentDidUpdate(){
         const {currentMusic} = this.props;
