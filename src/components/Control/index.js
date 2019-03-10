@@ -60,7 +60,7 @@ class Control extends React.Component {
     }
     componentDidMount(){
         timer=setInterval(()=>{
-            this.lyricDom.scrollTop=(currentLyricIndex-1)*20;
+            this.lyricDom.scrollTop=currentLyricIndex*40;
         },300);
     }
     componentDidUpdate(){
@@ -77,9 +77,9 @@ class Control extends React.Component {
                         const matchTimestamp = item.match(/\[.+\]/)[0];
                         return {
                             seconds:isNaN(utils.parseStrToSeconds(matchTimestamp))?0:utils.parseStrToSeconds(matchTimestamp),
-                            text:item.split('').filter((char)=>matchTimestamp.indexOf(char)<0)
+                            text:item.split('').filter((char)=>matchTimestamp.indexOf(char)<0).join('')
                         }
-                    })
+                    }).filter((item)=>item.text.length>0)
                 });
             });
         }
@@ -92,7 +92,7 @@ class Control extends React.Component {
         const {lyricArray} = this.state;
         const {currentMusic,isPlay,changePlayState,currentSeconds,totalSeconds} = this.props;
         const {title,author,pic} = currentMusic;
-        const newLyricIndex = lyricArray.findIndex((item)=>Math.abs(item.seconds-currentSeconds)<0.5);
+        const newLyricIndex = lyricArray.findIndex((item)=>Math.abs(item.seconds-currentSeconds)<0.2);
         currentLyricIndex = newLyricIndex >-1?newLyricIndex:currentLyricIndex;
         return (
             <div className={this.props.isControlShow ? 'qqMusic-control show' : 'qqMusic-control'}>
@@ -147,7 +147,7 @@ class Control extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="qqMusic-control-bg" style={{ backgroundImage: `url(${this.props.currentMusic.al ? this.props.currentMusic.al.picUrl : ''}` }}></div>
+                <div className="qqMusic-control-bg" style={{ backgroundImage: `url(${pic}` }}></div>
                 <div className="qqMusic-control-bg-mask"></div>
             </div>
         )
