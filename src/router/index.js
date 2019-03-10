@@ -1,5 +1,5 @@
 import Loadable from 'react-loadable';
-import createHistory from 'history/createBrowserHistory';
+import createBrowserHistory from 'history/createBrowserHistory';
 import MainLayout from '@/layouts/MainLayout';
 import Loading from '@/components/Loading';
 
@@ -8,7 +8,7 @@ const Discovery = Loadable({loader: () => import('@/pages/Discovery'),loading: L
 const MusicClub = Loadable({loader: () => import('@/pages/MusicClub'),loading: Loading});
 const MyCenter = Loadable({loader: () => import('@/pages/MyCenter'),loading: Loading});
 
-export const history = createHistory();
+export const history = createBrowserHistory();
 
 export const routes = [
   {

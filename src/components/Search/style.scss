@@ -59,21 +59,33 @@
         .qqMusic-searchList {
             background: #fff;
             .qqMusic-searchList-item {
+                display: flex;
                 padding: 5px 15px;
-                .qqMusic-searchList-item-title {
-                    font-size: 15px;
-                    font-weight: 500;
+                .left{
+                    flex: 1;
+                    .title {
+                        font-size: 15px;
+                        font-weight: 500;
+                    }
+                    .singer {
+                        font-size: 13px;
+                        padding: 5px 0;
+                        color: #707070;
+                    }
+                    .intro {
+                        font-size: 11px;
+                        line-height: 14px;
+                        color: #bfbfbf;
+                    }
                 }
-                .qqMusic-searchList-item-singer {
-                    font-size: 13px;
-                    padding: 5px 0;
-                    color: #707070;
+                .right{
+                    width: 60px;
+                    .cover{
+                        width: 100%;
+                        
+                    }
                 }
-                .qqMusic-searchList-item-intro {
-                    font-size: 11px;
-                    line-height: 14px;
-                    color: #bfbfbf;
-                }
+               
             }
             .hint {
                 text-align: center;

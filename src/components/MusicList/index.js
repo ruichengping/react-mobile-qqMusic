@@ -11,17 +11,19 @@ class MusicList extends React.Component{
     constructor(props){
         super(props);
     }
-    playMusicByIndex(index){
-        const {playMusicByIndex} = this.props
-        playMusicByIndex(index);                         
+    playSpecificMusic(music){
+        const {mid} = music;
+        const {playSpecificMusicByMid} = this.props
+        playSpecificMusicByMid(mid);                         
     }
     clearMusicList(){
         const {clearMusicList} = this.props;
         clearMusicList();
     }
-    removeMusicFromList(index){
+    removeMusicFromList(music){
+        const {mid} = music;
         const {removeMusicFromList} = this.props
-        removeMusicFromList(index);                                
+        removeMusicFromList(mid);                                
     }
     componentWillReceiveProps(nextProps) {
         if(nextProps.musicList.length===0){
@@ -29,6 +31,7 @@ class MusicList extends React.Component{
         }            
     }        
     render(){
+        const {currentMusic,mid} = this.props;
         return (
             <div className={this.props.isMusicListShow?'qqMusic-musicList-wrapper show':'qqMusic-musicList-wrapper'}>
                 <div className="qqMusic-musicList-content">
@@ -39,12 +42,12 @@ class MusicList extends React.Component{
                    <div className="qqMusic-musicList-middle">
                        <ul className="musicList">
                            {
-                             this.props.musicList.map((item,index)=>{
+                             this.props.musicList.map((item)=>{
                                 return (
-                                    <li className="musicItem border-bottom" style={{color:item.id===this.props.currentMusic.id?"#31c37c":"#fff"}} key={index}>
-                                        <span onClick={this.playMusicByIndex.bind(this,index)}>{item.name} - {item.ar[0].name}</span>
-                                        <img className="tag" style={{display:item.id===this.props.currentMusic.id?'inline-block':'none'}} src={require('../../assets/imgs/icon-music-playing.png')}/>
-                                        <img className="delete" src={require("../../assets/imgs/icon-record-close.png")} onClick={this.removeMusicFromList.bind(this,index)}/>
+                                    <li className="musicItem border-bottom" style={{color:item.mid===currentMusic.mid?"#31c37c":"#fff"}} key={item.mid}>
+                                        <span onClick={this.playSpecificMusic.bind(this,item)}>{item.title} - {item.author}</span>
+                                        <img className="tag" style={{display:item.mid===mid?'inline-block':'none'}} src={require('@/assets/imgs/icon-music-playing.png')}/>
+                                        <img className="delete" src={require("@/assets/imgs/icon-record-close.png")} onClick={this.removeMusicFromList.bind(this,item)}/>
                                     </li>
                                 );
                              })

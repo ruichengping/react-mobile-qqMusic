@@ -53,7 +53,7 @@ class Search extends React.Component {
         this.addSearchRecord(document.getElementsByClassName('input-text')[0].value);
         let searchText = document.getElementsByClassName('input-text')[0].value;
         let isSearch = this.state.isSearch;
-        let offset = (this.state.pageNo - 1) * 20;
+        let offset = this.state.pageNo * 20;
         if (this.state.isCanGet) {
             this.setState({
                 isCanGet: false,
@@ -64,16 +64,15 @@ class Search extends React.Component {
                 });
             }
             API.queryMusic({
-                type:'search',
-                offset,
-                s:searchText
+                nu:offset,
+                id:searchText
             }).then((response)=>{
-                const {code,result} = response;
-                if(code){
+                const {Code,Body,songnum} = response;
+                if(Code==='OK'){
                     this.setState({
                         isCanGet: true,
-                        totalCount: result.songCount,
-                        songList: isSearch ? result.songs : this.state.songList.concat(result.songs),
+                        totalCount: songnum,
+                        songList: isSearch ? Body : this.state.songList.concat(Body),
                         isSearch: true
                     }); 
                 }else{
@@ -165,17 +164,19 @@ class Search extends React.Component {
 
     }
     render() {
+        const {songList,isCanGet,recordList,isRemindDivShow} = this.state;
+        const {search} = this.props;
         const searchTextList=["邓紫棋","全孝盛","张靓颖","周杰伦","薛之谦","林俊杰"]
         return (
-            <div className={this.props.search ? 'qqMusic-search-wrapper show' : 'qqMusic-search-wrapper'} >
+            <div className={search ? 'qqMusic-search-wrapper show' : 'qqMusic-search-wrapper'} >
                 <div className="qqMusic-search-top">
-                    <img ref='inputText' className="icon-arrow-left" src={require("../../assets/imgs/icon-arrow-left.png")} onClick={this.comeback.bind(this)} />
+                    <img ref='inputText' className="icon-arrow-left" src={require("@/assets/imgs/icon-arrow-left.png")} onClick={this.comeback.bind(this)} />
                     <input className="input-text" type="text" placeholder="支持音乐搜索" onKeyUp={this.keyboardListener.bind(this)} />
                     <span className="icon-input-clear" onClick={this.clearInput.bind(this)}></span>
                     <span className="btn-search" onClick={this.getSearhListAjax.bind(this)}>搜索</span>
                 </div>
                 <div className="qqMusic-search-bottom" onScroll={this.getMoreSearchList.bind(this)}>
-                    <div className="remindMask" style={{display:this.state.isRemindDivShow?'block':'none'}}>
+                    <div className="remindMask" style={{display:isRemindDivShow?'block':'none'}}>
                         <div className="search-text-list-wrapper">
                             <h4 className="title-hot-search">热门搜索</h4>
                             <ul className="search-text-list">
@@ -188,10 +189,10 @@ class Search extends React.Component {
                                 }
                             </ul>
                         </div>
-                        <h4 style={{display:this.state.recordList.length>0?'block':'none'}} className="title-search-history border-bottom">搜索历史<span className="cleanRecord" onClick={this.clearRecord.bind(this)}>清空历史</span></h4>
+                        <h4 style={{display:recordList.length>0?'block':'none'}} className="title-search-history border-bottom">搜索历史<span className="cleanRecord" onClick={this.clearRecord.bind(this)}>清空历史</span></h4>
                         <ul className="recordList">
                             {
-                                this.state.recordList.map((item,index) => {
+                                recordList.map((item,index) => {
                                     return (
                                         <li className="recordItem border-bottom" key={index}>
                                             <span className="icon-recent"></span>
@@ -205,17 +206,22 @@ class Search extends React.Component {
                     </div>
                     <ul className="qqMusic-searchList">
                         {
-                            this.state.songList.map((item, index) => {
+                            songList.map((item, index) => {
                                 return (
                                     <li className="qqMusic-searchList-item border-bottom" key={index} onClick={this.addMusic.bind(this, item)}>
-                                        <h4 className="qqMusic-searchList-item-title">{item.name}</h4>
-                                        <p className="qqMusic-searchList-item-singer">{item.ar[0].name}</p>
-                                        <p className="qqMusic-searchList-item-intro">{item.alia}</p>
+                                        <div className="left">
+                                            <h4 className="title">{item.title}</h4>
+                                            <p className="singer">{item.author}</p>
+                                            <p className="intro">{item.album}</p>
+                                        </div>
+                                        <div className="right">
+                                            <img className="cover" alt={item.album} src={item.pic}/>
+                                        </div>
                                     </li>
                                 )
                             })
                         }
-                        <li className="hint" style={this.state.isCanGet ? { display: 'none' } : {}}>正在加载更多...</li>
+                        <li className="hint" style={isCanGet ? { display: 'none' } : {}}>正在加载更多...</li>
                     </ul>
                 </div>
             </div>

@@ -1,56 +1,31 @@
 import * as actionTypes from './actionTypes';
 const initialState = {
-    currentMusic: {
-        id: 26113988,
-        name: '泡沫',
-        al: {
-            picUrl: "https://p1.music.126.net/4AlMpHmXuNSBf3Nn6xj2WQ==/2444214348569851.jpg"
-        },
-        ar: [
-            {
-                name: '邓紫棋'
-            }
-        ]
-    },
-    currentIndex: 0,
+    currentMusic: {},
     isPlay: false,
     isCurrentMusicChange: false,
-    musicList: [
-        {
-            id: 26113988,
-            name: '泡沫',
-            al: {
-                picUrl: "https://p1.music.126.net/4AlMpHmXuNSBf3Nn6xj2WQ==/2444214348569851.jpg"
-            },
-            ar: [
-                {
-                    name: '邓紫棋'
-                }
-            ]
-        }
-    ],
-    songListArray:[]
+    musicList: [],
+    songMenuArray:[]
 };
 function isMusicExist(musicData,array) {
    return array.some((item)=>{
-        return item.id === musicData.id;
+        return item.mid === musicData.mid;
     });
 }
-function isSongListExist(name,array){
+function isSongMenuExist(name,array){
     return array.some((item)=>{
         return item===name;
     });
 }
 
 export default function music(state = initialState, action) {
+  const {currentMusic,musicList,songMenuArray} = state;
   const {type,payload} = action;
   switch (type) {
       case actionTypes.ADD_MUSIC:
-          if (!isMusicExist(payload,state.musicList)) {
-              let musicList = state.musicList;
+          if (!isMusicExist(payload,musicList)) {
               musicList.unshift(payload)
               return Object.assign({}, state, {
-                  musicList: musicList
+                  musicList
               });
           } else {
               return state;
@@ -66,36 +41,31 @@ export default function music(state = initialState, action) {
               isCurrentMusicChange: false
           });
       case actionTypes.ADD_AND_CHANGE_MUSIC:
-          let musicList = state.musicList;
           if (!isMusicExist(payload,state.musicList)) {
               musicList.unshift(payload)
           }
           return Object.assign({}, state, {
-              musicList: musicList,
+              musicList,
               currentMusic: payload,
-              currentIndex: 0,
               isCurrentMusicChange: true,
               isPlay: true
           });
-      case actionTypes.PLAY_MUSIC_BY_INDEX:
+      case actionTypes.PLAY_SPECIFIC_MUSIC_BY_MID:
           return Object.assign({}, state, {
-              currentMusic: state.musicList[payload],
+              currentMusic: musicList.find((music)=>music.mid===payload),
               isCurrentMusicChange: true,
-              isPlay: true,
-              currentIndex: payload
+              isPlay: true
           });
       case actionTypes.CLEAR_MUSIC_LIST:
           return Object.assign({}, state, {
               currentMusic: {},
               isCurrentMusicChange: false,
               musicList: [],
-              isPlay: false,
-              currentIndex: 0
+              isPlay: false
           });
       case actionTypes.REMOVE_MUSIC_FROM_LIST:
-          let newMusicList=state.musicList;
-          newMusicList.splice(payload,1);
-          if (payload !== state.currentIndex) {
+          const newMusicList = musicList.filter((music)=>music.mid!==payload); 
+          if (payload !== currentMusic.mid) {
               return Object.assign({}, state, {
                   isCurrentMusicChange: false,
                   musicList: newMusicList
@@ -104,27 +74,25 @@ export default function music(state = initialState, action) {
               return Object.assign({}, state, {
                       isCurrentMusicChange: newMusicList.length>0?true:false,
                       isPlay:newMusicList.length>0?true:false,
-                      currentIndex:payload,
-                      currentMusic:newMusicList.length>0?newMusicList[payload]:{},
+                      currentMusic:musicList.length>0?newMusicList[0]:{},
                       musicList:newMusicList
                   });
           } 
       case actionTypes.ADD_SONG_LIST:
-          if(!isSongListExist(payload,state.songListArray)){
-              let newSongListArray= state.songListArray;
-              newSongListArray.unshift(payload);
+          if(!isSongMenuExist(payload,songMenuArray)){
+              songMenuArray.unshift(payload);
               return Object.assign({},state,{
-                  songListArray:newSongListArray
+                  songMenuArray
               });
           }else{
               return state;
           }
       case actionTypes.REMOVE_SONG_LIST:
-          let newSongListArray=state.songListArray.filter((item)=>{
-              return !isSongListExist(item,payload);
+          let newSongMenuArray=songMenuArray.filter((item)=>{
+              return !isSongMenuExist(item,payload);
           });
           return Object.assign({},state,{
-              songListArray:newSongListArray
+              songMenuArray:newSongMenuArray
           });
       default:
           return state;

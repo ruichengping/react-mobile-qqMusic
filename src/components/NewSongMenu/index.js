@@ -8,7 +8,7 @@ import './style.scss';
     (state)=>state.global,
     (dispatch)=>bindActionCreators(actions,dispatch)
 )
-class NewSongList extends React.Component{
+class NewSongMenu extends React.Component{
     constructor(props){
         super(props)
         this.state={
@@ -16,14 +16,14 @@ class NewSongList extends React.Component{
             isErrorShow:false
         }
     }
-    comeback(){
+    comeback=()=>{
         this.setState({
             totalCount:0
         });
         this.inputText.value="";
-        this.props.newSongListShowSwitch();
+        this.props.newSongMenuShowSwitch();
     }
-    changeStrLength(){
+    changeStrLength=()=>{
         if(this.inputText.value.length<=20){
             this.setState({
                 totalCount:this.inputText.value.length
@@ -40,33 +40,35 @@ class NewSongList extends React.Component{
             },1200);
         }
     }
-    saveSongList(){
-        const {addSongList,songListArray} = this.props;
-        const isCanAdd=!songListArray.some((item)=>{
+    saveSongMenu=()=>{
+        const {addSongMenu,songMenuArray} = this.props;
+        const isCanAdd=!songMenuArray.some((item)=>{
             return item===this.inputText.value
         });
         if(isCanAdd){
-            addSongList(this.inputText.value)
+            addSongMenu(this.inputText.value)
             this.comeback();
         }else{
             Toast.fail('该歌单已存在', 1);
         }
     }
     render(){
+        const {isNewSongMenuShow} = this.props;
+        const {totalCount} = this.state;
         return(
-            <div className={this.props.isNewSongListShow?"qqMusic-newSongList show":"qqMusic-newSongList"}>
-                <div className="newSongList-header">
-                    <img className="icon-arrow-left" src={require("../../assets/imgs/icon-arrow-left.png")} onClick={this.comeback.bind(this)} />
+            <div className={isNewSongMenuShow?"qqMusic-newSongMenu show":"qqMusic-newSongMenu"}>
+                <div className="newSongMenu-header">
+                    <img className="icon-arrow-left" src={require("@/assets/imgs/icon-arrow-left.png")} onClick={this.comeback} />
                     <p className="title">新建歌单</p>
-                    <span className="save" onClick={this.saveSongList.bind(this)}>保存</span>
+                    <span className="save" onClick={this.saveSongMenu}>保存</span>
                 </div>
-                <div className="newSongList-body">
-                    <input ref={(input)=>this.inputText=input} className="input-text" type="text" placeholder="请输入内容" onInput={this.changeStrLength.bind(this)}/>
-                    <p className="totalCount">{20-this.state.totalCount}</p>
+                <div className="newSongMenu-body">
+                    <input ref={(input)=>this.inputText=input} className="input-text" type="text" placeholder="请输入内容" onInput={this.changeStrLength}/>
+                    <p className="totalCount">{20-totalCount}</p>
                     <NoticeBar className={this.state.isErrorShow?'error-notice show':'error-notice'} mode="closable" icon={null}>！最多输入20个字</NoticeBar>
                 </div>                
             </div>
         );
     }
 }
-export default NewSongList;
+export default NewSongMenu;

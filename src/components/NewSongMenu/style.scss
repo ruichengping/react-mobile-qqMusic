@@ -1,4 +1,4 @@
-.qqMusic-newSongList{
+.qqMusic-newSongMenu{
     position: fixed;
     top:0;
     left: 0;
@@ -11,7 +11,7 @@
     &.show{
         transform: translateY(0);
     }
-    .newSongList-header{
+    .newSongMenu-header{
         background: #31c37c;
         height: 40px;
         position: relative;
@@ -31,7 +31,7 @@
             color: #fff;            
         }
     }
-    .newSongList-body{
+    .newSongMenu-body{
         .input-text{
             width: 100%;
             height: 30px;

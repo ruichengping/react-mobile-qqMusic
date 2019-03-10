@@ -43,7 +43,7 @@ class MusicClub extends React.Component {
             },
         ];
 
-        const songListArray = [
+        const songMenuArray = [
             {
                 image: 'https://p.qpic.cn/music_cover/yGMcxIOCOW5CtiaFibCDFHDKIYlA0Thy65BR0icuxmN5KicDhsXYZuRMTw/300?n=1',
                 text: '浮游时光 | 品一杯慢情调的韩系布鲁斯',
@@ -106,11 +106,11 @@ class MusicClub extends React.Component {
                         )
                     }
                 />
-                <div className="qqMusic-songList-recommend">
+                <div className="qqMusic-songMenu-recommend">
                     <p className="title">歌单推荐<i className="icon-circle-right"></i></p>
                     <Grid
                         className="qqMusic-recommend-list"
-                        data={songListArray}
+                        data={songMenuArray}
                         columnNum={3}
                         hasLine={false}
                         renderItem={

@@ -8,7 +8,7 @@ class MainLayout extends React.Component {
         return (
             <div className="qqMusic-home">
                 <Header className="qqMusic-home-header" />                                                             
-                {children}
+                    {children}
                 <Bandstand/>
             </div>
         );

@@ -6,9 +6,9 @@ import * as actions from '@/store/actions';
 import { connect } from 'react-redux';
 import { Toast } from 'antd-mobile';
 import {API} from '@/api';
-import playImg from '../../assets/imgs/icon-music-play.png';
-import pauseImg from '../../assets/imgs/icon-music-pause.png';
-import playListImg from '../../assets/imgs/icon-play-list.png';
+import playImg from '@/assets/imgs/icon-music-play.png';
+import pauseImg from '@/assets/imgs/icon-music-pause.png';
+import playListImg from '@/assets/imgs/icon-play-list.png';
 import "./style.scss";
 
 @connect(
@@ -40,29 +40,13 @@ class Bandstand extends React.Component {
             Toast.info('暂无可播放的音乐', 1);
         }
     }
-    //获取歌曲信息
-    getSongInfo(nextProps) {
-        const {isPlay} = this;
-        if (nextProps.currentMusic.id) {
-            this.getMusicUrlById(nextProps.currentMusic.id, (url) => {
-                this.setState({
-                    currentMusicUrl: url
-                });
-                if (isPlay) {
-                    this.qqMusicAudio.play();
-                }
-            });
-        }
-    }
     //根据歌曲id获取音乐url
-    getMusicUrlById(id, callback) {
+    getMusicById(id, callback) {
         API.getMusicUrl({
-            type:'song',
             id
-        }).then((response)=>{
-            const {data} = response;
+        }).then((data)=>{
             if (typeof callback === 'function') {
-                callback(data[0].url);
+                callback(data);
             }
         })
     }
@@ -78,70 +62,68 @@ class Bandstand extends React.Component {
         this.qqMusicAudio.currentTime=seconds;
     }
     musicListSwitch() {
-        if (this.props.musicList.length > 0||this.state.isMusicListShow) {
+        const {musicList} = this.props;
+        const {isMusicListShow} = this.state;
+        if (musicList.length > 0||isMusicListShow) {
             this.setState({
-                isMusicListShow: !this.state.isMusicListShow
+                isMusicListShow: !isMusicListShow
             });
         } else {
             Toast.info('暂无可播放的音乐', 1);
         }
     }
-    componentWillMount() {
-        this.getMusicUrlById(this.props.currentMusic.id, (url) => {
-            this.setState({
-                currentMusicUrl: url
-            });
-        });
-    }
     componentDidMount(){
-        const {musicList,currentIndex,changePlayStatus,playMusicByIndex} = this.props;
-        this.qqMusicAudio.addEventListener("canplay",()=>{
-            this.setState({
+        const {musicList,currentMusic,changePlayStatus,playSpecificMusicByMid,addAndChangeMusic} = this.props;
+        this.getMusicById('000cwwze4FkFj4',(data)=>{
+            addAndChangeMusic(data);
+        });
+        this.qqMusicAudio.oncanplay=()=>{
+            this.qqMusicAudio&&this.setState({
                 totalSeconds:this.qqMusicAudio.duration
             });
-        });
-        this.qqMusicAudio.addEventListener("timeupdate",()=>{
-            this.setState({
+        };
+        this.qqMusicAudio.ontimeupdate=()=>{
+            this.qqMusicAudio&&this.setState({
                 currentSeconds:this.qqMusicAudio.currentTime
             });
-        });
-        this.qqMusicAudio.addEventListener("ended",()=>{
+        };
+        this.qqMusicAudio.onended=()=>{
             if (musicList.length ===  1) {
                 changePlayStatus(false)
             } else  {
-                if(this.props.currentIndex<musicList.length-1){
-                    playMusicByIndex(currentIndex+1);
+                const currentIndex = musicList.findIndex((music)=>music.mid===currentMusic.mid)
+                if(currentIndex<musicList.length-1){
+                    playSpecificMusicByMid(currentIndex+1);
                 }else{
-                    playMusicByIndex(0);                
+                    playSpecificMusicByMid(0);                
                 }
             }
-        });
+        };
     }
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.isCurrentMusicChange&&nextProps.musicList.length>0) {
-            this.getSongInfo(nextProps);
+    componentDidUpdate() {
+        const {isPlay} = this.props;
+        if(isPlay){
+            this.qqMusicAudio.play();
         }else{
-            if(nextProps.isPlay){
-                this.qqMusicAudio.play();
-            }else{
-                this.qqMusicAudio.pause();                
-            }
+            this.qqMusicAudio.pause();                
         }
     }
     render() {
+        const {currentMusic,isPlay,musicList} = this.props;
+        const {title,author,pic,url} = currentMusic;
         return (
             <div className="qqMusic-home-footer border-top">
                 <div className="qqMusic-home-footer-left">
-                    <img className={this.props.isPlay ? 'qqMusic-home-footer-avatar active' : 'qqMusic-home-footer-avatar'} src={this.props.currentMusic.al ? this.props.currentMusic.al.picUrl : ''} onClick={this.consoleSwitch.bind(this)} />
+                    <img className={isPlay ? 'qqMusic-home-footer-avatar active' : 'qqMusic-home-footer-avatar'} src={pic} onClick={this.consoleSwitch.bind(this)} />
                 </div>
                 <div className="qqMusic-home-footer-middle" onClick={this.consoleSwitch.bind(this)}>
-                    <h4 className="qqMusic-home-footer-song">{this.props.currentMusic ? this.props.currentMusic.name : ''}</h4>
-                    <p className="qqMusic-home-footer-singer">{this.props.currentMusic.ar ? this.props.currentMusic.ar[0].name : ''}</p>
+                    <h4 className="qqMusic-home-footer-song">{title}</h4>
+                    <p className="qqMusic-home-footer-singer">{author}</p>
                 </div>
-                <p className={this.props.musicList.length === 0 ? 'no-music show' : 'no-music'}>QQ音乐 听我想听的歌</p>
+                <p className={musicList.length === 0 ? 'no-music show' : 'no-music'}>QQ音乐 听我想听的歌</p>
                 <div className="qqMusic-home-footer-right">
-                    <audio ref={(audio)=>this.qqMusicAudio=audio} src={this.state.currentMusicUrl} ></audio>
-                    <img className="qqMusic-play-switch" src={this.props.isPlay ? pauseImg : playImg} onClick={this.changePlayState.bind(this)} />
+                    <audio ref={(audio)=>this.qqMusicAudio=audio} src={url} ></audio>
+                    <img className="qqMusic-play-switch" src={isPlay ? pauseImg : playImg} onClick={this.changePlayState.bind(this)} />
                     <img className="qqMusic-play-list" src={playListImg} onClick={this.musicListSwitch.bind(this)} />
                 </div>
                 <Control changeCurrentTime={this.changeCurrentTime.bind(this)} currentSeconds={this.state.currentSeconds} totalSeconds={this.state.totalSeconds} isControlShow={this.state.isControlShow} changePlayState={this.changePlayState.bind(this)} consoleSwitch={this.consoleSwitch.bind(this)}></Control>

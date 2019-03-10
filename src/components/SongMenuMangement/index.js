@@ -9,15 +9,15 @@ const CheckboxItem = Checkbox.CheckboxItem;
     (state)=>state.global,
     (dispatch)=>bindActionCreators(actions,dispatch)
 )
-class SongListMangement extends React.Component{
+class SongMenuMangement extends React.Component{
     constructor(props){
         super(props);
         this.state={
             selectedList:[]
         }
     }
-    comeback(){
-        this.props.songListMangementShowSwitch();
+    comeback=()=>{
+        this.props.songMenuMangementShowSwitch();
     }
     changeSelectedList(text){
         const isCanAdd=!this.state.selectedList.some((item)=>{
@@ -35,29 +35,30 @@ class SongListMangement extends React.Component{
                 selectedList
             });
     }
-    removeSongList(){
+    removeSongMenu=()=>{
         const {selectedList} = this.state;
-        const {removeSongList} = this.props;
-        removeSongList(selectedList);
+        const {removeSongMenu} = this.props;
+        removeSongMenu(selectedList);
     }
     render(){
+        const {songMenuArray,isSongMenuMangementShow} = this.props;
         return (
-            <div className={this.props.isSongListMangementShow?"qqMusic-songList-mangement show":"qqMusic-songList-mangement"}>
-                <div className="songListMangement-header">
-                    <img className="icon-arrow-left" src={require("../../assets/imgs/icon-arrow-left.png")} onClick={this.comeback.bind(this)} />
+            <div className={isSongMenuMangementShow?"qqMusic-songMenu-mangement show":"qqMusic-songMenu-mangement"}>
+                <div className="songMenuMangement-header">
+                    <img className="icon-arrow-left" src={require("@/assets/imgs/icon-arrow-left.png")} onClick={this.comeback.bind(this)} />
                     <p className="title">管理自建歌单</p>
                 </div>
-                <div className="songListMangement-body">
-                    <ul className="songListArray">
+                <div className="songMenuMangement-body">
+                    <ul className="songMenuArray">
                         {
-                            this.props.songListArray.map((item,index)=>{
+                            songMenuArray.map((item,index)=>{
                                 return (
-                                    <li className="songListItem" key={index}>
+                                    <li className="songMenuItem" key={index}>
                                         <div className="left">
                                         <CheckboxItem className="checkBox"  onChange={this.changeSelectedList.bind(this,item)}></CheckboxItem>
                                         </div>
                                         <div className="middle border-bottom">
-                                            <img className="logo" src={require("../../assets/imgs/icon-qqMusic-logo.png")}/>
+                                            <img className="logo" src={require("@/assets/imgs/icon-qqMusic-logo.png")}/>
                                         </div>
                                         <div className="right border-bottom">
                                             <p className="name">{item}</p>
@@ -69,16 +70,16 @@ class SongListMangement extends React.Component{
                         }
                     </ul>
                 </div>
-                <div className="songListMangement-footer">
+                <div className="songMenuMangement-footer">
                     <div className="delete-wrapper">
-                        <img className="delete" onClick={this.removeSongList.bind(this)} src={require("../../assets/imgs/icon-songList-delete.png")}/>                                          
+                        <img className="delete" onClick={this.removeSongMenu} src={require("@/assets/imgs/icon-song-menu-delete.png")}/>                                          
                     </div>
                     <p className="text-wrapper">
-                        <span className="text" onClick={this.removeSongList.bind(this)}>删除</span>
+                        <span className="text" onClick={this.removeSongMenu}>删除</span>
                     </p>
                 </div>
             </div>
         )
     }
 }
-export default SongListMangement;
+export default SongMenuMangement;

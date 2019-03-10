@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { Carousel } from 'antd-mobile';
 import * as actions from '@/store/actions';
-import util from '@/utils';
+import utils from '@/utils';
 import './style.scss';
 import { API } from '@/api';
-
+let currentLyricIndex = 0;
+let timer = null;
 @connect(
     (state)=>state.global,
     (dispatch)=>bindActionCreators(actions,dispatch)
@@ -15,46 +16,37 @@ class Control extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            oldSongId: this.props.currentMusic.id,
-            lyricArray: [],
-            oldCurrentSeconds:0,
-            activeIndex:0
+            oldSongId:'',
+            lyricArray: []
         }
-    }
-    getLyricAjax(id) {
-        API.getMusicLyric({
-            type:'lyric',
-            br:128000
-        }).then((response)=>{
-            const {data} = response;
-            const lyric = data.lrc.lyric;
-            this.setState({
-                lyricArray: util.parseLyric(lyric)
-            });
-        });
     }
     //播放上一首
-    prevMusic() {
-        const {currentIndex,musicList,playMusicByIndex} = this.props;
-        if (currentIndex === 0) {
-            playMusicByIndex(musicList.length - 1);
+    prevMusic=()=>{
+        const {musicList,currentMusic,playSpecificMusicByMid} = this.props;
+        const currentIndex = musicList.findIndex((music)=>music.mid===currentMusic.mid);
+        let nextMusic ;
+        if (currentIndex > 0) {
+            nextMusic = musicList[currentIndex - 1];
         } else {
-            playMusicByIndex(currentIndex - 1);
+            nextMusic = musicList[musicList.length-1];
         }
+        playSpecificMusicByMid(nextMusic.mid);
     }
     //播放下一首
-    nextMusic() {
-        const {currentIndex,musicList,playMusicByIndex} = this.props;
-        if (currentIndex === musicList.length - 1) {
-            playMusicByIndex(0);
+    nextMusic=()=>{
+        const {musicList,currentMusic,playSpecificMusicByMid} = this.props;
+        const currentIndex = musicList.findIndex((music)=>music.mid===currentMusic.mid);
+        let nextMusic ;
+        if (currentIndex < musicList.length - 1) {
+            nextMusic = musicList[currentIndex + 1];
         } else {
-            playMusicByIndex(currentIndex + 1)
+            nextMusic = musicList[0];
         }
+        playSpecificMusicByMid(nextMusic.mid);
+
     }
-    componentWillMount() {
-        this.getLyricAjax(this.props.currentMusic.id);
-    }
-    changePlayProgress(event) {
+    changePlayProgress=(event)=>{
+        const {totalSeconds} = this.props;
         let left = event.changedTouches[0].clientX - this.refs.progressParent.offsetLeft - event.target.offsetWidth / 2;
         let maxLeft = this.refs.progressParent.offsetWidth;
         let minLeft = 0;
@@ -64,52 +56,69 @@ class Control extends React.Component {
         if (left > maxLeft) {
             left = maxLeft;
         }
-        this.props.changeCurrentTime(left / maxLeft * this.props.totalSeconds);
+        this.props.changeCurrentTime(left / maxLeft * totalSeconds);
     }
-    componentWillReceiveProps() {
-        if (this.props.currentMusic.id !== this.state.oldSongId) {
-            this.getLyricAjax(this.props.currentMusic.id);
-            this.setState({
-                oldSongId: this.props.currentMusic.id
-            })
-        }
-        if(this.props.currentSeconds>this.state.oldCurrentSeconds){
-            this.state.lyricArray.forEach((item,index)=>{
-                if(Math.abs(item.seconds-this.props.currentSeconds)<0.5){
-                    this.setState({
-                        activeIndex:index
-                    });
-                    this.refs.lyricList.scrollTop=(index-1)*0.8*parseFloat(document.getElementsByTagName("html")[0].style.fontSize);
-                }
+    componentDidMount(){
+        timer=setInterval(()=>{
+            this.lyricDom.scrollTop=(currentLyricIndex-1)*20;
+        },300);
+    }
+    componentDidUpdate(){
+        const {currentMusic} = this.props;
+        const {oldSongId} =this.state;
+        const {mid} = currentMusic;
+        if(mid&&oldSongId!==mid){
+            API.getMusicLyric({
+                id:mid
+            }).then((response)=>{
+                this.setState({
+                    oldSongId:mid,
+                    lyricArray:response.split('\n').map((item)=>{
+                        const matchTimestamp = item.match(/\[.+\]/)[0];
+                        return {
+                            seconds:isNaN(utils.parseStrToSeconds(matchTimestamp))?0:utils.parseStrToSeconds(matchTimestamp),
+                            text:item.split('').filter((char)=>matchTimestamp.indexOf(char)<0)
+                        }
+                    })
+                });
             });
         }
     }
+    componentWillUnmount(){
+        timer&&clearInterval(timer);
+        timer=null;
+    }
     render() {
+        const {lyricArray} = this.state;
+        const {currentMusic,isPlay,changePlayState,currentSeconds,totalSeconds} = this.props;
+        const {title,author,pic} = currentMusic;
+        const newLyricIndex = lyricArray.findIndex((item)=>Math.abs(item.seconds-currentSeconds)<0.5);
+        currentLyricIndex = newLyricIndex >-1?newLyricIndex:currentLyricIndex;
         return (
             <div className={this.props.isControlShow ? 'qqMusic-control show' : 'qqMusic-control'}>
                 <div className="qqMusic-control-content">
                     <div className="qqMusic-control-top">
-                        <img className="icon-control-down" src={require("../../assets/imgs/icon-control-down.png")} onClick={this.props.consoleSwitch} />
-                        <p className="music-name">{this.props.currentMusic ? this.props.currentMusic.name : ''}</p>
+                        <img className="icon-control-down" src={require("@/assets/imgs/icon-control-down.png")} onClick={this.props.consoleSwitch} />
+                        <p className="music-name">{title}</p>
                     </div>
-                    <div className={this.props.isPlay ? "qqMusic-control-middle active" : "qqMusic-control-middle"}>
+                    <div className={isPlay ? "qqMusic-control-middle active" : "qqMusic-control-middle"}>
                         <Carousel autoplay={false}>
                             {
                                 [
                                     (
                                         <div key="1" className="carousel-one">
-                                            <p className="music-signer">{this.props.currentMusic.ar ? this.props.currentMusic.ar[0].name : ''}</p>
-                                            <img className="music-cover" src={this.props.currentMusic.al ? this.props.currentMusic.al.picUrl : ''} />
+                                            <p className="music-signer">{author}</p>
+                                            <img className="music-cover" src={pic} />
                                         </div>
 
                                     ),
                                     (
-                                        <div key="2" className="carousel-two">
-                                            <ul ref="lyricList"  className="lyricList">
+                                        <div key="2" className="carousel-two" style={{scrollMarginTop:currentLyricIndex*40}}>
+                                            <ul ref={(dom)=>this.lyricDom=dom}  className="lyricList">
                                                 {
-                                                    this.state.lyricArray.map((item, index) => {
+                                                    lyricArray.map((item, index) => {
                                                         return (
-                                                            <li className={this.state.activeIndex===index?"lyric active":"lyric"} key={index}>{item.text}</li>
+                                                            <li className={currentLyricIndex===index?"lyric active":"lyric"} key={index}>{item.text}</li>
                                                         )
                                                     })
                                                 }
@@ -124,17 +133,17 @@ class Control extends React.Component {
                     </div>
                     <div className="qqMusic-control-bottom">
                         <div className="qqMusic-control-progress">
-                            <span className="currentPlayTime">{util.formatSeconds(this.props.currentSeconds)}</span>
+                            <span className="currentPlayTime">{utils.formatSeconds(currentSeconds)}</span>
                             <div ref="progressParent" className="progress-wrapper">
-                                <div className="progress-inner" style={{ width: this.props.currentSeconds / this.props.totalSeconds * 4 + "rem" }}></div>
-                                <span className="progress-btn" onTouchMove={this.changePlayProgress.bind(this)} style={{ transform: `translateX(${this.props.currentSeconds / this.props.totalSeconds * 4 - 0.15}rem)` }}></span>
+                                <div className="progress-inner" style={{ width: currentSeconds / totalSeconds * 200 + "px" }}></div>
+                                <span className="progress-btn" onTouchMove={this.changePlayProgress.bind(this)} style={{ transform: `translateX(${currentSeconds / totalSeconds * 200 - 7}px)` }}></span>
                             </div>
-                            <span className="totalPlayTime">{util.formatSeconds(this.props.totalSeconds)}</span>
+                            <span className="totalPlayTime">{utils.formatSeconds(totalSeconds)}</span>
                         </div>
                         <div className="qqMusic-control-btns">
-                            <img className="prev" src={require("../../assets/imgs/icon-music-prev.png")} onClick={this.prevMusic.bind(this)} />
-                            <img className="status" src={this.props.isPlay ? require("../../assets/imgs/icon-control-pause.png") : require("../../assets/imgs/icon-control-play.png")} onClick={this.props.changePlayState} />
-                            <img className="next" src={require("../../assets/imgs/icon-music-next.png")} onClick={this.nextMusic.bind(this)} />
+                            <img className="prev" src={require("@/assets/imgs/icon-music-prev.png")} onClick={this.prevMusic} />
+                            <img className="status" src={isPlay ? require("@/assets/imgs/icon-control-pause.png") : require("@/assets/imgs/icon-control-play.png")} onClick={changePlayState} />
+                            <img className="next" src={require("@/assets/imgs/icon-music-next.png")} onClick={this.nextMusic} />
                         </div>
                     </div>
                 </div>

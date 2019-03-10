@@ -1,10 +1,11 @@
 import * as actionTypes from './actionTypes';
 //添加音乐
-export const addMusic=(data)=> async (dispatch,getState,{API})=>{
+export const addMusic=(data,callback)=> async (dispatch,getState,{API})=>{
   dispatch({
     type: actionTypes.ADD_MUSIC,
     payload:data
   });
+  callback();
 }
 //播放或暂停音乐
 export const changePlayStatus=(data)=> async (dispatch,getState,{API})=>{
@@ -14,7 +15,7 @@ export const changePlayStatus=(data)=> async (dispatch,getState,{API})=>{
   });
 }
 //更改音乐
-export const changeMusic=(data)=> async (dispatch,getState,{API})=>{
+export const changeCurrentMusic=(data)=> async (dispatch,getState,{API})=>{
   dispatch({
     type: actionTypes.CHANGE_CURRENT_MUSIC,
     payload:data
@@ -28,9 +29,9 @@ export const addAndChangeMusic=(data)=> async (dispatch,getState,{API})=>{
   });
 }
 //播放指定音乐
-export const playMusicByIndex=(data)=> async (dispatch,getState,{API})=>{
+export const playSpecificMusicByMid=(data)=> async (dispatch,getState,{API})=>{
   dispatch({
-    type: actionTypes.PLAY_MUSIC_BY_INDEX,
+    type: actionTypes.PLAY_SPECIFIC_MUSIC_BY_MID,
     payload:data
   });
 }
@@ -48,14 +49,14 @@ export const removeMusicFromList=(data)=> async (dispatch,getState,{API})=>{
   });
 }
 //添加歌单
-export const addSongList=(data)=> async (dispatch,getState,{API})=>{
+export const addSongMenu=(data)=> async (dispatch,getState,{API})=>{
   dispatch({
     type: actionTypes.ADD_SONG_LIST,
     payload:data
   });
 }
 //删除歌单
-export const removeSongList=(data)=> async (dispatch,getState,{API})=>{
+export const removeSongMenu=(data)=> async (dispatch,getState,{API})=>{
   dispatch({
     type: actionTypes.REMOVE_SONG_LIST,
     payload:data

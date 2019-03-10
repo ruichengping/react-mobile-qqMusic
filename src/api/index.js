@@ -5,9 +5,9 @@ import API_URL from './url';
 function mapUrlObjToFuncObj(urlObj){
   const API = {};
   keys(urlObj).forEach((key)=>{
-    const item = urlObj[key]
+    const item = urlObj[key]; 
     API[key]=function(params){
-      return http[item.method](item.url,params)
+      return http[item.method](item.url,params,item.option);
     }
   });
   return API;
@@ -16,8 +16,8 @@ function mapUrlObjToFuncObj(urlObj){
 function mapUrlObjToStrObj(urlObj){
   const Url = {};
   keys(urlObj).forEach((key)=>{
-    const item = urlObj[key]
-    Url[key]=item.url
+    const item = urlObj[key];
+    Url[key]=item.url;
   });
   return Url;
 }

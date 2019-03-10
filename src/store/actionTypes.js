@@ -6,8 +6,8 @@ export const ADD_MUSIC="ADD_MUSIC";
 export const CHANGE_CURRENT_MUSIC="CHANGE_CURRENT_MUSIC";
 //添加并更改当前音乐
 export const ADD_AND_CHANGE_MUSIC="ADD_AND_CHANGE_MUSIC";
-//根据下标播放指定歌曲
-export const PLAY_MUSIC_BY_INDEX="PLAY_MUSIC_BY_INDEX";
+//播放指定歌曲
+export const PLAY_SPECIFIC_MUSIC_BY_MID="PLAY_SPECIFIC_MUSIC_BY_MID";
 //清空播放列表
 export const CLEAR_MUSIC_LIST="CLEAR_MUSIC_LIST";
 //移除指定的音乐

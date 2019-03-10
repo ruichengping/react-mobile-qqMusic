@@ -29,17 +29,17 @@ class Slider extends React.Component {
         SwitchExample = createForm()(SwitchExample);
         const headerSliderList = [
             {
-                imgSrc: require('../../assets/imgs/icon-slider-message.png'),
+                imgSrc: require('@/assets/imgs/icon-slider-message.png'),
                 title: '升级为VIP',
                 text: '畅享音乐特权'
             },
             {
-                imgSrc: require('../../assets/imgs/icon-slider-skin.png'),
+                imgSrc: require('@/assets/imgs/icon-slider-skin.png'),
                 title: '个性化中心',
                 text: '默认主题'
             },
             {
-                imgSrc: require('../../assets/imgs/icon-slider-vip.png'),
+                imgSrc: require('@/assets/imgs/icon-slider-vip.png'),
                 title: '消息中心',
                 text: ''
             }

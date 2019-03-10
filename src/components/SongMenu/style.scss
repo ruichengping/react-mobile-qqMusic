@@ -12,26 +12,26 @@
                 color: #000;
             }
         }
-        .addSongList {
+        .addSongMenu {
             position: absolute;
             right: 40px;
             top: 11px;
             display: inline-block;
             height: 20px;
             width: 20px;
-            background: url('../../assets/imgs/icon-songList-add.png');
+            background: url('../../assets/imgs/icon-song-menu-add.png');
             background-size: 20px 20px;
         }
-        .songListManage {
+        .songMenuManage {
             position: absolute;
             right: 10px;
             top: 12px;
             display: inline-block;
             height: 20px;
             width: 20px;
-            background: url('../../assets/imgs/icon-song-list.png');
+            background: url('../../assets/imgs/icon-song-menu.png');
             background-size: 20px 20px;
-            .no-collected-songLst {
+            .no-collected-songMenu {
                 font-size: 15px;
                 text-align: center;
                 color: #cdcdcd;
@@ -41,8 +41,8 @@
     .qqMusic-myCenter-tabContent-one {
         background: #fff;
         min-height: 90px;
-        .songListArray {
-            .songListItem {
+        .songMenuArray {
+            .songMenuItem {
                 display: flex;
                 height: 60px;
                 margin-top: 1px;
@@ -80,23 +80,23 @@
                 }
             }
         }
-        .add-songList-wrapper {
+        .add-songMenu-wrapper {
             display: flex;
             height: 60px;
-            .add-songList-wrapper-left {
+            .add-songMenu-wrapper-left {
                 flex: 0 0 60px;
                 background: #e6e6e6;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                .add-songList-img {
+                .add-songMenu-img {
                     width: 30px;
                     height: 30px;
                 }
             }
-            .add-songList-wrapper-right {
+            .add-songMenu-wrapper-right {
                 flex: 1;
-                .add-songList-text {
+                .add-songMenu-text {
                     line-height: 60px;
                     text-align: left;
                     margin-left: 10px;

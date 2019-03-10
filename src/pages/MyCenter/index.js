@@ -1,10 +1,10 @@
 import React from 'react';
 import { Grid } from 'antd-mobile';
 import './style.scss';
-import auditionImg from '../../assets/imgs/icon-user-audition.png';
-import dredgeImg from '../../assets/imgs/icon-user-dredge.png';
-import rankImg from '../../assets/imgs/icon-user-rank.png';
-import Songlist from '@/components/Songlist';
+import auditionImg from '@/assets/imgs/icon-user-audition.png';
+import dredgeImg from '@/assets/imgs/icon-user-dredge.png';
+import rankImg from '@/assets/imgs/icon-user-rank.png';
+import SongMenu from '@/components/SongMenu';
 class MyCenter extends React.Component {
     constructor(props) {
         super(props)
@@ -92,7 +92,7 @@ class MyCenter extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <Songlist />
+                    <SongMenu />
                 </div>
             </div>
         )
