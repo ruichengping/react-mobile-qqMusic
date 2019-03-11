@@ -10,11 +10,8 @@ const CheckboxItem = Checkbox.CheckboxItem;
     (dispatch)=>bindActionCreators(actions,dispatch)
 )
 class SongMenuMangement extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={
-            selectedList:[]
-        }
+    state={
+        selectedList:[]
     }
     comeback=()=>{
         this.props.songMenuMangementShowSwitch();

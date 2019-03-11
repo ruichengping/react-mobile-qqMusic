@@ -1,10 +1,6 @@
 import React from 'react';
 import './style.scss';
 class Discovery extends React.Component {
-    constructor(props) {
-        super(props)
-
-    }
     render() {
         const discoveryListOne = [
             {

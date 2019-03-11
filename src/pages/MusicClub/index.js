@@ -2,9 +2,6 @@ import React from 'react';
 import { Carousel, Grid } from 'antd-mobile';
 import './style.scss';
 class MusicClub extends React.Component {
-    constructor(props) {
-        super(props)
-    }
     render() {
         const imgList = [
             "/static/images/carousel-cover-one.jpg",

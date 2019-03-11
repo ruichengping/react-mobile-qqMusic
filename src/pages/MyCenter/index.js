@@ -6,9 +6,6 @@ import dredgeImg from '@/assets/icon-user-dredge.png';
 import rankImg from '@/assets/icon-user-rank.png';
 import SongMenu from '@/components/SongMenu';
 class mycenter extends React.Component {
-    constructor(props) {
-        super(props)
-    }
     render() {
         const girdList = [
             {
