@@ -1,5 +1,5 @@
-.qqMusic-musicList-wrapper{
-    .qqMusic-musicList-bg{
+.qqmusic-music-list-wrapper{
+    .qqmusic-music-list-bg{
         position: fixed;
         top:0;
         right:0;
@@ -10,7 +10,7 @@
         z-index: -1;
         transition: opacity 0.14s linear;
     }
-    .qqMusic-musicList-content{
+    .qqmusic-music-list-content{
         display: flex;
         flex-direction: column;
         position: fixed;
@@ -22,7 +22,7 @@
         background-color:rgba(31,37,47,0.9);
         transform: translateY(100%);
         transition:  transform 0.14s linear;  
-        .qqMusic-musicList-top{
+        .top{
             position: relative;
             flex:0 0 50px;
             .title{
@@ -32,18 +32,18 @@
                 line-height: 50px;
                 padding-left: 15px;
             }
-            .clearList{
+            .clear-list{
                 position: absolute;
                 top: 15px;
                 right: 25px;
                 width: 20px;
             }
         }
-        .qqMusic-musicList-middle{
+        .middle{
             flex: 1;
             overflow: auto;
-            .musicList{
-                .musicItem{
+            .music-list{
+                .music-item{
                     position: relative;
                     height: 40px;
                     line-height: 40px;
@@ -62,7 +62,7 @@
                 }
             }
         }
-        .qqMusic-musicList-bottom{
+        .bottom{
             color: #fff;
             font-size: 16px;
             text-align: center;
@@ -77,11 +77,11 @@
         bottom: 0;
         left:0;
         z-index: 3;
-        .qqMusic-musicList-bg{
+        .qqmusic-music-list-bg{
             opacity: 1;
             z-index: 1;
         }
-        .qqMusic-musicList-content{
+        .qqmusic-music-list-content{
             transform: translateY(0);  
         }
     }

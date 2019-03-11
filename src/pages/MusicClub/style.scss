@@ -1,4 +1,4 @@
-.qqMusic-home-body {
+.qqmusic-home-body {
     background: #fff;
     .slideshow-list {
         min-height: 154px;
@@ -9,27 +9,27 @@
             width: 100%;
         }
     }
-    .qqMusic-grid-list {
+    .qqmusic-grid-list {
         margin-top: 16px;
         .am-flexbox {
             height: 60px !important;
-            .qqMusic-grid-item {
+            .qqmusic-grid-item {
                 display: flex;
                 align-items: center;
                 padding-left: 15px;
                 height: 60px;
-                .qqMusic-grid-item-icon {
+                .qqmusic-grid-item-icon {
                     width: 24px;
                     height: 24px;
                 }
-                .qqMusic-grid-item-text {
+                .qqmusic-grid-item-text {
                     padding-left: 10px;
                     font-size: 15px;
                 }
             }
         }
     }
-    .qqMusic-songMenu-recommend {
+    .qqmusic-songMenu-recommend {
         margin: 15px 0;
         .title {
             position: relative;
@@ -47,12 +47,12 @@
                 background-size: 26px 26px;
             }
         }
-        .qqMusic-recommend-list {
+        .qqmusic-recommend-list {
             margin-top: 15px;
             .am-flexbox {
                 height: 165px !important;
-                .qqMusic-recommend-item {
-                    .qqMusic-recommend-item-image-wrapper {
+                .qqmusic-recommend-item {
+                    .qqmusic-recommend-item-image-wrapper {
                         position: relative;
                         width: 100%;
                         height: 125px;

@@ -4,31 +4,31 @@ import { Popover, Toast } from 'antd-mobile';
 import './style.scss';
 import Slider from '@/components/Slider';
 import Search from '@/components/Search';
+const Item = Popover.Item;
 class Header extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            docked: false,
-            search: false,
-            popover:false
-        }
+    state = {
+        docked: false,
+        search: false,
+        popover:false
     }
-    openChange() {
+    openChange=()=>{
+        const {docked} = this.state;
         this.setState({
-            docked: !this.state.docked
+            docked: !docked
         });
     }
-    searchChange() {
+    searchChange=()=>{ 
+        const {search} = this.state;
         this.setState({
-            search: !this.state.search
+            search: !search
         });
     }
-    popoverChange(visible){
+    popoverChange=(visible)=>{
         this.setState({
             popover:visible
         });
     }
-    popoverSelect(options){
+    popoverSelect=(options)=>{
         if(options.key==="1"){
             Toast.offline('听歌识曲功能未开放', 1);
         }else if(options.key==="2"){
@@ -38,36 +38,36 @@ class Header extends React.Component {
             popover:false
         });
     }
-    render() {
-        const Item = Popover.Item;
+    render(){
+        const {popover,docked,search} = this.state;
+        const {className} = this.props;
         return (
-            <div className={this.props.className}>
-                <div className="qqMusic-header">
-                    <div className="qqMusic-header-top">
-                        <i className="qqMusic-header-icon-left" onClick={this.openChange.bind(this)}></i>
-                        <NavLink className="qqMusic-tab" activeClassName="qqMusic-tab-active" to="/myCenter" replace>我的</NavLink>
-                        <NavLink className="qqMusic-tab" activeClassName="qqMusic-tab-active" to="/musicClub" replace>音乐馆</NavLink>
-                        <NavLink className="qqMusic-tab" activeClassName="qqMusic-tab-active" to="/discovery" replace>发现</NavLink>
-                        <i className="qqMusic-header-icon-right" onClick={this.popoverChange.bind(this,true)}></i>
+            <div className={className}>
+                <div className="qqmusic-header">
+                    <div className="top">
+                        <i className="icon-left" onClick={this.openChange}></i>
+                        <NavLink className="qqmusic-tab" activeClassName="qqmusic-tab-active" to="/myCenter" replace>我的</NavLink>
+                        <NavLink className="qqmusic-tab" activeClassName="qqmusic-tab-active" to="/musicClub" replace>音乐馆</NavLink>
+                        <NavLink className="qqmusic-tab" activeClassName="qqmusic-tab-active" to="/discovery" replace>发现</NavLink>
                         <Popover mask style={{left:0,right:0}}
-                            visible={this.state.popover}
+                            visible={popover}
                             overlay={[
-                                (<Item key="1" value="scan"><img className="popoverItem-img" src={require('@/assets/icon-popover-discriminate.png')}/><font className="popoverItem-text">听歌识曲</font></Item>),
-                                (<Item key="2" value="sweep"><img className="popoverItem-img" src={require('@/assets/icon-popover-sweep.png')}/><font className="popoverItem-text">扫一扫</font></Item>),
+                                (<Item key="1" value="scan"><img className="popover-item-img" src={require('@/assets/icon-popover-discriminate.png')}/><font className="popover-item-text">听歌识曲</font></Item>),
+                                (<Item key="2" value="sweep"><img className="popover-item-img" src={require('@/assets/icon-popover-sweep.png')}/><font className="popover-item-text">扫一扫</font></Item>),
                             ]}
-                            onVisibleChange={this.popoverChange.bind(this)}
-                            onSelect={this.popoverSelect.bind(this)}
-                        ><i className="qqMusic-header-icon-right"></i></Popover>
+                            onVisibleChange={this.popoverChange}
+                            onSelect={this.popoverSelect}
+                        ><i className="icon-right" onClick={this.popoverChange.bind(this,true)}></i></Popover>
                     </div>
-                    <div className="qqMusic-header-bottom" onTouchStart={this.searchChange.bind(this)}>
-                        <div className="qqMusic-header-search">
-                            <i className="qqMusic-search-icon"></i>
-                            <span className="qqMusic-search-text">搜索</span>
+                    <div className="bottom" onTouchStart={this.searchChange}>
+                        <div className="search">
+                            <i className="search-icon"></i>
+                            <span className="text">搜索</span>
                         </div>
                     </div>
                 </div>
-                <Slider docked={this.state.docked} openChange={this.openChange.bind(this)}></Slider>
-                <Search search={this.state.search} searchChange={this.searchChange.bind(this)}></Search>
+                <Slider docked={docked} openChange={this.openChange}></Slider>
+                <Search search={search} searchChange={this.searchChange}></Search>
             </div>
         );
     }

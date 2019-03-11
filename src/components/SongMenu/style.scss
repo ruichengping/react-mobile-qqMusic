@@ -1,35 +1,35 @@
-.qqMusic-myCenter-bottom {
+.qqmusic-mycenter-bottom {
     text-align: center;
     margin-top: 5px;
     background: #fff;
     line-height: 40px;
     color: #8a8a8a;
-    .qqMusic-myCenter-tabs {
+    .qqmusic-mycenter-tabs {
         position: relative;
-        .qqMusic-myCenter-tab {
+        .qqmusic-mycenter-tab {
             padding: 0 10px;
             &.active {
                 color: #000;
             }
         }
-        .addSongMenu {
+        .add-songmenu {
             position: absolute;
             right: 40px;
             top: 11px;
             display: inline-block;
             height: 20px;
             width: 20px;
-            background: url('../../assets/icon-song-menu-add.png');
+            background: url('../../assets/icon-songmenu-add.png');
             background-size: 20px 20px;
         }
-        .songMenuManage {
+        .songmenu-manage {
             position: absolute;
             right: 10px;
             top: 12px;
             display: inline-block;
             height: 20px;
             width: 20px;
-            background: url('../../assets/icon-song-menu.png');
+            background: url('../../assets/icon-songmenu.png');
             background-size: 20px 20px;
             .no-collected-songMenu {
                 font-size: 15px;
@@ -38,11 +38,11 @@
             }
         }
     }
-    .qqMusic-myCenter-tabContent-one {
+    .qqmusic-mycenter-tab-content-one {
         background: #fff;
         min-height: 90px;
-        .songMenuArray {
-            .songMenuItem {
+        .songmenu-array {
+            .songmenu-item {
                 display: flex;
                 height: 60px;
                 margin-top: 1px;
@@ -80,23 +80,23 @@
                 }
             }
         }
-        .add-songMenu-wrapper {
+        .add-songmenu-wrapper {
             display: flex;
             height: 60px;
-            .add-songMenu-wrapper-left {
+            .add-songmenu-wrapper-left {
                 flex: 0 0 60px;
                 background: #e6e6e6;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                .add-songMenu-img {
+                .add-songmenu-img {
                     width: 30px;
                     height: 30px;
                 }
             }
-            .add-songMenu-wrapper-right {
+            .add-songmenu-wrapper-right {
                 flex: 1;
-                .add-songMenu-text {
+                .add-songmenu-text {
                     line-height: 60px;
                     text-align: left;
                     margin-left: 10px;
@@ -104,7 +104,7 @@
             }
         }
     }
-    .qqMusic-myCenter-tabContent-two {
+    .qqmusic-mycenter-tab-content-two {
         background: #fff;
         min-height: 60px;
     }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import addImg from '@/assets/icon-song-menu-add.png';
+import classnames from 'classnames';
+import addImg from '@/assets/icon-songmenu-add.png';
 import NewSongMenu from '@/components/NewSongMenu';
 import SongMenuMangement from  '@/components/SongMenuMangement';
 import * as actions from '@/store/actions';
@@ -11,22 +12,21 @@ import './style.scss';
     (dispatch)=>bindActionCreators(actions,dispatch)
 )
 class SongMenu extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state={
-            isNewSongMenuShow:false,
-            isSongMenuMangementShow:false,
-            activeTab:1
-        }
+    state={
+        isNewSongMenuShow:false,
+        isSongMenuMangementShow:false,
+        activeTab:1
     }
     newSongMenuShowSwitch=()=>{
+        const {isNewSongMenuShow} = this.state;
         this.setState({
-            isNewSongMenuShow:!this.state.isNewSongMenuShow
+            isNewSongMenuShow:!isNewSongMenuShow
         });
     }
     songMenuMangementShowSwitch=()=>{
+        const {isSongMenuMangementShow} = this.state;
         this.setState({
-            isSongMenuMangementShow:!this.state.isSongMenuMangementShow
+            isSongMenuMangementShow:!isSongMenuMangementShow
         });
     }
     tabChange(tabIndex){
@@ -38,22 +38,22 @@ class SongMenu extends React.Component {
         const {activeTab,isNewSongMenuShow,isSongMenuMangementShow} = this.state;
         const {songMenuArray} = this.props;
         return (
-            <div className="qqMusic-myCenter-bottom">
-                <div className="qqMusic-myCenter-tabs">
-                    <span className={activeTab===1?'qqMusic-myCenter-tab active':'qqMusic-myCenter-tab'} onClick={this.tabChange.bind(this,1)} >自建歌单</span>
+            <div className="qqmusic-mycenter-bottom">
+                <div className="qqmusic-mycenter-tabs">
+                    <span className={classnames('qqmusic-mycenter-tab',activeTab===1?'active':'')} onClick={this.tabChange.bind(this,1)} >自建歌单</span>
                     |
-                    <span className={activeTab===2?'qqMusic-myCenter-tab active':'qqMusic-myCenter-tab'} onClick={this.tabChange.bind(this,2)}>收藏歌单</span>
-                    <i style={activeTab===2?{display:'none'}:{}} className="addSongMenu" onClick={this.newSongMenuShowSwitch.bind(this)}/>
-                    <i  className="songMenuManage" onClick={this.songMenuMangementShowSwitch}></i>
+                    <span className={classnames('qqmusic-mycenter-tab',activeTab===2?'active':'')} onClick={this.tabChange.bind(this,2)}>收藏歌单</span>
+                    <i style={activeTab===2?{display:'none'}:{}} className="add-songmenu" onClick={this.newSongMenuShowSwitch}/>
+                    <i  className="songmenu-manage" onClick={this.songMenuMangementShowSwitch}></i>
                 </div>
-                <div className="qqMusic-myCenter-tabContent-one" style={activeTab!==1?{display:'none'}:{}}>
-                    <ul className="songMenuArray" style={songMenuArray.length>0?{display:'block'}:{display:'none'}}>
+                <div className="qqmusic-mycenter-tab-content-one" style={activeTab!==1?{display:'none'}:{}}>
+                    <ul className="songmenu-array" style={songMenuArray.length>0?{display:'block'}:{display:'none'}}>
                         {
                             songMenuArray.map((item,index)=>{
                                 return (
-                                    <li className="songMenuItem" key={index}>
+                                    <li className="songmenu-item" key={index}>
                                         <div className="left">
-                                            <img className="logo" src={require("@/assets/icon-qqMusic-logo.png")}/>
+                                            <img className="logo" src={require("@/assets/icon-qqmusic-logo.png")}/>
                                         </div>
                                         <div className="right">
                                             <p className="name">{item}</p>
@@ -65,17 +65,17 @@ class SongMenu extends React.Component {
                             })
                         }
                     </ul>
-                    <div className="add-songMenu-wrapper" style={{display:songMenuArray.length>0?'none':'flex'}} onClick={this.newSongMenuShowSwitch}>
-                        <div className="add-songMenu-wrapper-left">
-                            <img className="add-songMenu-img" src={addImg}/>
+                    <div className="add-songmenu-wrapper" style={{display:songMenuArray.length>0?'none':'flex'}} onClick={this.newSongMenuShowSwitch}>
+                        <div className="add-songmenu-wrapper-left">
+                            <img className="add-songmenu-img" src={addImg}/>
                         </div>
-                        <div className="add-songMenu-wrapper-right">
-                            <p className="add-songMenu-text border-bottom">新建歌单</p>
+                        <div className="add-songmenu-wrapper-right">
+                            <p className="add-songmenu-text border-bottom">新建歌单</p>
                         </div>
                     </div>
                 </div>
-                <div className="qqMusic-myCenter-tabContent-two" style={activeTab!==2?{display:'none'}:{}}>
-                    <p className="no-collected-songMenu">没有收藏的歌单</p>
+                <div className="qqmusic-mycenter-tab-content-two" style={activeTab!==2?{display:'none'}:{}}>
+                    <p className="no-collected-songmenu">没有收藏的歌单</p>
                 </div>
                 <NewSongMenu isNewSongMenuShow={isNewSongMenuShow} newSongMenuShowSwitch={this.newSongMenuShowSwitch} ></NewSongMenu>
                 <SongMenuMangement isSongMenuMangementShow={isSongMenuMangementShow} songMenuMangementShowSwitch={this.songMenuMangementShowSwitch}></SongMenuMangement>

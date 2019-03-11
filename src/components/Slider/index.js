@@ -1,23 +1,22 @@
 import React from 'react';
+import classnames from 'classnames';
 import {Switch } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './style.scss';
 class Slider extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state={
-            wifi:false,
-            timingClose:true
-        }
+    state={
+        wifi:false,
+        timingClose:true
     }
     switchChange(type,checked){
         console.log(type+":"+checked);
     }
     render() {
+        const {docked} = this.props;
         let SwitchExample = (props) => {
             const { getFieldProps } = props.form;
             return (
-                <Switch className='qqMusic-slider-body-item-extra' platform='ios' type={props.type}
+                <Switch className='qqmusic-slider-body-item-extra' platform='ios' type={props.type}
                 {...getFieldProps('Switch',{
                   initialValue: false,
                   valuePropName: 'checked',
@@ -88,43 +87,43 @@ class Slider extends React.Component {
         ];
         return (
             <div>
-                <div className={this.props.docked ? 'qqMusic-slider open' : 'qqMusic-slider'}>
-                    <div className="qqMusic-slider-header border-bottom">
+                <div className={classnames('qqmusic-slider',docked ? 'open' : '')}>
+                    <div className="qqmusic-slider-header border-bottom">
                         {
                             headerSliderList.map(function (item, index) {
                                 return (
-                                    <div className="qqMusic-slider-header-Item" key={index}>
-                                        <img className="qqMusic-slider-header-Item-img" src={item.imgSrc} />
-                                        <h4 className="qqMusic-slider-header-Item-title">{item.title}</h4>
-                                        <p className="qqMusic-slider-header-Item-text">{item.text}</p>
+                                    <div className="qqmusic-slider-header-Item" key={index}>
+                                        <img className="qqmusic-slider-header-Item-img" src={item.imgSrc} />
+                                        <h4 className="qqmusic-slider-header-Item-title">{item.title}</h4>
+                                        <p className="qqmusic-slider-header-Item-text">{item.text}</p>
                                     </div>
                                 )
                             })
                         }
                     </div>
-                    <ul className="qqMusic-slider-body">
+                    <ul className="qqmusic-slider-body">
                         {
                             bodySliderList.map(function (item, index) {
                                 return (
-                                    <li className='qqMusic-slider-body-item' key={index}>
-                                        <font className='qqMusic-slider-body-item-text'>{item.text}</font>{item.extra}
+                                    <li className='qqmusic-slider-body-item' key={index}>
+                                        <font className='qqmusic-slider-body-item-text'>{item.text}</font>{item.extra}
                                     </li>
                                 )
                             })
                         }
                     </ul>
-                    <div className="qqMusic-slider-footer border-top">
-                        <div className="qqMusic-slider-footer-left">
-                            <i className="qqMusic-slider-footer-icon"></i>
-                            <span className="qqMusic-slider-footer-text">设置</span>
+                    <div className="qqmusic-slider-footer border-top">
+                        <div className="qqmusic-slider-footer-left">
+                            <i className="qqmusic-slider-footer-icon"></i>
+                            <span className="qqmusic-slider-footer-text">设置</span>
                         </div>
-                        <div className="qqMusic-slider-footer-right">
-                            <i className="qqMusic-slider-footer-icon"></i>
-                            <span className="qqMusic-slider-footer-text">退出登录/关闭</span>
+                        <div className="qqmusic-slider-footer-right">
+                            <i className="qqmusic-slider-footer-icon"></i>
+                            <span className="qqmusic-slider-footer-text">退出登录/关闭</span>
                         </div>
                     </div>
                 </div>
-                <div className={this.props.docked ? 'qqMusic-slider-bg open' : 'qqMusic-slider-bg'} onTouchStart={this.props.openChange}></div>
+                <div className={classnames('qqmusic-slider-bg',docked ? 'open' : '')} onTouchStart={this.props.openChange}></div>
             </div>
         )
     }

@@ -8,22 +8,22 @@ $headerSearchBackgroundColor:#2AAA73;
     justify-content: center;
 }
 
-.qqMusic-header {
+.qqmusic-header {
     background-color: $headerMainBackgroundColor;
-    .qqMusic-header-top {
+    .top {
         position: relative;
         @include flexCenter();
         height: 40px;
-        .qqMusic-tab {
+        .qqmusic-tab {
             font-size: 20px;
             color: $headerFontColor;
             padding: 0 10px;
             font-weight: 300;
         }
-        .qqMusic-tab-active {
+        .qqmusic-tab-active {
             font-weight: 700;
         }
-        .qqMusic-header-icon-left {
+        .icon-left {
             position: absolute;
             left: 12px;
             top: 3px;
@@ -32,7 +32,7 @@ $headerSearchBackgroundColor:#2AAA73;
             background: url('../../assets/icon-menu-list.png');
             background-size: 28px 35px;
         }
-        .qqMusic-header-icon-right {
+        .icon-right {
             position: absolute;
             right: 12px;
             top: 6px;
@@ -42,23 +42,23 @@ $headerSearchBackgroundColor:#2AAA73;
             background-size: 28px 28px;
         }
     }
-    .qqMusic-header-bottom {
+    .bottom {
         padding: 7px 10px;
-        .qqMusic-header-search {
+        .search {
             @include flexCenter();            
             height: 30px;
             width: 100%;
             background-color: $headerSearchBackgroundColor;
             border-radius: 5px;
         }
-        .qqMusic-search-text {
+        .text {
             margin-left: 5px;
             font-size: 17px;
             font-style: normal;
             color: $headerFontColor;
             font-weight: 300;            
         }
-        .qqMusic-search-icon {
+        .search-icon {
             display: inline-block;
             background: url('../../assets/icon-search-default.png');
             height: 18px;
@@ -67,11 +67,11 @@ $headerSearchBackgroundColor:#2AAA73;
         }
     }
 }
-.popoverItem-img{
+.popover-item-img{
     width: 20px;
     height: 20px;
 }
-.popoverItem-text{
+.popover-item-text{
     padding-left: 10px;
     font-size: 17px;
     vertical-align: 4px;

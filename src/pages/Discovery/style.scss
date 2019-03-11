@@ -1,7 +1,7 @@
-.qqMusic-discovery-item {
+.qqmusic-discovery-item {
     display: flex;
     padding: 15px 0 0 15px;
-    .qqMusic-discovery-item-left {
+    .qqmusic-discovery-item-left {
         flex: 1;
         padding-right: 10px;
         overflow: hidden;
@@ -28,7 +28,7 @@
             color: #6F6F6F;
         }
     }
-    .qqMusic-discovery-item-right {
+    .qqmusic-discovery-item-right {
         flex: 0 0 110px;
         height: 110px;
         overflow: hidden;
@@ -37,7 +37,7 @@
         }
     }
 }
-.qqMusic-discovery-carousel{
+.qqmusic-discovery-carousel{
     margin-top: 15px;
     .top{
         .tag{

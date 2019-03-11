@@ -75,18 +75,18 @@ class Discovery extends React.Component {
             }
         ];
         return (
-            <div className="qqMusic-home-body">
-                <ul className="qqMusic-discovery-list">
+            <div className="qqmusic-home-body">
+                <ul className="qqmusic-discovery-list">
                     {
                         discoveryListOne.map(function (item,index) {
                             return (
-                                <li className="qqMusic-discovery-item" key={index}>
-                                    <div className="qqMusic-discovery-item-left">
+                                <li className="qqmusic-discovery-item" key={index}>
+                                    <div className="qqmusic-discovery-item-left">
                                         <p className="text">{item.text}</p>
                                         <p className="music"><img className="music-image" src={require('@/assets/icon-music-black.png')} />{item.music}</p>
                                         <p className="extra">{item.author} 阅读 {item.read}</p>
                                     </div>
-                                    <div className="qqMusic-discovery-item-right">
+                                    <div className="qqmusic-discovery-item-right">
                                         <img className="image" src={item.image} />
                                     </div>
                                 </li>
@@ -94,7 +94,7 @@ class Discovery extends React.Component {
                         })
                     }
                 </ul>
-                <div className="qqMusic-discovery-carousel">
+                <div className="qqmusic-discovery-carousel">
                     <div className="top"><span className="tag">发现·话题</span></div>
                     <div className="bottom">
                         <ul className="list">
@@ -114,17 +114,17 @@ class Discovery extends React.Component {
                         </ul>
                     </div>
                 </div>
-                <ul className="qqMusic-discovery-list" style={{marginBottom:'0.3rem'}}>
+                <ul className="qqmusic-discovery-list" style={{marginBottom:'0.3rem'}}>
                     {
                         discoveryListTwo.map(function (item,index) {
                             return (
-                                <li className="qqMusic-discovery-item" key={index}>
-                                    <div className="qqMusic-discovery-item-left">
+                                <li className="qqmusic-discovery-item" key={index}>
+                                    <div className="qqmusic-discovery-item-left">
                                         <p className="text">{item.text}</p>
                                         <p className="music"><img className="music-image" src={require('@/assets/icon-music-black.png')} />{item.music}</p>
                                         <p className="extra">{item.author} 阅读 {item.read}</p>
                                     </div>
-                                    <div className="qqMusic-discovery-item-right">
+                                    <div className="qqmusic-discovery-item-right">
                                         <img className="image" src={item.image} />
                                     </div>
                                 </li>

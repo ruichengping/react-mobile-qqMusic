@@ -6,8 +6,8 @@ class MainLayout extends React.Component {
     render() {
         const {children} = this.props;
         return (
-            <div className="qqMusic-home">
-                <Header className="qqMusic-home-header" />                                                             
+            <div className="qqmusic-home">
+                <Header className="qqmusic-home-header" />                                                             
                     {children}
                 <Bandstand/>
             </div>

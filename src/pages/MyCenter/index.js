@@ -5,7 +5,7 @@ import auditionImg from '@/assets/icon-user-audition.png';
 import dredgeImg from '@/assets/icon-user-dredge.png';
 import rankImg from '@/assets/icon-user-rank.png';
 import SongMenu from '@/components/SongMenu';
-class MyCenter extends React.Component {
+class mycenter extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -37,56 +37,56 @@ class MyCenter extends React.Component {
             }
         ]
         return (
-            <div className="qqMusic-home-body">
-                <div className="qqMusic-myCenter-top">
-                    <div className="qqMusic-myCenter-user">
-                        <div className="qqMusic-myCenter-user-module">
-                            <div className="qqMusic-myCenter-user-audition">
+            <div className="qqmusic-home-body">
+                <div className="qqmusic-mycenter-top">
+                    <div className="qqmusic-mycenter-user">
+                        <div className="qqmusic-mycenter-user-module">
+                            <div className="qqmusic-mycenter-user-audition">
                                 <img className="icon" src={auditionImg} />
                                 <span className="text">0分钟</span>
                             </div>
-                            <img className="qqMusic-myCenter-user-photo" src="https://wx.qlogo.cn/mmopen/LHU7CmulIEWaZgu4PRWXOScvVCC5npYoPvBFVLMXldibtQ1BRVMJy4RaHXliabaqJSazgI8QTuF9g2X7l9iafOvfX27vcHl2ksA/0" />
-                            <div className="qqMusic-myCenter-user-dredge">
+                            <img className="qqmusic-mycenter-user-photo" src="https://wx.qlogo.cn/mmopen/LHU7CmulIEWaZgu4PRWXOScvVCC5npYoPvBFVLMXldibtQ1BRVMJy4RaHXliabaqJSazgI8QTuF9g2X7l9iafOvfX27vcHl2ksA/0" />
+                            <div className="qqmusic-mycenter-user-dredge">
                                 <img className="icon" src={dredgeImg} />
                                 <span className="text">开通</span>
                             </div>
                         </div>
-                        <div className="qqMusic-myCenter-user-module">
+                        <div className="qqmusic-mycenter-user-module">
                             <span className="userName">椰子油</span>
                         </div>
-                        <div className="qqMusic-myCenter-user-module">
-                            <img className="qqMusic-myCenter-user-rank" src={rankImg} />
+                        <div className="qqmusic-mycenter-user-module">
+                            <img className="qqmusic-mycenter-user-rank" src={rankImg} />
                         </div>
                     </div>
                     <Grid
-                        className="qqMusic-myCenter-grid"
+                        className="qqmusic-mycenter-grid"
                         data={girdList}
                         columnNum={3}
                         hasLine={false}
                         renderItem={
                             item => (
-                                <div className="qqMusic-myCenter-grid-item">
+                                <div className="qqmusic-mycenter-grid-item">
                                     <img className="image" src={item.imgSrc} />
                                     <p className="text">{item.text}</p>
                                 </div>
                             )
                         }
                     />
-                    <div className="qqMusic-myCenter-middle">
-                        <div className="qqMusic-myCenter-station">
-                            <div className="qqMusic-myCenter-station-left">
+                    <div className="qqmusic-mycenter-middle">
+                        <div className="qqmusic-mycenter-station">
+                            <div className="qqmusic-mycenter-station-left">
                                 <img className="station-image" src="/static/images/broadcasting-station-specific.jpeg" />
                             </div>
-                            <div className="qqMusic-myCenter-station-right">
+                            <div className="qqmusic-mycenter-station-right">
                                 <h4 className="station-title">个性电台</h4>
                                 <p className="station-text">偶遇身边好音乐</p>
                             </div>
                         </div>
-                        <div className="qqMusic-myCenter-station">
-                            <div className="qqMusic-myCenter-station-left">
+                        <div className="qqmusic-mycenter-station">
+                            <div className="qqmusic-mycenter-station-left">
                                 <img className="station-image" src="/static/images/broadcasting-station-run.jpeg" />
                             </div>
-                            <div className="qqMusic-myCenter-station-right border-top">
+                            <div className="qqmusic-mycenter-station-right border-top">
                                 <h4 className="station-title">跑步电台</h4>
                                 <p className="station-text">QQ音乐 x Nike，让运动乐在其中</p>
                             </div>
@@ -98,4 +98,4 @@ class MyCenter extends React.Component {
         )
     }
 }
-export default MyCenter;
+export default mycenter;

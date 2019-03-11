@@ -45,38 +45,38 @@ class MusicClub extends React.Component {
 
         const songMenuArray = [
             {
-                image: '/static/images/song-menu-one.jpeg',
+                image: '/static/images/songmenu-one.jpeg',
                 text: '浮游时光 | 品一杯慢情调的韩系布鲁斯',
                 amount: '15.7万'
             },
             {
-                image: '/static/images/song-menu-two.jpeg',
+                image: '/static/images/songmenu-two.jpeg',
                 text: '达人周末 | 那些能激起中二病的动漫燃曲',
                 amount: '65.7万'
             },
             {
-                image: '/static/images/song-menu-three.jpeg',
+                image: '/static/images/songmenu-three.jpeg',
                 text: '99位唱见歌手 ：一人一首代表曲',
                 amount: '272.2万'
             },
             {
-                image: '/static/images/song-menu-four.jpeg',
+                image: '/static/images/songmenu-four.jpeg',
                 text: '独立民谣 | 从大不列颠群岛吹来怡然清风',
                 amount: '39.5万'
             },
             {
-                image: '/static/images/song-menu-five.jpeg',
+                image: '/static/images/songmenu-five.jpeg',
                 text: '《王者荣耀》风骚走位必备BGM',
                 amount: '1319.1万'
             },
             {
-                image: '/static/images/song-menu-six.jpeg',
+                image: '/static/images/songmenu-six.jpeg',
                 text: '你一定听过却死活叫不上歌名的灵魂级配乐',
                 amount: '162.5万'
             }
         ]
         return (
-            <div className="qqMusic-home-body">
+            <div className="qqmusic-home-body">
                 <Carousel
                     className="slideshow-list"
                     infinite
@@ -93,31 +93,31 @@ class MusicClub extends React.Component {
                     }
                 </Carousel>
                 <Grid
-                    className="qqMusic-grid-list"
+                    className="qqmusic-grid-list"
                     data={menuList}
                     columnNum={3}
                     hasLine={false}
                     renderItem={
                         dataItem => (
-                            <div className="qqMusic-grid-item">
-                                <img className="qqMusic-grid-item-icon" src={dataItem.icon} />
-                                <span className="qqMusic-grid-item-text" >{dataItem.text}</span>
+                            <div className="qqmusic-grid-item">
+                                <img className="qqmusic-grid-item-icon" src={dataItem.icon} />
+                                <span className="qqmusic-grid-item-text" >{dataItem.text}</span>
                             </div>
                         )
                     }
                 />
-                <div className="qqMusic-songMenu-recommend">
+                <div className="qqmusic-songMenu-recommend">
                     <p className="title">歌单推荐<i className="icon-circle-right"></i></p>
                     <Grid
-                        className="qqMusic-recommend-list"
+                        className="qqmusic-recommend-list"
                         data={songMenuArray}
                         columnNum={3}
                         hasLine={false}
                         renderItem={
                             (dataItem, index) => {
                                 return (
-                                    <div className="qqMusic-recommend-item" style={{marginLeft:index%3===1?'0.06rem':'',marginRight:index%3===1?'0.06rem':''}}>
-                                        <div className="qqMusic-recommend-item-image-wrapper">
+                                    <div className="qqmusic-recommend-item" style={{marginLeft:index%3===1?'0.06rem':'',marginRight:index%3===1?'0.06rem':''}}>
+                                        <div className="qqmusic-recommend-item-image-wrapper">
                                             <img className="image" src={dataItem.image} />
                                             <span className="amount">{dataItem.amount}</span>
                                             <img className="link-to-musicList-detail" src={require('@/assets/icon-music-link.png')}/>

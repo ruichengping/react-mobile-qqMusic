@@ -1,4 +1,4 @@
-.qqMusic-songMenu-mangement{
+.qqmusic-songmenu-mangement{
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -13,7 +13,7 @@
     &.show{
         transform: translateX(0);
     }
-    .songMenuMangement-header{
+    .songmenu-mangement-header{
         background: #31c37c;
         height:0 0 40px;
         position: relative;
@@ -27,11 +27,11 @@
             color: #fff;
         }
     }
-    .songMenuMangement-body{
+    .songmenu-mangement-body{
         flex: 1;
         overflow: auto;
-        .songMenuArray{
-            .songMenuItem{
+        .songmenu-array{
+            .songmenu-item{
                 display: flex;
                 height: 60px; 
                 margin-top: 4px;  
@@ -77,7 +77,7 @@
             }   
         }
     }
-    .songMenuMangement-footer{
+    .songmenu-mangement-footer{
         flex: 0 0 75px;
         background: #fff;
         text-align: center;

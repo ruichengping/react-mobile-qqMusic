@@ -43,22 +43,22 @@ class SongMenuMangement extends React.Component{
     render(){
         const {songMenuArray,isSongMenuMangementShow} = this.props;
         return (
-            <div className={isSongMenuMangementShow?"qqMusic-songMenu-mangement show":"qqMusic-songMenu-mangement"}>
-                <div className="songMenuMangement-header">
+            <div className={isSongMenuMangementShow?"qqmusic-songmenu-mangement show":"qqmusic-songmenu-mangement"}>
+                <div className="songmenu-mangement-header">
                     <img className="icon-arrow-left" src={require("@/assets/icon-arrow-left.png")} onClick={this.comeback.bind(this)} />
                     <p className="title">管理自建歌单</p>
                 </div>
-                <div className="songMenuMangement-body">
-                    <ul className="songMenuArray">
+                <div className="songmenu-mangement-body">
+                    <ul className="songmenu-array">
                         {
                             songMenuArray.map((item,index)=>{
                                 return (
-                                    <li className="songMenuItem" key={index}>
+                                    <li className="songmenu-item" key={index}>
                                         <div className="left">
                                         <CheckboxItem className="checkBox"  onChange={this.changeSelectedList.bind(this,item)}></CheckboxItem>
                                         </div>
                                         <div className="middle border-bottom">
-                                            <img className="logo" src={require("@/assets/icon-qqMusic-logo.png")}/>
+                                            <img className="logo" src={require("@/assets/icon-qqmusic-logo.png")}/>
                                         </div>
                                         <div className="right border-bottom">
                                             <p className="name">{item}</p>
@@ -70,9 +70,9 @@ class SongMenuMangement extends React.Component{
                         }
                     </ul>
                 </div>
-                <div className="songMenuMangement-footer">
+                <div className="songmenu-mangement-footer">
                     <div className="delete-wrapper">
-                        <img className="delete" onClick={this.removeSongMenu} src={require("@/assets/icon-song-menu-delete.png")}/>                                          
+                        <img className="delete" onClick={this.removeSongMenu} src={require("@/assets/icon-songmenu-delete.png")}/>                                          
                     </div>
                     <p className="text-wrapper">
                         <span className="text" onClick={this.removeSongMenu}>删除</span>

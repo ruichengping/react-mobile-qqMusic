@@ -1,4 +1,4 @@
-.qqMusic-control {
+.qqmusic-control {
     position: fixed;
     top: 0;
     left: 0;
@@ -10,7 +10,7 @@
     &.show {
         transform: translateY(0);
         z-index: 1;
-        .qqMusic-control-content {
+        .qqmusic-control-content {
             display: flex;
             flex-direction: column;
             position: absolute;
@@ -20,7 +20,7 @@
             right: 0;
             z-index: 3;
             overflow: auto;
-            .qqMusic-control-top {
+            .qqmusic-control-top {
                 position: relative;
                 flex: 0 0 50px;
                 .icon-control-down {
@@ -36,7 +36,7 @@
                     padding-top: 15px;
                 }
             }
-            .qqMusic-control-middle {
+            .qqmusic-control-middle {
                 text-align: center;
                 flex: 1;
                 .slider-list{
@@ -99,11 +99,11 @@
                     }
                 }
             }
-            .qqMusic-control-bottom {
+            .qqmusic-control-bottom {
                 flex: 0 0 200px;
                 box-sizing: border-box;
                 padding-bottom: 20px;
-                .qqMusic-control-progress {
+                .qqmusic-control-progress {
                     position: relative;
                     margin-top: 15px;
                     text-align: center;
@@ -142,7 +142,7 @@
                         }
                     }
                 }
-                .qqMusic-control-btns {
+                .qqmusic-control-btns {
                     display: flex;
                     height: 90px;
                     align-items: center;
@@ -161,7 +161,7 @@
                 }
             }
         }
-        .qqMusic-control-bg {
+        .qqmusic-control-bg {
             position: absolute;
             top: 0;
             bottom: 0;
@@ -173,7 +173,7 @@
             -webkit-filter: blur(15px);
             -webkit-transform: scale(1.15);
         }
-        .qqMusic-control-bg-mask {
+        .qqmusic-control-bg-mask {
             position: absolute;
             top: 0;
             left: 0;

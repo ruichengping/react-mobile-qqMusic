@@ -1,4 +1,4 @@
-.qqMusic-search-wrapper {
+.qqmusic-search-wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -14,9 +14,10 @@
     &.show {
         transform: translateY(0);
     }
-    .qqMusic-search-top {
+    .qqmusic-search-top {
         position: relative;
         background: #31c37c;
+        
         box-sizing: border-box;
         padding: 10px 80px 10px 40px;
         .icon-arrow-left {
@@ -53,12 +54,12 @@
             color: #dbf3e8;
         }
     }
-    .qqMusic-search-bottom {
+    .qqmusic-search-bottom {
         flex: 1;
         overflow: scroll;
-        .qqMusic-searchList {
+        .qqmusic-search-list {
             background: #fff;
-            .qqMusic-searchList-item {
+            .qqmusic-search-list-item {
                 display: flex;
                 padding: 5px 15px;
                 .left{
@@ -95,7 +96,7 @@
             }
         }
     }
-    .remindMask {
+    .remind-mask {
         position: absolute;
         top:40px;
         right:0;
@@ -130,15 +131,15 @@
             font-weight: 400;
             font-size: 15px;
             background-color: #fff;
-            .cleanRecord{
+            .clean-record{
                 position: absolute;
                 right: 15px;
                 top: 15px;
                 color: #31c37c;
             }
         }
-        .recordList {
-            .recordItem {
+        .record-list {
+            .record-item {
                 position: relative;
                 background: #fff;
                 height: 45px;
