@@ -33,7 +33,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     splitChunks:{
       chunks: 'all',
       minSize: 30000,
-      maxSize: 0,
       minChunks: 1,
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
@@ -42,6 +41,8 @@ const webpackConfig = merge(baseWebpackConfig, {
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
+          chunks: 'initial',
+          reuseExistingChunk:true,
           priority: -10
         }
       }
